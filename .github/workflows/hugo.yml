@@ -32,24 +32,17 @@ jobs:
           hugo-version: '0.111.3'
           extended: true
       
-      - name: Build with Hugo
-        run: hugo --minify
-      
       - name: Setup Pages
         uses: actions/configure-pages@v4
       
-      - name: Generate Pages Artifact
-        run: |
-          # Create the _site directory
-          mkdir -p ./_site
-          # Copy Hugo's output to _site
-          cp -r ./public/* ./_site/
+      - name: Build with Hugo
+        run: hugo --minify
       
-      - name: Upload Pages Artifact
+      - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: _site
+          path: ./public
           if-no-files-found: error
 
   # Deployment job
