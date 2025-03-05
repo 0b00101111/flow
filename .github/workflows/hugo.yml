@@ -41,7 +41,7 @@ jobs:
           cp -r ./public/* ./_site/
           
       - name: Upload Pages artifact
-        uses: actions/upload-artifact@v2
+        uses: actions/upload-artifact@v4
         with:
           name: github-pages
           path: _site
