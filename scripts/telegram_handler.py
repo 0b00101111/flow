@@ -25,6 +25,8 @@ def get_updates(offset=None):
     response = requests.get(url, params=params)
     return response.json()
 
+print(f"Looking for messages newer than update_id: {last_update_id}")
+
 def process_telegram_messages():
     """Process new Telegram messages"""
     last_update_id = get_last_update_id()
