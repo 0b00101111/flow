@@ -35,16 +35,12 @@ jobs:
       - name: Setup Pages
         uses: actions/configure-pages@v3
         
+      # This is the important part - must use the right artifact name
       - name: Upload artifact
-        run: |
-          mkdir -p ./_site/
-          cp -r ./public/* ./_site/
-          
-      - name: Upload Pages artifact
         uses: actions/upload-artifact@v4
         with:
           name: github-pages
-          path: _site
+          path: ./public
           
   deploy:
     environment:
