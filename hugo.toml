@@ -1,0 +1,101 @@
+# config.toml
+
+baseURL = "https://daily.shuang.blog/"
+defaultContentLanguage = "en"
+defaultContentLanguageInSubdir = false
+
+# Enable languages
+[languages]
+  [languages.en]
+    languageName = "English"
+    title = "Daily Thoughts"
+    weight = 1
+  [languages.zh]
+    languageName = "中文"
+    title = "日常思考"
+    weight = 2
+
+# Theme configuration
+theme = "paper"
+
+# Paper theme configuration
+[params]
+  # color theme
+  color = "linen"  # linen, wheat, gray, light
+
+  # header social icons
+  twitter = "yourtwitter"  # Update with your handle
+  github = "yourgithub"    # Update with your handle
+
+  # home page profile
+  avatar = "avatar.jpg"    # place in static/images/
+  name = "Your Name"
+  bio = "Capturing thoughts as they happen"
+
+  # misc
+  disableHLJS = true       # disable highlight.js
+  monoDarkIcon = true      # show monochrome dark mode icon
+  gravatarCdn = ""         # e.g. "https://cdn.v2ex.com/gravatar/"
+  graphCommentId = ""      # use Graph Comment
+
+# Permalinks - affects URL structure
+[permalinks]
+  posts = "/blog/:year/:month/:title/"
+  thoughts = "/thoughts/:year/:month/:title/"
+  daily = "/daily/:year/:month/:day/"
+
+# Taxonomy setup
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+  series = "series"
+
+# Menu configuration
+[menu]
+  [[menu.main]]
+    identifier = "posts"
+    name = "Posts"
+    url = "/posts/"
+    weight = 10
+  [[menu.main]]
+    identifier = "thoughts"
+    name = "Thoughts"
+    url = "/thoughts/"
+    weight = 20
+  [[menu.main]]
+    identifier = "daily"
+    name = "Daily"
+    url = "/daily/"
+    weight = 30
+  [[menu.main]]
+    identifier = "language"
+    name = "EN / 中文"
+    url = "#"
+    weight = 40
+
+# Chinese menu configuration
+[languages.zh.menu]
+  [[languages.zh.menu.main]]
+    identifier = "posts"
+    name = "博客"
+    url = "/zh/posts/"
+    weight = 10
+  [[languages.zh.menu.main]]
+    identifier = "thoughts"
+    name = "想法"
+    url = "/zh/thoughts/"
+    weight = 20
+  [[languages.zh.menu.main]]
+    identifier = "daily"
+    name = "日记"
+    url = "/zh/daily/"
+    weight = 30
+  [[languages.zh.menu.main]]
+    identifier = "language"
+    name = "EN / 中文"
+    url = "#"
+    weight = 40
+
+# Chinese parameters
+[languages.zh.params]
+  bio = "记录瞬间的思考"
