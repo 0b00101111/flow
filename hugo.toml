@@ -1,101 +1,97 @@
-# config.toml
-
 baseURL = "https://daily.shuang.blog/"
-defaultContentLanguage = "en"
+defaultContentLanguage = "zh"  # 默认语言设置为中文
 defaultContentLanguageInSubdir = false
 
-# Enable languages
+# 启用语言
 [languages]
-  [languages.en]
-    languageName = "English"
-    title = "Daily Thoughts"
-    weight = 1
   [languages.zh]
     languageName = "中文"
     title = "日常思考"
+    weight = 1  # 中文优先权重
+  [languages.en]
+    languageName = "English"
+    title = "Daily Thoughts"
     weight = 2
 
-# Theme configuration
+# 主题配置
 theme = "paper"
 
-# Paper theme configuration
+# Paper 主题配置
 [params]
-  # color theme
+  # 颜色主题
   color = "linen"  # linen, wheat, gray, light
 
-  # header social icons
-  twitter = "yourtwitter"  # Update with your handle
-  github = "yourgithub"    # Update with your handle
+  # 头部社交图标
+  twitter = "yourusername"  # 更新为您的用户名
+  github = "yourusername"    # 更新为您的用户名
 
-  # home page profile
-  avatar = "avatar.jpg"    # place in static/images/
-  name = "Your Name"
-  bio = "Capturing thoughts as they happen"
+  # 首页个人资料
+  avatar = "avatar.jpg"    # 放置在 static/images/ 目录下
+  name = "您的名字"
+  bio = "记录瞬间的思考"
 
-  # misc
-  disableHLJS = true       # disable highlight.js
-  monoDarkIcon = true      # show monochrome dark mode icon
-  gravatarCdn = ""         # e.g. "https://cdn.v2ex.com/gravatar/"
-  graphCommentId = ""      # use Graph Comment
+  # 其他设置
+  disableHLJS = true       # 禁用 highlight.js
+  monoDarkIcon = true      # 显示单色暗模式图标
 
-# Permalinks - affects URL structure
+# 永久链接 - 影响 URL 结构
 [permalinks]
   posts = "/blog/:year/:month/:title/"
   thoughts = "/thoughts/:year/:month/:title/"
   daily = "/daily/:year/:month/:day/"
 
-# Taxonomy setup
+# 分类设置
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
 
-# Menu configuration
+# 中文菜单配置
 [menu]
   [[menu.main]]
     identifier = "posts"
-    name = "Posts"
+    name = "博客"
     url = "/posts/"
     weight = 10
   [[menu.main]]
     identifier = "thoughts"
-    name = "Thoughts"
+    name = "想法"
     url = "/thoughts/"
     weight = 20
   [[menu.main]]
     identifier = "daily"
-    name = "Daily"
+    name = "日记"
     url = "/daily/"
     weight = 30
   [[menu.main]]
     identifier = "language"
-    name = "EN / 中文"
+    name = "中文 / EN"
     url = "#"
     weight = 40
 
-# Chinese menu configuration
-[languages.zh.menu]
-  [[languages.zh.menu.main]]
+# 英文菜单配置
+[languages.en.menu]
+  [[languages.en.menu.main]]
     identifier = "posts"
-    name = "博客"
-    url = "/zh/posts/"
+    name = "Posts"
+    url = "/en/posts/"
     weight = 10
-  [[languages.zh.menu.main]]
+  [[languages.en.menu.main]]
     identifier = "thoughts"
-    name = "想法"
-    url = "/zh/thoughts/"
+    name = "Thoughts"
+    url = "/en/thoughts/"
     weight = 20
-  [[languages.zh.menu.main]]
+  [[languages.en.menu.main]]
     identifier = "daily"
-    name = "日记"
-    url = "/zh/daily/"
+    name = "Daily"
+    url = "/en/daily/"
     weight = 30
-  [[languages.zh.menu.main]]
+  [[languages.en.menu.main]]
     identifier = "language"
-    name = "EN / 中文"
+    name = "中文 / EN"
     url = "#"
     weight = 40
 
-# Chinese parameters
-[languages.zh.params]
-  bio = "记录瞬间的思考"
+# 英文参数
+[languages.en.params]
+  bio = "Capturing thoughts as they happen"

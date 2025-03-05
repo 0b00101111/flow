@@ -8,6 +8,7 @@
 !_TAG_FIELD_DESCRIPTION	name	/tag name/
 !_TAG_FIELD_DESCRIPTION	pattern	/pattern/
 !_TAG_FIELD_DESCRIPTION	typeref	/Type and name of a variable or typedef/
+!_TAG_FIELD_DESCRIPTION!Python	nameref	/the original name for the tag/
 !_TAG_FIELD_DESCRIPTION!XML	uri	/uri associated with name prefix/
 !_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
 !_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
@@ -52,6 +53,13 @@
 !_TAG_KIND_DESCRIPTION!Markdown	s,section	/sections/
 !_TAG_KIND_DESCRIPTION!Markdown	t,subsubsection	/level 3 sections/
 !_TAG_KIND_DESCRIPTION!Markdown	u,l5subsection	/level 5 sections/
+!_TAG_KIND_DESCRIPTION!Python	I,namespace	/name referring a module defined in other file/
+!_TAG_KIND_DESCRIPTION!Python	Y,unknown	/name referring a class\/variable\/function\/module defined in other module/
+!_TAG_KIND_DESCRIPTION!Python	c,class	/classes/
+!_TAG_KIND_DESCRIPTION!Python	f,function	/functions/
+!_TAG_KIND_DESCRIPTION!Python	i,module	/modules/
+!_TAG_KIND_DESCRIPTION!Python	m,member	/class members/
+!_TAG_KIND_DESCRIPTION!Python	v,variable	/variables/
 !_TAG_KIND_DESCRIPTION!SVG	d,def	/ids in defs tags/
 !_TAG_KIND_DESCRIPTION!TOML	K,qkey	/qualified keys/
 !_TAG_KIND_DESCRIPTION!TOML	a,arraytable	/array tables/
@@ -70,6 +78,7 @@
 !_TAG_PARSER_VERSION!JSON	0.0	/current.age/
 !_TAG_PARSER_VERSION!JavaScript	1.1	/current.age/
 !_TAG_PARSER_VERSION!Markdown	1.1	/current.age/
+!_TAG_PARSER_VERSION!Python	0.0	/current.age/
 !_TAG_PARSER_VERSION!SVG	0.0	/current.age/
 !_TAG_PARSER_VERSION!TOML	0.0	/current.age/
 !_TAG_PARSER_VERSION!XML	0.0	/current.age/
@@ -88,6 +97,11 @@
 !_TAG_ROLE_DESCRIPTION!HTML!script	extFile	/referenced as external files/
 !_TAG_ROLE_DESCRIPTION!HTML!stylesheet	extFile	/referenced as external files/
 !_TAG_ROLE_DESCRIPTION!JavaScript!function	foreigndecl	/declared in foreign languages/
+!_TAG_ROLE_DESCRIPTION!Python!module	imported	/imported modules/
+!_TAG_ROLE_DESCRIPTION!Python!module	indirectlyImported	/module imported in alternative name/
+!_TAG_ROLE_DESCRIPTION!Python!module	namespace	/namespace from where classes\/variables\/functions are imported/
+!_TAG_ROLE_DESCRIPTION!Python!unknown	imported	/imported from the other module/
+!_TAG_ROLE_DESCRIPTION!Python!unknown	indirectlyImported	/classes\/variables\/functions\/modules imported in alternative name/
 !_TAG_ROLE_DESCRIPTION!Yaml!anchor	alias	/alias/
 #{{- .Title -}}	themes/paper/layouts/_default/list.html	/^<h1 class="mb-14">#{{- .Title -}}<\/h1>$/;"	h
 1	themes/paper/exampleSite/content/post/markdown-syntax.md	/^[^1]: The above quote is excerpted from Rob Pike's [talk](https:\/\/www.youtube.com\/watch?v=PAA/;"	n	subsubsection:H1""Blockquotes""Blockquote with attribution
@@ -604,7 +618,7 @@ anonymousObject13e97c6dff05	themes/paper/static/highlight.min.js	/^!function(e){
 author	themes/paper/exampleSite/hugo.toml	/^author = "Steve Francia"$/;"	K
 author	themes/paper/package.json	/^  "author": "nanxiaobei <nanxiaobei@gmail.com>",$/;"	s
 author	themes/paper/theme.toml	/^[author]$/;"	t
-avatar	hugo.toml	/^  avatar = "avatar.jpg"    # place in static\/images\/$/;"	K	table:params
+avatar	hugo.toml	/^  avatar = "avatar.jpg"    # 放置在 static\/images\/ 目录下$/;"	K	table:params
 avatar	themes/paper/exampleSite/hugo.toml	/^avatar = 'nanxiaobei@gmail.com'$/;"	K	table:params
 b	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d10500.anonymousObject13e97c6d10605.anonymousObject13e97c6d10705
 b	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d10500.anonymousObject13e97c6d10605.anonymousObject13e97c6d10805
@@ -979,8 +993,8 @@ baseURL	themes/paper/exampleSite/hugo.toml	/^baseURL = "https:\/\/hugo-paper.ver
 begin	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 beginKeywords	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 beginRe	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
-bio	hugo.toml	/^  bio = "Capturing thoughts as they happen"$/;"	K	table:params
-bio	hugo.toml	/^  bio = "记录瞬间的思考"$/;"	K	table:languages.zh.params
+bio	hugo.toml	/^  bio = "Capturing thoughts as they happen"$/;"	K	table:languages.en.params
+bio	hugo.toml	/^  bio = "记录瞬间的思考"$/;"	K	table:params
 bio	themes/paper/exampleSite/hugo.toml	/^  bio = 'Discover fresh context'$/;"	K	table:params
 build	themes/paper/package.json	/^    "build": "pnpm build:go & pnpm build:generate"$/;"	s	object:scripts
 build:generate	themes/paper/package.json	/^    "build:generate": "hugo --config exampleSite\/hugo.toml --contentDir exampleSite\/content --/;"	s	object:scripts
@@ -1329,15 +1343,16 @@ contains	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typ
 copyright	themes/paper/exampleSite/hugo.toml	/^copyright = "© 2025, lee.so"$/;"	K
 d	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:s
 daily	hugo.toml	/^  daily = "\/daily\/:year\/:month\/:day\/"$/;"	K	table:permalinks
-defaultContentLanguage	hugo.toml	/^defaultContentLanguage = "en"$/;"	K
+defaultContentLanguage	hugo.toml	/^defaultContentLanguage = "zh"  # 默认语言设置为中文$/;"	K
 defaultContentLanguageInSubdir	hugo.toml	/^defaultContentLanguageInSubdir = false$/;"	K
 demosite	themes/paper/theme.toml	/^demosite = "https:\/\/hugo-paper.vercel.app"$/;"	K
 dependencies	themes/paper/package.json	/^  "dependencies": {$/;"	o
 description	themes/paper/theme.toml	/^description = "A simple, clean, flexible Hugo theme"$/;"	K
+detect_language	scripts/utils.py	/^def detect_language(text):$/;"	f
 dev	themes/paper/package.json	/^    "dev": "killall hugo & pnpm dev:css & pnpm dev:server",$/;"	s	object:scripts
 dev:css	themes/paper/package.json	/^    "dev:css": "npx @tailwindcss\/cli -i .\/assets\/app.css -o .\/assets\/main.css --watch",$/;"	s	object:scripts
 dev:server	themes/paper/package.json	/^    "dev:server": "hugo server --config exampleSite\/hugo.toml --contentDir exampleSite\/content/;"	s	object:scripts
-disableHLJS	hugo.toml	/^  disableHLJS = true       # disable highlight.js$/;"	K	table:params
+disableHLJS	hugo.toml	/^  disableHLJS = true       # 禁用 highlight.js$/;"	K	table:params
 disableInlineCSS	themes/paper/exampleSite/configTaxo.toml	/^    disableInlineCSS = true$/;"	K	table:privacy.x
 disableInlineCSS	themes/paper/exampleSite/hugo.toml	/^    disableInlineCSS = true$/;"	K	table:services.instagram
 disableInlineCSS	themes/paper/exampleSite/hugo.toml	/^    disableInlineCSS = true$/;"	K	table:services.x
@@ -1634,12 +1649,12 @@ exec	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof 
 f	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
 features	themes/paper/theme.toml	/^features = ["Responsive", "One Column", "Blog"]$/;"	K
 flow	README.md	/^# flow$/;"	c
+format_reminder_message	scripts/utils.py	/^def format_reminder_message(untagged_thoughts):$/;"	f
 g	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
-github	hugo.toml	/^  github = "yourgithub"    # Update with your handle$/;"	K	table:params
+get_last_update_id	scripts/utils.py	/^def get_last_update_id():$/;"	f
+github	hugo.toml	/^  github = "yourusername"    # 更新为您的用户名$/;"	K	table:params
 github	themes/paper/exampleSite/hugo.toml	/^  github = 'nanxiaobei'$/;"	K	table:params
-graphCommentId	hugo.toml	/^  graphCommentId = ""      # use Graph Comment$/;"	K	table:params
 graphcomment	themes/paper/layouts/_default/single.html	/^  <div class="mt-24" id="graphcomment"><\/div>$/;"	I
-gravatarCdn	hugo.toml	/^  gravatarCdn = ""         # e.g. "https:\/\/cdn.v2ex.com\/gravatar\/"$/;"	K	table:params
 homepage	themes/paper/theme.toml	/^  homepage = "https:\/\/lee.so\/"$/;"	K	table:author
 homepage	themes/paper/theme.toml	/^homepage = "https:\/\/github.com\/nanxiaobei\/hugo-paper\/"$/;"	K
 hugoBasicExample	themes/paper/exampleSite/README.md	/^# hugoBasicExample$/;"	c
@@ -1694,13 +1709,13 @@ i	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 i	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6de700
 i	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6dea00
 i.c	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
-identifier	hugo.toml	/^    identifier = "daily"$/;"	K	arraytable:languages.zh.menu.main
+identifier	hugo.toml	/^    identifier = "daily"$/;"	K	arraytable:languages.en.menu.main
 identifier	hugo.toml	/^    identifier = "daily"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "language"$/;"	K	arraytable:languages.zh.menu.main
+identifier	hugo.toml	/^    identifier = "language"$/;"	K	arraytable:languages.en.menu.main
 identifier	hugo.toml	/^    identifier = "language"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "posts"$/;"	K	arraytable:languages.zh.menu.main
+identifier	hugo.toml	/^    identifier = "posts"$/;"	K	arraytable:languages.en.menu.main
 identifier	hugo.toml	/^    identifier = "posts"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "thoughts"$/;"	K	arraytable:languages.zh.menu.main
+identifier	hugo.toml	/^    identifier = "thoughts"$/;"	K	arraytable:languages.en.menu.main
 identifier	hugo.toml	/^    identifier = "thoughts"$/;"	K	arraytable:menu.main
 identifier	themes/paper/exampleSite/hugo.toml	/^    identifier = "about"$/;"	K	arraytable:menu.main
 identifier	themes/paper/exampleSite/hugo.toml	/^    identifier = "contact"$/;"	K	arraytable:menu.main
@@ -1775,10 +1790,10 @@ languageName	hugo.toml	/^    languageName = "中文"$/;"	K	table:languages.zh
 languages	hugo.toml	/^[languages]$/;"	t
 languages	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.v
 languages.en	hugo.toml	/^  [languages.en]$/;"	t
+languages.en.menu	hugo.toml	/^[languages.en.menu]$/;"	t
+languages.en.menu.main	hugo.toml	/^  [[languages.en.menu.main]]$/;"	a
+languages.en.params	hugo.toml	/^[languages.en.params]$/;"	t
 languages.zh	hugo.toml	/^  [languages.zh]$/;"	t
-languages.zh.menu	hugo.toml	/^[languages.zh.menu]$/;"	t
-languages.zh.menu.main	hugo.toml	/^  [[languages.zh.menu.main]]$/;"	a
-languages.zh.params	hugo.toml	/^[languages.zh.params]$/;"	t
 lexemes	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 lexemesRe	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 license	themes/paper/package.json	/^  "license": "MIT",$/;"	s
@@ -1808,7 +1823,7 @@ min_version	themes/paper/theme.toml	/^min_version = "0.57.1"$/;"	K
 module	themes/paper/exampleSite/go.toml	/^[module]$/;"	t
 module.exports	themes/paper/.prettierrc.js	/^module.exports = {$/;"	p
 module.imports	themes/paper/exampleSite/go.toml	/^  [[module.imports]]$/;"	a
-monoDarkIcon	hugo.toml	/^  monoDarkIcon = true      # show monochrome dark mode icon$/;"	K	table:params
+monoDarkIcon	hugo.toml	/^  monoDarkIcon = true      # 显示单色暗模式图标$/;"	K	table:params
 n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400.E.t
 n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6d13a00
 n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6d15300
@@ -1819,15 +1834,15 @@ n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6de700
 n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6dea00
 n.c	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
-name	hugo.toml	/^    name = "Daily"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "EN \/ 中文"$/;"	K	arraytable:languages.zh.menu.main
-name	hugo.toml	/^    name = "EN \/ 中文"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "Posts"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "Thoughts"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "博客"$/;"	K	arraytable:languages.zh.menu.main
-name	hugo.toml	/^    name = "想法"$/;"	K	arraytable:languages.zh.menu.main
-name	hugo.toml	/^    name = "日记"$/;"	K	arraytable:languages.zh.menu.main
-name	hugo.toml	/^  name = "Your Name"$/;"	K	table:params
+name	hugo.toml	/^    name = "Daily"$/;"	K	arraytable:languages.en.menu.main
+name	hugo.toml	/^    name = "Posts"$/;"	K	arraytable:languages.en.menu.main
+name	hugo.toml	/^    name = "Thoughts"$/;"	K	arraytable:languages.en.menu.main
+name	hugo.toml	/^    name = "中文 \/ EN"$/;"	K	arraytable:languages.en.menu.main
+name	hugo.toml	/^    name = "中文 \/ EN"$/;"	K	arraytable:menu.main
+name	hugo.toml	/^    name = "博客"$/;"	K	arraytable:menu.main
+name	hugo.toml	/^    name = "想法"$/;"	K	arraytable:menu.main
+name	hugo.toml	/^    name = "日记"$/;"	K	arraytable:menu.main
+name	hugo.toml	/^  name = "您的名字"$/;"	K	table:params
 name	themes/paper/exampleSite/hugo.toml	/^    name = "About"$/;"	K	arraytable:menu.main
 name	themes/paper/exampleSite/hugo.toml	/^    name = "Contact"$/;"	K	arraytable:menu.main
 name	themes/paper/exampleSite/hugo.toml	/^  name = 'Lee'$/;"	K	table:params
@@ -2040,7 +2055,9 @@ sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof wi
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d3e00.anonymousObject13e97c6d4a05
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6dcd00.anonymousObject13e97c6dd605.anonymousObject13e97c6ddc05
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.anonymousObject13e97c6dfb05
+save_last_update_id	scripts/utils.py	/^def save_last_update_id(update_id):$/;"	f
 scripts	themes/paper/package.json	/^  "scripts": {$/;"	o
+send_telegram_message	scripts/utils.py	/^def send_telegram_message(chat_id, text):$/;"	f
 series	hugo.toml	/^  series = "series"$/;"	K	table:taxonomies
 series	themes/paper/exampleSite/configTaxo.toml	/^series = "series"$/;"	K	table:taxonomies
 series	themes/paper/exampleSite/hugo.toml	/^series = "series"$/;"	K	table:taxonomies
@@ -2062,6 +2079,7 @@ skip	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof 
 skip	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.anonymousObject13e97c6dfb05.anonymousObject13e97c6dfd05
 skip	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.anonymousObject13e97c6dfb05.anonymousObject13e97c6dfe05
 skip	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.anonymousObject13e97c6dfb05.anonymousObject13e97c6dff05
+slugify	scripts/utils.py	/^def slugify(text):$/;"	f
 starts	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d11c00.anonymousObject13e97c6d12d05.anonymousObject13e97c6d12e05
 starts	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d16900.anonymousObject13e97c6d16b05
 starts	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d16900.anonymousObject13e97c6d16d05
@@ -2102,7 +2120,7 @@ taxonomies	themes/paper/exampleSite/configTaxo.toml	/^[taxonomies]$/;"	t
 taxonomies	themes/paper/exampleSite/hugo.toml	/^[taxonomies]$/;"	t
 terminator_end	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 terminators	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
-theme	hugo.toml	/^theme = "paper"$/;"	K	table:languages.zh
+theme	hugo.toml	/^theme = "paper"$/;"	K	table:languages.en
 theme	themes/paper/exampleSite/hugo.toml	/^theme = "hugo-paper"$/;"	K	table:pagination
 thought	README.md	/^- #thought - For quick, fleeting ideas$/;"	h	section:key features (to be updated)""Quick Capture + Smart Processing
 thoughts	hugo.toml	/^  thoughts = "\/thoughts\/:year\/:month\/:title\/"$/;"	K	table:permalinks
@@ -2111,20 +2129,20 @@ timeout	themes/paper/exampleSite/configTaxo.toml	/^timeout = 30000$/;"	K
 title	hugo.toml	/^    title = "Daily Thoughts"$/;"	K	table:languages.en
 title	hugo.toml	/^    title = "日常思考"$/;"	K	table:languages.zh
 title	themes/paper/exampleSite/hugo.toml	/^title = "Paper"$/;"	K
-twitter	hugo.toml	/^  twitter = "yourtwitter"  # Update with your handle$/;"	K	table:params
+twitter	hugo.toml	/^  twitter = "yourusername"  # 更新为您的用户名$/;"	K	table:params
 twitter	themes/paper/exampleSite/hugo.toml	/^  twitter = 'nanxiaobei'$/;"	K	table:params
 u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
 u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:k
 u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6d6b00
 unsafe	themes/paper/exampleSite/hugo.toml	/^      unsafe = true$/;"	K	table:markup.goldmark.renderer
-url	hugo.toml	/^    url = "#"$/;"	K	arraytable:languages.zh.menu.main
+url	hugo.toml	/^    url = "#"$/;"	K	arraytable:languages.en.menu.main
 url	hugo.toml	/^    url = "#"$/;"	K	arraytable:menu.main
 url	hugo.toml	/^    url = "\/daily\/"$/;"	K	arraytable:menu.main
+url	hugo.toml	/^    url = "\/en\/daily\/"$/;"	K	arraytable:languages.en.menu.main
+url	hugo.toml	/^    url = "\/en\/posts\/"$/;"	K	arraytable:languages.en.menu.main
+url	hugo.toml	/^    url = "\/en\/thoughts\/"$/;"	K	arraytable:languages.en.menu.main
 url	hugo.toml	/^    url = "\/posts\/"$/;"	K	arraytable:menu.main
 url	hugo.toml	/^    url = "\/thoughts\/"$/;"	K	arraytable:menu.main
-url	hugo.toml	/^    url = "\/zh\/daily\/"$/;"	K	arraytable:languages.zh.menu.main
-url	hugo.toml	/^    url = "\/zh\/posts\/"$/;"	K	arraytable:languages.zh.menu.main
-url	hugo.toml	/^    url = "\/zh\/thoughts\/"$/;"	K	arraytable:languages.zh.menu.main
 url	themes/paper/exampleSite/hugo.toml	/^    url = "\/about\/"$/;"	K	arraytable:menu.main
 url	themes/paper/exampleSite/hugo.toml	/^    url = "\/contact\/"$/;"	K	arraytable:menu.main
 useBR	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.v
@@ -2171,15 +2189,15 @@ value	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof
 variants	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 version	themes/paper/package.json	/^  "version": "6.29.0",$/;"	s
 w	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
-weight	hugo.toml	/^    weight = 1$/;"	K	table:languages.en
-weight	hugo.toml	/^    weight = 10$/;"	K	arraytable:languages.zh.menu.main
+weight	hugo.toml	/^    weight = 1  # 中文优先权重$/;"	K	table:languages.zh
+weight	hugo.toml	/^    weight = 10$/;"	K	arraytable:languages.en.menu.main
 weight	hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 2$/;"	K	table:languages.zh
-weight	hugo.toml	/^    weight = 20$/;"	K	arraytable:languages.zh.menu.main
+weight	hugo.toml	/^    weight = 2$/;"	K	table:languages.en
+weight	hugo.toml	/^    weight = 20$/;"	K	arraytable:languages.en.menu.main
 weight	hugo.toml	/^    weight = 20$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 30$/;"	K	arraytable:languages.zh.menu.main
+weight	hugo.toml	/^    weight = 30$/;"	K	arraytable:languages.en.menu.main
 weight	hugo.toml	/^    weight = 30$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:languages.zh.menu.main
+weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:languages.en.menu.main
 weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:menu.main
 weight	themes/paper/exampleSite/hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
 x	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
@@ -2187,3 +2205,4 @@ y	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 {{- .Title -}}	themes/paper/layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
 {{- .Title -}}	themes/paper/layouts/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
 {{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}	themes/paper/layouts/partials/head.html	/^  <\/title>$/;"	j
+今日记录	archetypes/zh/daily.md	/^## 今日记录$/;"	s
