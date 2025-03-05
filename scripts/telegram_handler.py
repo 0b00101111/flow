@@ -75,6 +75,18 @@ def process_telegram_messages():
                             send_telegram_message(chat_id, f"✅ Processed your content: {result.get('title', 'Untitled')}")
                     
                     updates_processed += 1
+
+    # In the process_telegram_messages() function, after processing a message:
+    if result:
+        print(f"Processed message with result: {result}")
+        if 'file' in result:
+            print(f"Created file: {result['file']}")
+            # Print the contents of the file to check it
+            try:
+                with open(result['file'], 'r') as f:
+                    print(f"File contents:\n{f.read()}")
+            except Exception as e:
+                print(f"Error reading file: {e}")
     
     # Save the new update ID if we processed any updates
     if new_update_id > last_update_id:
