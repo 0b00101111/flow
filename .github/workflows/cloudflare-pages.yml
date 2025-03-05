@@ -28,6 +28,6 @@ jobs:
         with:
           apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
           accountId: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
-          projectName: flow  # Make sure this matches what you created in Cloudflare
+          projectName: flow-hugo  # Make sure this matches what you created in Cloudflare
           directory: public
           gitHubToken: ${{ secrets.GITHUB_TOKEN }}
