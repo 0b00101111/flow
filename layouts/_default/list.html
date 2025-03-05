@@ -7,7 +7,7 @@
 </head>
 <body>
     <header>
-        <h1>{{ .Site.Title }}</h1>
+        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
         <nav>
             <ul>
                 <li><a href="/posts/">{{ if eq .Site.Language.Lang "zh" }}博客{{ else }}Posts{{ end }}</a></li>
@@ -18,21 +18,11 @@
     </header>
 
     <main>
-        <h2>{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}</h2>
-        {{ $posts := where .Site.RegularPages "Section" "posts" }}
-        {{ range first 5 $posts }}
-        <article>
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
-            <time>{{ .Date.Format "2006-01-02" }}</time>
-            <p>{{ .Summary }}</p>
-        </article>
-        {{ end }}
+        <h1>{{ .Title }}</h1>
 
-        <h2>{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}</h2>
-        {{ $thoughts := where .Site.RegularPages "Section" "thoughts" }}
-        {{ range first 5 $thoughts }}
+        {{ range .Pages }}
         <article>
-            <h3><a href="{{ .Permalink }}">{{ .Title }}</a></h3>
+            <h2><a href="{{ .Permalink }}">{{ .Title }}</a></h2>
             <time>{{ .Date.Format "2006-01-02" }}</time>
             <p>{{ .Summary }}</p>
         </article>

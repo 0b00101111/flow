@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{{ .Title }} - {{ .Site.Title }}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <header>
+        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}</a></h1>
+        <nav>
+            <ul>
+                <li><a href="/posts/">{{ if eq .Site.Language.Lang "zh" }}博客{{ else }}Posts{{ end }}</a></li>
+                <li><a href="/thoughts/">{{ if eq .Site.Language.Lang "zh" }}想法{{ else }}Thoughts{{ end }}</a></li>
+                <li><a href="/daily/">{{ if eq .Site.Language.Lang "zh" }}日记{{ else }}Daily{{ end }}</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <article>
+            <h1>{{ .Title }}</h1>
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+            <div>{{ .Content }}</div>
+        </article>
+    </main>
+
+    <footer>
+        <p>© {{ now.Format "2006" }} Flow</p>
+    </footer>
+</body>
+</html>

@@ -107,13 +107,16 @@
 0	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.mastodon.post_windows
 0	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.telegram.post_windows
 0	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.threads.post_windows
+0	data/untagged_thoughts.json	/^  {$/;"	o
 1	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.mastodon.post_windows
 1	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.telegram.post_windows
 1	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.threads.post_windows
+1	data/untagged_thoughts.json	/^  {$/;"	o
 1	themes/paper/exampleSite/content/post/markdown-syntax.md	/^[^1]: The above quote is excerpted from Rob Pike's [talk](https:\/\/www.youtube.com\/watch?v=PAA/;"	n	subsubsection:H1""Blockquotes""Blockquote with attribution
 2	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.mastodon.post_windows
 2	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.telegram.post_windows
 2	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.threads.post_windows
+2	data/untagged_thoughts.json	/^  {$/;"	o
 404	themes/paper/layouts/404.html	/^<\/h1>$/;"	h
 <!--more-->	themes/paper/exampleSite/content/post/rich-content.md	/^## <!--more-->$/;"	s
 @tailwindcss/cli	themes/paper/package.json	/^    "@tailwindcss\/cli": "^4.0.8",$/;"	s	object:dependencies
@@ -126,10 +129,12 @@ As hugo module	themes/paper/README.md	/^### As hugo module$/;"	S	section:Install
 BACKSLASH_ESCAPE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 BINARY_NUMBER_MODE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 BINARY_NUMBER_RE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
+BLOG	content/posts/2025-03-05-this-is-a-test-blog-post-blogpost.md	/^This is a test blog post #BLOG::post/;"	h
 BOT_TOKEN	scripts/telegram_handler.py	/^BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')$/;"	v
 Blockquote with attribution	themes/paper/exampleSite/content/post/markdown-syntax.md	/^#### Blockquote with attribution$/;"	t	section:H1""Blockquotes
 Blockquote without attribution	themes/paper/exampleSite/content/post/markdown-syntax.md	/^#### Blockquote without attribution$/;"	t	section:H1""Blockquotes
 Blockquotes	themes/paper/exampleSite/content/post/markdown-syntax.md	/^## Blockquotes$/;"	s	chapter:H1
+Blog	content/zh/thoughts/2025-03-05-aibydoing.md	/^ #Blog:post/;"	h
 C	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	c
 COMMENT	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 CSS_NUMBER_MODE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
@@ -198,6 +203,7 @@ a	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 a	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6dea00
 a	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:x
 a.c	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
+add_to_daily_digest	scripts/content_processor.py	/^def add_to_daily_digest(content, message_id, language="zh"):$/;"	f
 anonymousFunction13e97c6d0100	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
 anonymousFunction13e97c6d0300	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0100
 anonymousFunction13e97c6d0400	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
@@ -1353,7 +1359,11 @@ classPrefix	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==
 color	hugo.toml	/^  color = "linen"  # linen, wheat, gray, light$/;"	K	table:params
 color	themes/paper/exampleSite/hugo.toml	/^  color = 'linen'$/;"	K	table:params
 contains	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
+content	data/untagged_thoughts.json	/^    "content": "\\u5b66\\u6821\\u5728\\u81ea\\u4e60\\u4f4d\\u7f6e\\u4e0a\\u4e5f\\u653e\\u4e86\\u/;"	s	object:1
+content	data/untagged_thoughts.json	/^    "content": "\\u5b66\\u6821\\u5728\\u81ea\\u4e60\\u4f4d\\u7f6e\\u4e0a\\u4e5f\\u653e\\u4e86\\u/;"	s	object:2
+content	data/untagged_thoughts.json	/^    "content": "another test post without tags",$/;"	s	object:0
 copyright	themes/paper/exampleSite/hugo.toml	/^copyright = "© 2025, lee.so"$/;"	K
+create_daily_digest	scripts/content_processor.py	/^def create_daily_digest(language="zh"):$/;"	f
 credentials	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels.mastodon
 credentials	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels.telegram
 credentials	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels.threads
@@ -1661,6 +1671,7 @@ endsParent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==t
 endsParent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d18400.o
 endsParent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.t.anonymousObject13e97c6df105.anonymousObject13e97c6df205
 endsWithParent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
+ensure_directory_exists	scripts/utils.py	/^def ensure_directory_exists(filepath):$/;"	f
 event	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400._.e.anonymousObject13e97c6d0605
 event	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400._.e.anonymousObject13e97c6d0705
 excludeBegin	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
@@ -1670,6 +1681,7 @@ f	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 features	themes/paper/theme.toml	/^features = ["Responsive", "One Column", "Blog"]$/;"	K
 flow	README.md	/^# flow$/;"	c
 format_reminder_message	scripts/utils.py	/^def format_reminder_message(untagged_thoughts):$/;"	f
+format_time_difference	scripts/utils.py	/^def format_time_difference(timestamp_str):$/;"	f
 g	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
 get_last_update_id	scripts/utils.py	/^def get_last_update_id():$/;"	f
 get_updates	scripts/telegram_handler.py	/^def get_updates(offset=None):$/;"	f
@@ -1803,6 +1815,9 @@ l	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 l	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d1ac00.anonymousObject13e97c6d1ad05
 l	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d8b00.anonymousObject13e97c6d9605
 l	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6dea00.anonymousObject13e97c6dee05
+language	data/untagged_thoughts.json	/^    "language": "en"$/;"	s	object:0
+language	data/untagged_thoughts.json	/^    "language": "zh"$/;"	s	object:1
+language	data/untagged_thoughts.json	/^    "language": "zh"$/;"	s	object:2
 language	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:s.anonymousObject13e97c6d1905
 language	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:s.anonymousObject13e97c6d1a05
 languageCode	themes/paper/exampleSite/hugo.toml	/^languageCode = "en"$/;"	K
@@ -1830,6 +1845,7 @@ literal	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==type
 literal	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d6b00.t
 literal	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6dcd00.r
 literal	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6de700.t
+load_json_file	scripts/utils.py	/^def load_json_file(filepath, default=None):$/;"	f
 main	scripts/telegram_handler.py	/^def main():$/;"	f
 markup	themes/paper/exampleSite/hugo.toml	/^[markup]$/;"	t
 markup.goldmark	themes/paper/exampleSite/hugo.toml	/^  [markup.goldmark]$/;"	t
@@ -1840,6 +1856,9 @@ menu	hugo.toml	/^[menu]$/;"	t
 menu	themes/paper/exampleSite/hugo.toml	/^[menu]$/;"	t
 menu.main	hugo.toml	/^  [[menu.main]]$/;"	a
 menu.main	themes/paper/exampleSite/hugo.toml	/^  [[menu.main]]$/;"	a
+message_id	data/untagged_thoughts.json	/^    "message_id": 10,$/;"	n	object:1
+message_id	data/untagged_thoughts.json	/^    "message_id": 11,$/;"	n	object:2
+message_id	data/untagged_thoughts.json	/^    "message_id": 8,$/;"	n	object:0
 meta-keyword	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction13e97c6d5500.n.k
 meta-keyword	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction13e97c6d6b00.anonymousObject13e97c6d8105.k
 meta-keyword	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction13e97c6dea00.anonymousObject13e97c6dee05.k
@@ -1898,6 +1917,7 @@ pagination	themes/paper/exampleSite/hugo.toml	/^[pagination]$/;"	t
 params	hugo.toml	/^[params]$/;"	t
 params	themes/paper/exampleSite/hugo.toml	/^[params]$/;"	t
 parent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:k.u.anonymousObject13e97c6d1205
+parse_tags	scripts/content_processor.py	/^def parse_tags(text):$/;"	f
 path	themes/paper/exampleSite/go.toml	/^    path = "github.com\/nanxiaobei\/hugo-paper"$/;"	K	arraytable:module.imports
 permalinks	hugo.toml	/^[permalinks]$/;"	t
 plugins	themes/paper/.prettierrc.js	/^  plugins: ['prettier-plugin-tailwindcss'],$/;"	p	property:module.exports
@@ -1919,7 +1939,10 @@ privacy.youtube	themes/paper/exampleSite/configTaxo.toml	/^  [privacy.youtube]$/
 privacy.youtube	themes/paper/exampleSite/hugo.toml	/^  [privacy.youtube]$/;"	t
 privacyEnhanced	themes/paper/exampleSite/configTaxo.toml	/^    privacyEnhanced = true$/;"	K	table:privacy.youtube
 privacyEnhanced	themes/paper/exampleSite/hugo.toml	/^    privacyEnhanced = true$/;"	K	table:privacy.youtube
+process_blog_content	scripts/content_processor.py	/^def process_blog_content(content, tags, message_id):$/;"	f
+process_content	scripts/content_processor.py	/^def process_content(message):$/;"	f
 process_telegram_messages	scripts/telegram_handler.py	/^def process_telegram_messages():$/;"	f
+process_untagged_content	scripts/content_processor.py	/^def process_untagged_content(content, message_id):$/;"	f
 publish	README.md	/^- #publish - Post immediately to your blog$/;"	h	section:key features (to be updated)""Quick Capture + Smart Processing
 r	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:k.a
 r	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction13e97c6d16900.i.starts
@@ -2084,6 +2107,7 @@ sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof wi
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d3e00.anonymousObject13e97c6d4a05
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6dcd00.anonymousObject13e97c6dd605.anonymousObject13e97c6ddc05
 sL	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6def00.anonymousObject13e97c6dfb05
+save_json_file	scripts/utils.py	/^def save_json_file(filepath, data):$/;"	f
 save_last_update_id	scripts/utils.py	/^def save_last_update_id(update_id):$/;"	f
 scripts	themes/paper/package.json	/^  "scripts": {$/;"	o
 send_reminders	scripts/telegram_handler.py	/^def send_reminders():$/;"	f
@@ -2161,6 +2185,9 @@ thread	README.md	/^- #thread - Schedule for posting to Threads$/;"	h	section:key
 threads	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels
 threads	data/queues.json	/^{"threads":[],"telegram":[],"mastodon":[]}$/;"	a
 timeout	themes/paper/exampleSite/configTaxo.toml	/^timeout = 30000$/;"	K
+timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:21:20.548401",$/;"	s	object:0
+timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:23:27.789849",$/;"	s	object:1
+timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:25:24.474275",$/;"	s	object:2
 title	hugo.toml	/^    title = "Daily Thoughts"$/;"	K	table:languages.en
 title	hugo.toml	/^    title = "日常思考"$/;"	K	table:languages.zh
 title	themes/paper/exampleSite/hugo.toml	/^title = "Paper"$/;"	K
@@ -2237,6 +2264,13 @@ weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:menu.main
 weight	themes/paper/exampleSite/hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
 x	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
 y	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
+{{ .Site.Title }}	layouts/_default/list.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
+{{ .Site.Title }}	layouts/_default/list.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
+{{ .Site.Title }}	layouts/_default/single.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
+{{ .Title }}	layouts/_default/list.html	/^            <h2><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h2>$/;"	i
+{{ .Title }}	layouts/_default/list.html	/^        <h1>{{ .Title }}<\/h1>$/;"	h
+{{ .Title }}	layouts/_default/single.html	/^            <h1>{{ .Title }}<\/h1>$/;"	h
+{{ .Title }} - {{ .Site.Title }}	layouts/_default/single.html	/^    <title>{{ .Title }} - {{ .Site.Title }}<\/title>$/;"	j
 {{- .Title -}}	themes/paper/layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
 {{- .Title -}}	themes/paper/layouts/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
 {{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}	themes/paper/layouts/partials/head.html	/^  <\/title>$/;"	j
