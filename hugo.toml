@@ -7,11 +7,11 @@ paginate = 10  # Shows 10 items per page
 [languages]
   [languages.zh]
     languageName = "中文"
-    title = "47大盗的兔子"
+    title = "小径分岔的兔子洞"
     weight = 1  # 中文优先权重
   [languages.en]
     languageName = "English"
-    title = "47大盗的兔子洞"
+    title = "Rabbit Holes of Forking Paths"
     weight = 2
 # 主题配置
 theme = "paper"
@@ -24,7 +24,7 @@ theme = "paper"
   threads = "@0b00101111"    # 更新为您的用户名
   # 首页个人资料
   avatar = "avatar.jpg"    # 放置在 static/images/ 目录下
-  name = "47"
+  name = "47 Fork"
   bio = "Existence precedes essence."
   # 其他设置
   disableHLJS = true       # 禁用 highlight.js
