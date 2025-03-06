@@ -2,12 +2,12 @@ name: Telegram Message Processor
 
 on:
   schedule:
-    # 每 5 分钟检查一次
+    # Check every 5 minutes (minimum interval allowed by GitHub Actions)
     - cron: '*/5 * * * *'
   workflow_dispatch:
     inputs:
       action:
-        description: '要执行的操作'
+        description: 'Action to perform'
         default: 'process'
         required: true
         type: choice
@@ -28,17 +28,17 @@ jobs:
         with:
           token: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 设置 Python
+      - name: Set up Python
         uses: actions/setup-python@v4
         with:
           python-version: '3.11'
 
-      - name: 安装依赖
+      - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests python-telegram-bot python-dateutil pyyaml
+          pip install requests python-telegram-bot python-dateutil pyyaml pytz
 
-      - name: 准备目录
+      - name: Prepare directories
         run: |
           mkdir -p data
           mkdir -p content/zh/posts
@@ -48,13 +48,13 @@ jobs:
           mkdir -p content/thoughts
           mkdir -p content/daily
 
-          # 如果不存在则初始化 JSON 文件
+          # Initialize JSON files if they don't exist
           [ -f data/queues.json ] || echo '{"threads":[],"telegram":[],"mastodon":[]}' > data/queues.json
           [ -f data/untagged_thoughts.json ] || echo '[]' > data/untagged_thoughts.json
           [ -f data/last_update_id.txt ] || echo '0' > data/last_update_id.txt
           [ -f data/config.json ] || echo '{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials":{}},"telegram":{"enabled":true,"post_windows":["08:00","13:00","20:00"],"credentials":{}},"mastodon":{"enabled":true,"post_windows":["09:00","15:00","21:00"],"credentials":{}}},"blog":{"daily_digest_time":"21:45","reminder_time":"21:45"}}' > data/config.json
 
-      - name: 运行相应操作
+      - name: Run specified action
         env:
           TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
           AUTHORIZED_USER_ID: ${{ secrets.TELEGRAM_USER_ID }}
@@ -66,32 +66,34 @@ jobs:
         run: |
           python scripts/telegram_handler.py --action $ACTION
 
-      - name: 提交更改
+      - name: Commit changes
         run: |
           git config --global user.name "Flow Bot"
           git config --global user.email "bot@example.com"
 
           git add data/ content/
 
-          # 只有在有更改时才提交
+          # Only commit if there are changes
           if [ -n "$(git status --porcelain)" ]; then
-            # 根据处理的内容自定义提交消息
+            # Customize commit message based on content changes
             if git status --porcelain | grep -q "content/zh/posts"; then
               BLOG_COUNT=$(git status --porcelain | grep "content/zh/posts" | wc -l)
-              COMMIT_MSG="📝 添加了 ${BLOG_COUNT} 篇博客文章"
+              COMMIT_MSG="📝 Added ${BLOG_COUNT} blog posts"
             elif git status --porcelain | grep -q "content/zh/thoughts"; then
               THOUGHT_COUNT=$(git status --porcelain | grep "content/zh/thoughts" | wc -l)
-              COMMIT_MSG="💭 添加了 ${THOUGHT_COUNT} 条想法"
+              COMMIT_MSG="💭 Added ${THOUGHT_COUNT} thoughts"
             elif git status --porcelain | grep -q "content/zh/daily"; then
-              COMMIT_MSG="📅 添加了日记"
+              COMMIT_MSG="📅 Added daily digest"
             elif git status --porcelain | grep -q "data/"; then
-              COMMIT_MSG="🔄 更新了数据文件"
+              COMMIT_MSG="🔄 Updated data files"
             else
-              COMMIT_MSG="更新内容"
+              COMMIT_MSG="Updated content"
             fi
 
             git commit -m "$COMMIT_MSG"
             git push
           else
-            echo "没有变更需要提交"
+            echo "No changes to commit"
+            # Make sure the workflow doesn't fail when there are no changes
+            exit 0
           fi
