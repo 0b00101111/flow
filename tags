@@ -130,6 +130,7 @@ BACKSLASH_ESCAPE	themes/paper/static/highlight.min.js	/^!function(e){var t="obje
 BINARY_NUMBER_MODE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 BINARY_NUMBER_RE	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
 BLOG	content/posts/2025-03-05-this-is-a-test-blog-post-blogpost.md	/^This is a test blog post #BLOG::post/;"	h
+BLOG	content/thoughts/2025-03-06-computer-scientists-establish-the-best-way-to-traverse-a-graphdijkstrasingle-source-shortest-paths-problemsssp.md	/^#BLOG/;"	h
 BOT_TOKEN	scripts/telegram_handler.py	/^BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')$/;"	v
 Blockquote with attribution	themes/paper/exampleSite/content/post/markdown-syntax.md	/^#### Blockquote with attribution$/;"	t	section:H1""Blockquotes
 Blockquote without attribution	themes/paper/exampleSite/content/post/markdown-syntax.md	/^#### Blockquote without attribution$/;"	t	section:H1""Blockquotes
@@ -2267,10 +2268,15 @@ y	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 {{ .Site.Title }}	layouts/_default/list.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
 {{ .Site.Title }}	layouts/_default/list.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
 {{ .Site.Title }}	layouts/_default/single.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
+{{ .Site.Title }}	layouts/index.html	/^        <h1>{{ .Site.Title }}<\/h1>$/;"	h
+{{ .Site.Title }}	layouts/index.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
 {{ .Title }}	layouts/_default/list.html	/^            <h2><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h2>$/;"	i
 {{ .Title }}	layouts/_default/list.html	/^        <h1>{{ .Title }}<\/h1>$/;"	h
 {{ .Title }}	layouts/_default/single.html	/^            <h1>{{ .Title }}<\/h1>$/;"	h
+{{ .Title }}	layouts/index.html	/^            <h3><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h3>$/;"	j
 {{ .Title }} - {{ .Site.Title }}	layouts/_default/single.html	/^    <title>{{ .Title }} - {{ .Site.Title }}<\/title>$/;"	j
+{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}	layouts/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}<\//;"	i
+{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}	layouts/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}<\/h2/;"	i
 {{- .Title -}}	themes/paper/layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
 {{- .Title -}}	themes/paper/layouts/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
 {{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}	themes/paper/layouts/partials/head.html	/^  <\/title>$/;"	j
