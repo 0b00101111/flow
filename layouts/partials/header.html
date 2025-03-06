@@ -4,7 +4,7 @@
   <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
     <a
       class="-translate-y-[1px] text-2xl font-medium"
-      href="{{- `` | absURL -}}"
+      href="{{ .Site.Home.RelPermalink }}"
       >{{ site.Title }}</a
     >
     <div
@@ -13,28 +13,23 @@
       aria-label="Dark"
     ></div>
   </div>
-
   <div
     class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
     role="button"
     aria-label="Menu"
   ></div>
-
   {{- $bg_color := $.Scratch.Get "bg_color" -}}<!---->
-
   <script>
     // base
     const htmlClass = document.documentElement.classList;
     setTimeout(() => {
       htmlClass.remove('not-ready');
     }, 10);
-
     // mobile menu
     const btnMenu = document.querySelector('.btn-menu');
     btnMenu.addEventListener('click', () => {
       htmlClass.toggle('open');
     });
-
     // dark theme
     const metaTheme = document.querySelector('meta[name="theme-color"]');
     const lightBg = '{{- $bg_color -}}'.replace(/"/g, '');
@@ -43,7 +38,6 @@
       htmlClass[isDark ? 'add' : 'remove']('dark');
       localStorage.setItem('dark', isDark);
     };
-
     // init
     const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
     if (htmlClass.contains('dark')) {
@@ -52,19 +46,16 @@
       const darkVal = localStorage.getItem('dark');
       setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
     }
-
     // listen system
     darkScheme.addEventListener('change', (event) => {
       setDark(event.matches);
     });
-
     // manual switch
     const btnDark = document.querySelector('.btn-dark');
     btnDark.addEventListener('click', () => {
       setDark(localStorage.getItem('dark') !== 'true');
     });
   </script>
-
   <div
     class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
   >
@@ -74,15 +65,23 @@
       class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
     >
       {{- range . -}}
-      <a
-        class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
-        href="{{- .URL -}}"
-        >{{- .Name -}}</a
-      >
+      {{- if eq .Identifier "language" -}}
+        <!-- Handle language switcher -->
+        {{- if eq $.Site.Language.Lang "zh" -}}
+          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ `/en/` | relLangURL }}">{{- .Name -}}</a>
+        {{- else -}}
+          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ `/` | relLangURL }}">{{- .Name -}}</a>
+        {{- end -}}
+      {{- else -}}
+        <a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="{{- .URL -}}"
+          >{{- .Name -}}</a
+        >
+      {{- end -}}
       {{- end -}}
     </nav>
     {{- end -}}<!---->
-
     {{- with $.Scratch.Get "social_list" -}}
     <nav
       class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
@@ -91,7 +90,17 @@
       <a
         class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
         style="--url: url(./{{- . -}}.svg)"
-        href="{{- if eq . `rss` -}}{{- `index.xml` | absURL -}}{{- else if eq . `mastodon` -}}{{- index site.Params . -}}{{- else -}}{{- if eq . `threads` -}}https://threads.net/{{- else if eq . `bluesky` -}}https://bsky.app/profile/{{- else -}}https://{{- . -}}.com/{{- end -}}{{- if eq . `linkedin` -}}in/{{- end -}}{{- index site.Params . -}}{{- end -}}"
+        href="{{ if eq . `rss` -}}
+                {{- `index.xml` | absURL -}}
+              {{- else if eq . `mastodon` -}}
+                {{- index site.Params . -}}
+              {{- else if eq . `threads` -}}
+                https://threads.net/{{- index site.Params . -}}
+              {{- else if eq . `bluesky` -}}
+                https://bsky.app/profile/{{- index site.Params . -}}
+              {{- else -}}
+                https://{{- . -}}.com/{{- if eq . `linkedin` -}}in/{{- end -}}{{- index site.Params . -}}
+              {{- end -}}"
         target="_blank"
         rel="{{- if eq . `rss` -}}alternate{{- else -}}me{{- end -}}"
       >

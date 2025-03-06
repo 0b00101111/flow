@@ -23,7 +23,7 @@ theme = "paper"
   mastodon = "https://yangyang.how/@shuang"  # 更新为您的用户名
   threads = "@0b00101111"    # 更新为您的用户名
   # 首页个人资料
-  avatar = "static/images/avatar.jpg"    # 放置在 static/images/ 目录下
+  avatar = "https://daily.shuang.blog/images/avatar.jpg"
   name = "47Fork"
   bio = "Existence precedes essence."
   # 其他设置
@@ -33,7 +33,7 @@ theme = "paper"
   mainSections = ["posts", "moments", "daily"]
 # 永久链接 - 影响 URL 结构
 [permalinks]
-  posts = "/blog/:year/:month/:title/"
+  posts = "/posts/:year/:month/:title/"
   moments = "/moments/:year/:month/:title/"
   daily = "/daily/:year/:month/:day/"
 # 分类设置
@@ -85,7 +85,7 @@ theme = "paper"
   [[languages.en.menu.main]]
     identifier = "language"
     name = "中文 / EN"
-    url = "#"
+    url = "/"
     weight = 40
 
 # 英文参数
