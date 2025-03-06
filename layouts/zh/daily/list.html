@@ -20,6 +20,9 @@
               {{ replace .Title " 日记" "" | replace (printf "%s 第" (slicestr .Date.Format "2006-01-02" 5)) "第" }}
             </a>
           </h2>
+          <div class="daily-entry-meta">
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+          </div>
           
           <!-- Format the content preserving paragraphs but remove tags -->
           <div class="daily-entry-content">
@@ -61,7 +64,7 @@
   {{ else }}
     <div class="empty-list-message">
       {{ if eq .Lang "zh" }}
-        <p>日常空空如也</p>
+        <p>日常放空</p>
       {{ else }}
         <p>No daily digest entries yet.</p>
       {{ end }}
