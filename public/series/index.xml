@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Series on 日常思考</title>
-    <link>http://localhost:1313/series/</link>
-    <description>Recent content in Series on 日常思考</description>
+    <title>Series on 小径分岔的兔子洞</title>
+    <link>https://daily.shuang.blog/series/</link>
+    <description>Recent content in Series on 小径分岔的兔子洞</description>
     <generator>Hugo</generator>
     <language>zh</language>
-    <atom:link href="http://localhost:1313/series/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://daily.shuang.blog/series/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>

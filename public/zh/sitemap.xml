@@ -2,84 +2,95 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://localhost:1313/thoughts/2025/03/computer-scientists-establish-the-best-way-to-traverse-a-graphdijkstra%E7%AE%97%E6%B3%95%E8%A2%AB%E8%AF%81%E6%98%8E%E6%98%AF%E8%A7%A3%E5%86%B3%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98single-source-shortest-paths-problem%E7%AE%80%E7%A7%B0sssp%E7%9A%84%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95/</loc>
-    <lastmod>2025-03-06T00:32:37+00:00</lastmod>
+    <loc>https://daily.shuang.blog/zh/thoughts/2025-03-06-2023-11-02/</loc>
+    <lastmod>2025-03-06T06:08:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/blog/</loc>
-    <lastmod>2025-03-06T00:32:37+00:00</lastmod>
+    <loc>https://daily.shuang.blog/tags/blog/</loc>
+    <lastmod>2025-03-06T06:08:23+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/</loc>
-    <lastmod>2025-03-06T00:32:37+00:00</lastmod>
+    <loc>https://daily.shuang.blog/tags/</loc>
+    <lastmod>2025-03-06T06:08:23+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/tags/"
+                href="https://daily.shuang.blog/en/tags/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost:1313/tags/"
+                href="https://daily.shuang.blog/tags/"
                 />
   </url><url>
-    <loc>http://localhost:1313/thoughts/</loc>
+    <loc>https://daily.shuang.blog/zh/</loc>
+    <lastmod>2025-03-06T06:08:23+00:00</lastmod>
+  </url><url>
+    <loc>https://daily.shuang.blog/zh/daily/2025-03-06/</loc>
+    <lastmod>2025-03-06T02:45:02+00:00</lastmod>
+  </url><url>
+    <loc>https://daily.shuang.blog/zh/daily/</loc>
+    <lastmod>2025-03-06T02:45:02+00:00</lastmod>
+  </url><url>
+    <loc>https://daily.shuang.blog/thoughts/2025-03-06-computer-scientists-establish-the-best-way-to-traverse-a-graphdijkstrasingle-source-shortest-paths-problemsssp/</loc>
     <lastmod>2025-03-06T00:32:37+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/</loc>
+    <loc>https://daily.shuang.blog/thoughts/</loc>
+    <lastmod>2025-03-06T00:32:37+00:00</lastmod>
+  </url><url>
+    <loc>https://daily.shuang.blog/zh/thoughts/2025-03-05-aibydoing/</loc>
     <lastmod>2025-03-05T23:30:22+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/zh/thoughts/2025-03-05-aibydoing/</loc>
-    <lastmod>2025-03-05T23:30:22+00:00</lastmod>
-  </url><url>
-    <loc>http://localhost:1313/posts/</loc>
+    <loc>https://daily.shuang.blog/posts/</loc>
     <lastmod>2025-03-05T23:21:20+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</loc>
+    <loc>https://daily.shuang.blog/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</loc>
     <lastmod>2025-03-05T23:21:20+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/03/debug-post/</loc>
+    <loc>https://daily.shuang.blog/blog/2025/03/debug-post/</loc>
     <lastmod>2025-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/blog/2025/03/test-article/</loc>
+    <loc>https://daily.shuang.blog/blog/2025/03/test-article/</loc>
     <lastmod>2025-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/</loc>
+    <loc>https://daily.shuang.blog/</loc>
     <lastmod>2025-03-05T00:00:00+00:00</lastmod>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/"
+                href="https://daily.shuang.blog/en/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost:1313/"
+                href="https://daily.shuang.blog/"
                 />
   </url><url>
-    <loc>http://localhost:1313/zh/posts/test-post/</loc>
+    <loc>https://daily.shuang.blog/zh/posts/test-post/</loc>
     <lastmod>2025-03-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/categories/</loc>
+    <loc>https://daily.shuang.blog/categories/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/categories/"
+                href="https://daily.shuang.blog/en/categories/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost:1313/categories/"
+                href="https://daily.shuang.blog/categories/"
                 />
   </url><url>
-    <loc>http://localhost:1313/series/</loc>
+    <loc>https://daily.shuang.blog/daily/</loc>
+  </url><url>
+    <loc>https://daily.shuang.blog/series/</loc>
     <xhtml:link
                 rel="alternate"
                 hreflang="en"
-                href="http://localhost:1313/en/series/"
+                href="https://daily.shuang.blog/en/series/"
                 />
     <xhtml:link
                 rel="alternate"
                 hreflang="zh"
-                href="http://localhost:1313/series/"
+                href="https://daily.shuang.blog/series/"
                 />
   </url>
 </urlset>
