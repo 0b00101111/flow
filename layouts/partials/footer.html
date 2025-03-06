@@ -1,20 +1,22 @@
 <footer
-  class="mx-auto flex h-[4.5rem] max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >
-  <div class="mr-auto">
-    {{- if site.Copyright -}} {{- site.Copyright -}} {{- else -}} &copy; {{-
-    now.Year -}}
-    <a class="link" href="{{- `` | absURL -}}">{{- site.Title -}}</a>
+  <div class="w-full text-center mb-4">
+    {{- if site.Copyright -}} 
+      {{- site.Copyright -}} 
+    {{- else -}} 
+      &copy; {{- now.Year -}} 47Fork
     {{- end -}}
   </div>
-  <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank"
-    >powered by hugo️️</a
-  >️
-  <a
-    class="link"
-    href="https://github.com/nanxiaobei/hugo-paper"
-    rel="noopener"
-    target="_blank"
-    >hugo-paper</a
-  >
+  <div class="w-full text-center mb-4">
+    {{- if eq $.Site.Language.Lang "zh" -}}
+      版权所有，禁止转载，转发需注明出处
+    {{- else -}}
+      All rights reserved; reproduction prohibited. Credit must be given to the creator.
+    {{- end -}}
+  </div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
 </footer>
