@@ -21,14 +21,20 @@
           <div class="daily-entry-meta">
             <time>{{ .Date.Format "2006-01-02" }}</time>
           </div>
-          {{ if .Summary }}
-          <div class="daily-entry-summary">
-            {{ .Summary }}
-            {{ if .Truncated }}
-            <a href="{{ .Permalink }}" class="read-more">{{ i18n "read_more" | default "Read more" }}</a>
+          
+          <!-- Format the content preserving paragraphs -->
+          <div class="daily-entry-content">
+            {{ with .Content }}
+              {{ . | safeHTML }}
+            {{ else }}
+              {{ with .Summary }}
+                {{ . | safeHTML }}
+                {{ if $.Truncated }}
+                  <a href="{{ $.Permalink }}" class="read-more">{{ i18n "read_more" | default "Read more" }}</a>
+                {{ end }}
+              {{ end }}
             {{ end }}
           </div>
-          {{ end }}
         </article>
       </li>
       {{ end }}
