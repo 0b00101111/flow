@@ -4,7 +4,7 @@
 /* Custom font styles for Noto Serif SC */
 :root {
   --font-family-base: 'Noto Serif SC', serif;
-  --font-size-base: 18px; /* Adjust this to your preferred size */
+  --font-size-base: 14px; /* Adjust this to your preferred size */
 }
 
 /* Apply to all base elements */
