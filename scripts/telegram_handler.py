@@ -62,31 +62,33 @@ def process_telegram_messages():
                     print(f"Queue command: {text}")
                     updates_processed += 1
                     continue
-                
-                # Process regular content - use process_content here
-                result = process_content(message)
-                if result:
-                    print(f"Processed message: {result}")
-                    # Send a confirmation message back to the user
-                    if result.get('type') == 'blog':
-                        if result.get('language') == 'zh':
-                            send_telegram_message(chat_id, f"✅ 已处理您的内容: {result.get('title', '无标题')}")
-                        else:
-                            send_telegram_message(chat_id, f"✅ Processed your content: {result.get('title', 'Untitled')}")
-                    
-                    updates_processed += 1
 
-    # In the process_telegram_messages() function, after processing a message:
-    if result:
-        print(f"Processed message with result: {result}")
-        if 'file' in result:
-            print(f"Created file: {result['file']}")
-            # Print the contents of the file to check it
-            try:
-                with open(result['file'], 'r') as f:
-                    print(f"File contents:\n{f.read()}")
-            except Exception as e:
-                print(f"Error reading file: {e}")
+                # Process regular content - use process_content here
+                try:
+                    result = process_content(message)
+                    if result:
+                        print(f"Processed message with result: {result}")
+                        # Check if a file was created
+                        if 'file' in result:
+                            print(f"Created file: {result['file']}")
+                            # Print the contents of the file to check it
+                            try:
+                                with open(result['file'], 'r') as f:
+                                    print(f"File contents:\n{f.read()}")
+                            except Exception as e:
+                                print(f"Error reading file: {e}")
+                                
+                        # Send a confirmation message back to the user
+                        if result.get('type') == 'blog':
+                            if result.get('language') == 'zh':
+                                send_telegram_message(chat_id, f"✅ 已处理您的内容: {result.get('title', '无标题')}")
+                            else:
+                                send_telegram_message(chat_id, f"✅ Processed your content: {result.get('title', 'Untitled')}")
+                        
+                        updates_processed += 1
+                    except Exception as e:
+                        print(f"Error processing message: {e}")
+
     
     # Save the new update ID if we processed any updates
     if new_update_id > last_update_id:
