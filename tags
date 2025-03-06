@@ -1622,7 +1622,6 @@ atom	public/zh/index.xml	/^<rss version="2.0" xmlns:atom="http:\/\/www.w3.org\/2
 author	themes/paper/exampleSite/hugo.toml	/^author = "Steve Francia"$/;"	K
 author	themes/paper/package.json	/^  "author": "nanxiaobei <nanxiaobei@gmail.com>",$/;"	s
 author	themes/paper/theme.toml	/^[author]$/;"	t
-avatar	hugo.toml	/^  avatar = "avatar.jpg"    # 放置在 static\/images\/ 目录下$/;"	K	table:params
 avatar	themes/paper/exampleSite/hugo.toml	/^avatar = 'nanxiaobei@gmail.com'$/;"	K	table:params
 b	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e810500.anonymousObject23b3c9e810605.anonymousObject23b3c9e810705
 b	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e810500.anonymousObject23b3c9e810605.anonymousObject23b3c9e810805
@@ -2728,7 +2727,6 @@ bK	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof wi
 bK	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousObject13e97c6d5205.anonymousObject13e97c6d5305
 bK	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousObject13e97c6d6105.anonymousObject13e97c6d6405
 bK	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousObject13e97c6d6905
-baseURL	hugo.toml	/^baseURL = "https:\/\/daily.shuang.blog\/"$/;"	K
 baseURL	themes/paper/exampleSite/hugo.toml	/^baseURL = "https:\/\/hugo-paper.vercel.app\/"$/;"	K
 begin	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 begin	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
@@ -2739,8 +2737,6 @@ beginKeywords	themes/paper/static/highlight.min.js	/^!function(e){var t="object"
 beginRe	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 beginRe	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
 beginRe	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
-bio	hugo.toml	/^  bio = "Capturing thoughts as they happen"$/;"	K	table:languages.en.params
-bio	hugo.toml	/^  bio = "记录瞬间的思考"$/;"	K	table:params
 bio	themes/paper/exampleSite/hugo.toml	/^  bio = 'Discover fresh context'$/;"	K	table:params
 blog	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o
 build	themes/paper/package.json	/^    "build": "pnpm build:go & pnpm build:generate"$/;"	s	object:scripts
@@ -3745,7 +3741,6 @@ cN	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof wi
 case_insensitive	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 case_insensitive	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
 case_insensitive	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
-category	hugo.toml	/^  category = "categories"$/;"	K	table:taxonomies
 category	themes/paper/exampleSite/configTaxo.toml	/^category = "categories"$/;"	K	table:taxonomies
 category	themes/paper/exampleSite/hugo.toml	/^category = "categories"$/;"	K	table:taxonomies
 className	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
@@ -3754,7 +3749,6 @@ className	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==ty
 classPrefix	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.v
 classPrefix	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.v
 classPrefix	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.v
-color	hugo.toml	/^  color = "linen"  # linen, wheat, gray, light$/;"	K	table:params
 color	themes/paper/exampleSite/hugo.toml	/^  color = 'linen'$/;"	K	table:params
 contains	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 contains	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
@@ -3770,10 +3764,7 @@ credentials	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_
 d	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:s
 d	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:s
 d	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:s
-daily	hugo.toml	/^  daily = "\/daily\/:year\/:month\/:day\/"$/;"	K	table:permalinks
 daily_digest_time	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	object:blog
-defaultContentLanguage	hugo.toml	/^defaultContentLanguage = "zh"  # 默认语言设置为中文$/;"	K
-defaultContentLanguageInSubdir	hugo.toml	/^defaultContentLanguageInSubdir = false$/;"	K
 demosite	themes/paper/theme.toml	/^demosite = "https:\/\/hugo-paper.vercel.app"$/;"	K
 dependencies	themes/paper/package.json	/^  "dependencies": {$/;"	o
 description	themes/paper/theme.toml	/^description = "A simple, clean, flexible Hugo theme"$/;"	K
@@ -3781,7 +3772,6 @@ detect_language	scripts/utils.py	/^def detect_language(text):$/;"	f
 dev	themes/paper/package.json	/^    "dev": "killall hugo & pnpm dev:css & pnpm dev:server",$/;"	s	object:scripts
 dev:css	themes/paper/package.json	/^    "dev:css": "npx @tailwindcss\/cli -i .\/assets\/app.css -o .\/assets\/main.css --watch",$/;"	s	object:scripts
 dev:server	themes/paper/package.json	/^    "dev:server": "hugo server --config exampleSite\/hugo.toml --contentDir exampleSite\/content/;"	s	object:scripts
-disableHLJS	hugo.toml	/^  disableHLJS = true       # 禁用 highlight.js$/;"	K	table:params
 disableInlineCSS	themes/paper/exampleSite/configTaxo.toml	/^    disableInlineCSS = true$/;"	K	table:privacy.x
 disableInlineCSS	themes/paper/exampleSite/hugo.toml	/^    disableInlineCSS = true$/;"	K	table:services.instagram
 disableInlineCSS	themes/paper/exampleSite/hugo.toml	/^    disableInlineCSS = true$/;"	K	table:services.x
@@ -4644,7 +4634,6 @@ g	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||
 g	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
 get_last_update_id	scripts/utils.py	/^def get_last_update_id():$/;"	f
 get_updates	scripts/telegram_handler.py	/^def get_updates(offset=None):$/;"	f
-github	hugo.toml	/^  github = "yourusername"    # 更新为您的用户名$/;"	K	table:params
 github	themes/paper/exampleSite/hugo.toml	/^  github = 'nanxiaobei'$/;"	K	table:params
 graphcomment	layouts/_default/single.html	/^  <div class="mt-24" id="graphcomment"><\/div>$/;"	I
 graphcomment	themes/paper/layouts/_default/single.html	/^  <div class="mt-24" id="graphcomment"><\/div>$/;"	I
@@ -4815,14 +4804,6 @@ i	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 i.c	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
 i.c	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
 i.c	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
-identifier	hugo.toml	/^    identifier = "daily"$/;"	K	arraytable:languages.en.menu.main
-identifier	hugo.toml	/^    identifier = "daily"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "language"$/;"	K	arraytable:languages.en.menu.main
-identifier	hugo.toml	/^    identifier = "language"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "posts"$/;"	K	arraytable:languages.en.menu.main
-identifier	hugo.toml	/^    identifier = "posts"$/;"	K	arraytable:menu.main
-identifier	hugo.toml	/^    identifier = "thoughts"$/;"	K	arraytable:languages.en.menu.main
-identifier	hugo.toml	/^    identifier = "thoughts"$/;"	K	arraytable:menu.main
 identifier	themes/paper/exampleSite/hugo.toml	/^    identifier = "about"$/;"	K	arraytable:menu.main
 identifier	themes/paper/exampleSite/hugo.toml	/^    identifier = "contact"$/;"	K	arraytable:menu.main
 ignoreErrors	themes/paper/exampleSite/hugo.toml	/^ignoreErrors = ["error-remote-getjson"]$/;"	K
@@ -5018,17 +4999,9 @@ language	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&w
 language	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:s.anonymousObject13e97c6d1905
 language	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:s.anonymousObject13e97c6d1a05
 languageCode	themes/paper/exampleSite/hugo.toml	/^languageCode = "en"$/;"	K
-languageName	hugo.toml	/^    languageName = "English"$/;"	K	table:languages.en
-languageName	hugo.toml	/^    languageName = "中文"$/;"	K	table:languages.zh
-languages	hugo.toml	/^[languages]$/;"	t
 languages	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.v
 languages	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.v
 languages	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.v
-languages.en	hugo.toml	/^  [languages.en]$/;"	t
-languages.en.menu	hugo.toml	/^[languages.en.menu]$/;"	t
-languages.en.menu.main	hugo.toml	/^  [[languages.en.menu.main]]$/;"	a
-languages.en.params	hugo.toml	/^[languages.en.params]$/;"	t
-languages.zh	hugo.toml	/^  [languages.zh]$/;"	t
 lexemes	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 lexemes	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
 lexemes	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
@@ -5075,9 +5048,7 @@ markup.goldmark	themes/paper/exampleSite/hugo.toml	/^  [markup.goldmark]$/;"	t
 markup.goldmark.renderer	themes/paper/exampleSite/hugo.toml	/^    [markup.goldmark.renderer]$/;"	t
 mastodon	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels
 mastodon	data/queues.json	/^{"threads":[],"telegram":[],"mastodon":[]}$/;"	a
-menu	hugo.toml	/^[menu]$/;"	t
 menu	themes/paper/exampleSite/hugo.toml	/^[menu]$/;"	t
-menu.main	hugo.toml	/^  [[menu.main]]$/;"	a
 menu.main	themes/paper/exampleSite/hugo.toml	/^  [[menu.main]]$/;"	a
 message_id	data/untagged_thoughts.json	/^    "message_id": 10,$/;"	n	object:1
 message_id	data/untagged_thoughts.json	/^    "message_id": 11,$/;"	n	object:2
@@ -5095,7 +5066,6 @@ min_version	themes/paper/theme.toml	/^min_version = "0.57.1"$/;"	K
 module	themes/paper/exampleSite/go.toml	/^[module]$/;"	t
 module.exports	themes/paper/.prettierrc.js	/^module.exports = {$/;"	p
 module.imports	themes/paper/exampleSite/go.toml	/^  [[module.imports]]$/;"	a
-monoDarkIcon	hugo.toml	/^  monoDarkIcon = true      # 显示单色暗模式图标$/;"	K	table:params
 n	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction23b3c9e80400.E.t
 n	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction23b3c9e813a00
 n	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction23b3c9e815300
@@ -5126,15 +5096,6 @@ n	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 n.c	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
 n.c	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
 n.c	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p
-name	hugo.toml	/^    name = "Daily"$/;"	K	arraytable:languages.en.menu.main
-name	hugo.toml	/^    name = "Posts"$/;"	K	arraytable:languages.en.menu.main
-name	hugo.toml	/^    name = "Thoughts"$/;"	K	arraytable:languages.en.menu.main
-name	hugo.toml	/^    name = "中文 \/ EN"$/;"	K	arraytable:languages.en.menu.main
-name	hugo.toml	/^    name = "中文 \/ EN"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "博客"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "想法"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^    name = "日记"$/;"	K	arraytable:menu.main
-name	hugo.toml	/^  name = "您的名字"$/;"	K	table:params
 name	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction23b3c9e8ef00.anonymousObject23b3c9e810105.k
 name	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction23b3c9e8ef00.anonymousObject23b3c9e810205.k
 name	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	property:anonymousFunction19d4d411ef00.anonymousObject19d4d41110105.k
@@ -5206,19 +5167,16 @@ offset	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeo
 offset	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400._.e.anonymousObject13e97c6d0705
 pagerSize	themes/paper/exampleSite/hugo.toml	/^  pagerSize = 3$/;"	K	table:pagination
 pagination	themes/paper/exampleSite/hugo.toml	/^[pagination]$/;"	t
-params	hugo.toml	/^[params]$/;"	t
 params	themes/paper/exampleSite/hugo.toml	/^[params]$/;"	t
 parent	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:k.u.anonymousObject23b3c9e81205
 parent	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:k.u.anonymousObject19d4d4111205
 parent	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:k.u.anonymousObject13e97c6d1205
 parse_tags	scripts/content_processor.py	/^def parse_tags(text):$/;"	f
 path	themes/paper/exampleSite/go.toml	/^    path = "github.com\/nanxiaobei\/hugo-paper"$/;"	K	arraytable:module.imports
-permalinks	hugo.toml	/^[permalinks]$/;"	t
 plugins	themes/paper/.prettierrc.js	/^  plugins: ['prettier-plugin-tailwindcss'],$/;"	p	property:module.exports
 post_windows	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	a	object:sns_channels.mastodon
 post_windows	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	a	object:sns_channels.telegram
 post_windows	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	a	object:sns_channels.threads
-posts	hugo.toml	/^  posts = "\/blog\/:year\/:month\/:title\/"$/;"	K	table:permalinks
 prettier	themes/paper/package.json	/^    "prettier": "^3.5.2",$/;"	s	object:dependencies
 prettier-plugin-tailwindcss	themes/paper/package.json	/^    "prettier-plugin-tailwindcss": "^0.6.11",$/;"	s	object:dependencies
 privacy	themes/paper/exampleSite/configTaxo.toml	/^[privacy]$/;"	t
@@ -5728,7 +5686,6 @@ save_last_update_id	scripts/utils.py	/^def save_last_update_id(update_id):$/;"	f
 scripts	themes/paper/package.json	/^  "scripts": {$/;"	o
 send_reminders	scripts/telegram_handler.py	/^def send_reminders():$/;"	f
 send_telegram_message	scripts/utils.py	/^def send_telegram_message(chat_id, text):$/;"	f
-series	hugo.toml	/^  series = "series"$/;"	K	table:taxonomies
 series	themes/paper/exampleSite/configTaxo.toml	/^series = "series"$/;"	K	table:taxonomies
 series	themes/paper/exampleSite/hugo.toml	/^series = "series"$/;"	K	table:taxonomies
 services	themes/paper/exampleSite/hugo.toml	/^[services]$/;"	t
@@ -5857,12 +5814,10 @@ t	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 tabReplace	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.v
 tabReplace	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.v
 tabReplace	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.v
-tag	hugo.toml	/^  tag = "tags"$/;"	K	table:taxonomies
 tag	themes/paper/exampleSite/configTaxo.toml	/^tag = "tags"$/;"	K	table:taxonomies
 tag	themes/paper/exampleSite/hugo.toml	/^tag = "tags"$/;"	K	table:taxonomies
 tags	themes/paper/theme.toml	/^tags = ["Responsive", "Simple", "Clean", "Light", "White", "Blog"]$/;"	K
 tailwindcss	themes/paper/package.json	/^    "tailwindcss": "^4.0.8"$/;"	s	object:dependencies
-taxonomies	hugo.toml	/^[taxonomies]$/;"	t
 taxonomies	themes/paper/exampleSite/configTaxo.toml	/^[taxonomies]$/;"	t
 taxonomies	themes/paper/exampleSite/hugo.toml	/^[taxonomies]$/;"	t
 telegram	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels
@@ -5873,10 +5828,8 @@ terminator_end	themes/paper/static/highlight.min.js	/^!function(e){var t="object
 terminators	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.a
 terminators	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction19d4d4110400.a
 terminators	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction13e97c6d0400.a
-theme	hugo.toml	/^theme = "paper"$/;"	K	table:languages.en
 theme	themes/paper/exampleSite/hugo.toml	/^theme = "hugo-paper"$/;"	K	table:pagination
 thought	README.md	/^- #thought - For quick, fleeting ideas$/;"	h	section:key features (to be updated)""Quick Capture + Smart Processing
-thoughts	hugo.toml	/^  thoughts = "\/thoughts\/:year\/:month\/:title\/"$/;"	K	table:permalinks
 thread	README.md	/^- #thread - Schedule for posting to Threads$/;"	h	section:key features (to be updated)""Quick Capture + Smart Processing
 threads	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	o	object:sns_channels
 threads	data/queues.json	/^{"threads":[],"telegram":[],"mastodon":[]}$/;"	a
@@ -5884,10 +5837,7 @@ timeout	themes/paper/exampleSite/configTaxo.toml	/^timeout = 30000$/;"	K
 timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:21:20.548401",$/;"	s	object:0
 timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:23:27.789849",$/;"	s	object:1
 timestamp	data/untagged_thoughts.json	/^    "timestamp": "2025-03-05T23:25:24.474275",$/;"	s	object:2
-title	hugo.toml	/^    title = "Daily Thoughts"$/;"	K	table:languages.en
-title	hugo.toml	/^    title = "日常思考"$/;"	K	table:languages.zh
 title	themes/paper/exampleSite/hugo.toml	/^title = "Paper"$/;"	K
-twitter	hugo.toml	/^  twitter = "yourusername"  # 更新为您的用户名$/;"	K	table:params
 twitter	themes/paper/exampleSite/hugo.toml	/^  twitter = 'nanxiaobei'$/;"	K	table:params
 u	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction23b3c9e80400
 u	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:k
@@ -5899,14 +5849,6 @@ u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof win
 u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:k
 u	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	v	function:anonymousFunction13e97c6d6b00
 unsafe	themes/paper/exampleSite/hugo.toml	/^      unsafe = true$/;"	K	table:markup.goldmark.renderer
-url	hugo.toml	/^    url = "#"$/;"	K	arraytable:languages.en.menu.main
-url	hugo.toml	/^    url = "#"$/;"	K	arraytable:menu.main
-url	hugo.toml	/^    url = "\/daily\/"$/;"	K	arraytable:menu.main
-url	hugo.toml	/^    url = "\/en\/daily\/"$/;"	K	arraytable:languages.en.menu.main
-url	hugo.toml	/^    url = "\/en\/posts\/"$/;"	K	arraytable:languages.en.menu.main
-url	hugo.toml	/^    url = "\/en\/thoughts\/"$/;"	K	arraytable:languages.en.menu.main
-url	hugo.toml	/^    url = "\/posts\/"$/;"	K	arraytable:menu.main
-url	hugo.toml	/^    url = "\/thoughts\/"$/;"	K	arraytable:menu.main
 url	themes/paper/exampleSite/hugo.toml	/^    url = "\/about\/"$/;"	K	arraytable:menu.main
 url	themes/paper/exampleSite/hugo.toml	/^    url = "\/contact\/"$/;"	K	arraytable:menu.main
 useBR	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	p	variable:anonymousFunction23b3c9e80400.v
@@ -6039,16 +5981,6 @@ version	themes/paper/package.json	/^  "version": "6.29.0",$/;"	s
 w	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction23b3c9e80400
 w	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction19d4d4110400
 w	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
-weight	hugo.toml	/^    weight = 1  # 中文优先权重$/;"	K	table:languages.zh
-weight	hugo.toml	/^    weight = 10$/;"	K	arraytable:languages.en.menu.main
-weight	hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 2$/;"	K	table:languages.en
-weight	hugo.toml	/^    weight = 20$/;"	K	arraytable:languages.en.menu.main
-weight	hugo.toml	/^    weight = 20$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 30$/;"	K	arraytable:languages.en.menu.main
-weight	hugo.toml	/^    weight = 30$/;"	K	arraytable:menu.main
-weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:languages.en.menu.main
-weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:menu.main
 weight	themes/paper/exampleSite/hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
 x	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
 x	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
@@ -6058,6 +5990,10 @@ xhtml	public/zh/sitemap.xml	/^  xmlns:xhtml="http:\/\/www.w3.org\/1999\/xhtml">$
 y	public/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction23b3c9e80400
 y	static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction19d4d4110400
 y	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
+{{ .Title }}	layouts/daily/list.html	/^          <\/h2>$/;"	i
+{{ .Title }}	layouts/daily/list.html	/^  <h1>{{ .Title }}<\/h1>$/;"	h
+{{ .Title }}	layouts/zh/daily/list.html	/^          <\/h2>$/;"	i
+{{ .Title }}	layouts/zh/daily/list.html	/^  <h1>{{ .Title }}<\/h1>$/;"	h
 {{- .Title -}}	layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
 {{- .Title -}}	layouts/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
 {{- .Title -}}	themes/paper/layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i

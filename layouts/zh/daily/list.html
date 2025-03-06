@@ -1,0 +1,72 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>{{ .Title }}</h1>
+</header>
+
+<!-- Get all pages in this section and sort in reverse chronological order -->
+{{ $pages := .Pages.ByDate.Reverse }}
+
+<!-- Apply pagination -->
+{{ $paginator := .Paginate $pages }}
+
+<div class="daily-entries">
+  {{ if gt (len $paginator.Pages) 0 }}
+    <ul class="daily-list">
+      {{ range $paginator.Pages }}
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+          <div class="daily-entry-meta">
+            <time>{{ .Date.Format "2006-01-02" }}</time>
+          </div>
+          {{ if .Summary }}
+          <div class="daily-entry-summary">
+            {{ .Summary }}
+            {{ if .Truncated }}
+            <a href="{{ .Permalink }}" class="read-more">{{ i18n "read_more" | default "Read more" }}</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        </article>
+      </li>
+      {{ end }}
+    </ul>
+
+    <!-- Pagination links -->
+    {{ if or $paginator.HasPrev $paginator.HasNext }}
+    <div class="pagination">
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="prev">
+        {{ if eq .Lang "zh" }}上一页{{ else }}Previous{{ end }}
+      </a>
+      {{ end }}
+
+      <span class="page-number">
+        {{ if eq .Lang "zh" }}
+        第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页
+        {{ else }}
+        Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
+        {{ end }}
+      </span>
+
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="next">
+        {{ if eq .Lang "zh" }}下一页{{ else }}Next{{ end }}
+      </a>
+      {{ end }}
+    </div>
+    {{ end }}
+
+  {{ else }}
+    <div class="empty-list-message">
+      {{ if eq .Lang "zh" }}
+        <p>还没有日记条目。</p>
+      {{ else }}
+        <p>No daily entries yet.</p>
+      {{ end }}
+    </div>
+  {{ end }}
+</div>
+{{ end }}

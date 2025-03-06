@@ -1,7 +1,8 @@
 baseURL = "https://daily.shuang.blog/"
 defaultContentLanguage = "zh"  # 默认语言设置为中文
 defaultContentLanguageInSubdir = false
-
+# Pagination setting - use this format
+paginate = 10  # Shows 10 items per page
 # 启用语言
 [languages]
   [languages.zh]
@@ -12,40 +13,34 @@ defaultContentLanguageInSubdir = false
     languageName = "English"
     title = "Daily Thoughts"
     weight = 2
-
 # 主题配置
 theme = "paper"
-
 # Paper 主题配置
 [params]
   # 颜色主题
   color = "linen"  # linen, wheat, gray, light
-
   # 头部社交图标
   twitter = "yourusername"  # 更新为您的用户名
   github = "yourusername"    # 更新为您的用户名
-
   # 首页个人资料
   avatar = "avatar.jpg"    # 放置在 static/images/ 目录下
   name = "您的名字"
   bio = "记录瞬间的思考"
-
   # 其他设置
   disableHLJS = true       # 禁用 highlight.js
   monoDarkIcon = true      # 显示单色暗模式图标
-
+  # 主要内容区域设置
+  mainSections = ["posts", "thoughts", "daily"]
 # 永久链接 - 影响 URL 结构
 [permalinks]
   posts = "/blog/:year/:month/:title/"
   thoughts = "/thoughts/:year/:month/:title/"
   daily = "/daily/:year/:month/:day/"
-
 # 分类设置
 [taxonomies]
   category = "categories"
   tag = "tags"
   series = "series"
-
 # 中文菜单配置
 [menu]
   [[menu.main]]
@@ -68,7 +63,6 @@ theme = "paper"
     name = "中文 / EN"
     url = "#"
     weight = 40
-
 # 英文菜单配置
 [languages.en.menu]
   [[languages.en.menu.main]]
@@ -91,7 +85,6 @@ theme = "paper"
     name = "中文 / EN"
     url = "#"
     weight = 40
-
 # 英文参数
 [languages.en.params]
   bio = "Capturing thoughts as they happen"
