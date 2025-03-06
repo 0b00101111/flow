@@ -5,12 +5,15 @@
     name="viewport"
     content="width=device-width, initial-scale=1, shrink-to-fit=no"
   />
+
   <!-- title -->
   <title>
     {{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}
   </title>
+
   <!-- meta -->
   <meta name="theme-color" />
+
   <!-- author -->
   {{- $site_author := or site.Author.name site.Params.name site.Title -}}
   <!---->
@@ -25,28 +28,22 @@
   />
   <meta name="author" content="{{- $site_author -}}" />
   {{- end -}}
+
   <!-- css & js -->
-  {{- $css := resources.Get "main.css" -}}
-  
-  {{- if $css -}}
-    {{- $custom := resources.Get "custom.css" -}}
-    {{- if $custom -}}
-      {{- $css = slice $css $custom | resources.Concat "main.css" | minify -}}
-    {{- else -}}
-      {{- $css = $css | minify -}}
-    {{- end -}}
-  {{- end -}}
-  
-  {{- if $css -}}
+  {{- $main := resources.Get "main.css" -}}
+  <!---->
+  {{- $custom := resources.Get "custom.css" -}}
+  <!---->
+  {{- $css := slice $main $custom | resources.Concat "main.css" | minify -}}
   <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
-  {{- end -}}
-  
+
   <!-- dark icon -->
   {{- $dark_icon := "theme.png" -}}
   <!---->
   {{- if site.Params.monoDarkIcon -}}{{- $dark_icon = "theme.svg" -}}{{- end -}}
   <!---->
   <link rel="preload" as="image" href="{{- $dark_icon | absURL -}}" />
+
   <!-- avatar -->
   {{- $avatar_url := $.Scratch.Get "avatar_url" -}}
   <!---->
@@ -54,11 +51,13 @@
   <link rel="preload" as="image" href="{{- $avatar_url -}}" />
   {{- end -}}
   <!---->
+
   <!-- social list -->
   {{- range $.Scratch.Get "social_list" -}}
   <link rel="preload" as="image" href="{{- printf `%s.svg` . | absURL -}}" />
   {{- end -}}
   <!---->
+
   <!-- highlight js -->
   {{- if and .IsPage (not site.Params.disableHLJS) -}}
   <script
@@ -67,6 +66,7 @@
     onload="hljs.initHighlightingOnLoad();"
   ></script>
   {{- end -}}
+
   <!-- math -->
   {{- if or .Params.math site.Params.math -}}
   <!---->
@@ -74,6 +74,7 @@
   <!---->
   {{- end -}}
   <!---->
+
   <!-- favicon -->
   <link
     rel="icon"
@@ -83,8 +84,10 @@
     rel="apple-touch-icon"
     href="{{- site.Params.appleTouchIcon | default `apple-touch-icon.png` | absURL -}}"
   />
+
   <!-- generator -->
   {{- hugo.Generator -}}
+
   <!-- production -->
   {{- if or hugo.IsProduction (eq site.Params.env "production") -}}
   <!---->
@@ -104,6 +107,7 @@
     title="{{- site.Title -}}"
   />
   {{- end -}}
+
   <!-- canonical -->
   <link rel="canonical" href="{{- .Permalink -}}" />
   {{- end -}}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Blog on 日常思考</title>
+    <link>http://localhost:1313/tags/blog/</link>
+    <description>Recent content in Blog on 日常思考</description>
+    <generator>Hugo</generator>
+    <language>zh</language>
+    <lastBuildDate>Thu, 06 Mar 2025 00:32:37 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/blog/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>《Computer Scientists Establish the Best Way to Traverse a Graph》：Dijkstra算法，被证明是解决单源最短路径问题（Single-Source Shortest-paths Problem，简称SSSP）的最优算法。</title>
+      <link>http://localhost:1313/thoughts/2025/03/computer-scientists-establish-the-best-way-to-traverse-a-graphdijkstra%E7%AE%97%E6%B3%95%E8%A2%AB%E8%AF%81%E6%98%8E%E6%98%AF%E8%A7%A3%E5%86%B3%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98single-source-shortest-paths-problem%E7%AE%80%E7%A7%B0sssp%E7%9A%84%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95/</link>
+      <pubDate>Thu, 06 Mar 2025 00:32:37 +0000</pubDate>
+      <guid>http://localhost:1313/thoughts/2025/03/computer-scientists-establish-the-best-way-to-traverse-a-graphdijkstra%E7%AE%97%E6%B3%95%E8%A2%AB%E8%AF%81%E6%98%8E%E6%98%AF%E8%A7%A3%E5%86%B3%E5%8D%95%E6%BA%90%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84%E9%97%AE%E9%A2%98single-source-shortest-paths-problem%E7%AE%80%E7%A7%B0sssp%E7%9A%84%E6%9C%80%E4%BC%98%E7%AE%97%E6%B3%95/</guid>
+      <description>&lt;p&gt;《Computer Scientists Establish the Best Way to Traverse a Graph》：Dijkstra算法，被证明是解决单源最短路径问题（Single-Source Shortest-paths Problem，简称SSSP）的最优算法。&lt;/p&gt;&#xA;&lt;p&gt;算法一开始是Dijkstra陪老婆逛街购物时想出来的：&#xA;In 1956, the 26-year-old Dutch computer scientist Edsger Dijkstra wanted to write a program that would show off the capabilities of a brand-new computer called the ARMAC. While shopping with his fiancée in Amsterdam, he stopped in at a café for a break. That’s when he hit on the idea for the algorithm (opens a new tab) that now bears his name. He didn’t have writing materials on hand, so over the course of 20 minutes he worked out the details in his head.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>🤖 从理论到实践，带你真正掌握机器学习 —— AIbyDoing</title>
+      <link>http://localhost:1313/zh/thoughts/2025-03-05-aibydoing/</link>
+      <pubDate>Wed, 05 Mar 2025 23:30:22 +0000</pubDate>
+      <guid>http://localhost:1313/zh/thoughts/2025-03-05-aibydoing/</guid>
+      <description>&lt;p&gt;🤖 从理论到实践，带你真正掌握机器学习 —— AIbyDoing&lt;/p&gt;&#xA;&lt;p&gt;如今，机器学习和人工智能已经成为科技领域的热门话题，但如果你对这个概念完全不了解，却又想系统学习，今天我要向你推荐一个神器 —— AIbyDoing！&lt;/p&gt;&#xA;&lt;p&gt;💡 学习这类知识并不容易，尤其是当你面对这些常见问题时：&lt;/p&gt;&#xA;&lt;p&gt;▶ 理论书籍充斥着复杂的数学公式，让人望而生畏；&#xA;▶ 实践书籍只教你调用现成的工具，却不解释背后的原理；&#xA;▶ 代码和理论脱节，学完后依然不知道如何动手实现。&lt;/p&gt;&#xA;&lt;p&gt;如果你也曾被这些问题困扰，那么 AIbyDoing 就是为你量身打造的学习平台！&lt;/p&gt;&#xA;&lt;p&gt;💁 AIbyDoing 是一个专注于机器学习和深度学习的实践教程项目，由一位从 2015 年就开始深耕机器学习领域的作者精心打造。他的目标是帮助你：&lt;/p&gt;&#xA;&lt;p&gt;▶ 既懂原理，又能实践：从算法推导到代码实现，真正做到公式和代码一一对应；&#xA;▶ 动手实战：通过 Jupyter Notebook，边学边练，形成自己的学习笔记；&#xA;▶ 高效学习：无需先啃数学，随学随查，避免耐心被消磨殆尽。&lt;/p&gt;&#xA;&lt;p&gt;📚 目前，教程已更新至 97 章（422,626 字），内容涵盖监督学习、深度学习等核心领域，并持续更新中。无论你是初学者，还是希望巩固基础的进阶者，都能在这里找到适合自己的学习路径。更重要的是，它完全免费，如果你这个春节假期想过得充实点，不妨把这套课程安排进你的日程。&lt;/p&gt;&#xA;&lt;p&gt;💗 作者的自序让我深受触动：「如果你只会调包，而不深入原理，可能连参数的作用都看不懂；如果你只会理论，而不会实践，可能连最简单的模型都写不出来。」AIbyDoing 正是为了解决这些问题而生，它用最接地气的方式，带你从零开始，真正掌握机器学习的精髓。&lt;/p&gt;&#xA;&lt;p&gt;&amp;mdash; 这是一条测试 post &amp;mdash;&#xA;#Blog:post&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>This is a test blog post #BLOG::post</title>
+      <link>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</link>
+      <pubDate>Wed, 05 Mar 2025 23:21:20 +0000</pubDate>
+      <guid>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</guid>
+      <description>&lt;p&gt;This is a test blog post #BLOG::post&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
