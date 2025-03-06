@@ -3,6 +3,26 @@
   <h1>{{ .Title }}</h1>
 </header>
 
+<!-- Debug Information -->
+<div class="debug-info" style="background-color: #f9f9f9; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd;">
+  <p>Section: {{ .Section }}</p>
+  <p>Type: {{ .Type }}</p>
+  <p>Language: {{ .Lang }}</p>
+  <p>Total Pages: {{ len .Pages }}</p>
+  <p>Regular Pages: {{ len .RegularPages }}</p>
+  <p>Current Path: {{ .RelPermalink }}</p>
+  
+  <!-- List all pages with paths in this section -->
+  <h4>All Pages in Site:</h4>
+  <ul>
+    {{ range where .Site.Pages "Type" "daily" }}
+      <li>{{ .RelPermalink }} (Type: {{ .Type }}, Section: {{ .Section }})</li>
+    {{ else }}
+      <li>No pages found with type "daily"</li>
+    {{ end }}
+  </ul>
+</div>
+
 <!-- Get all pages in this section and sort in reverse chronological order -->
 {{ $pages := .Pages.ByDate.Reverse }}
 
@@ -42,7 +62,7 @@
         {{ if eq .Lang "zh" }}上一页{{ else }}Previous{{ end }}
       </a>
       {{ end }}
-
+      
       <span class="page-number">
         {{ if eq .Lang "zh" }}
         第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页
@@ -50,7 +70,7 @@
         Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}
         {{ end }}
       </span>
-
+      
       {{ if $paginator.HasNext }}
       <a href="{{ $paginator.Next.URL }}" class="next">
         {{ if eq .Lang "zh" }}下一页{{ else }}Next{{ end }}
@@ -58,7 +78,7 @@
       {{ end }}
     </div>
     {{ end }}
-
+  
   {{ else }}
     <div class="empty-list-message">
       {{ if eq .Lang "zh" }}
