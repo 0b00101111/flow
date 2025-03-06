@@ -16,13 +16,8 @@
       <li class="daily-entry">
         <article>
           <h2 class="daily-entry-title">
-            <a href="{{ .Permalink }}">
-              {{ replace .Title " 日记" "" | replace (printf "%s 第" (slicestr .Date.Format "2006-01-02" 5)) "第" }}
-            </a>
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
-          <div class="daily-entry-meta">
-            <time>{{ .Date.Format "2006-01-02" }}</time>
-          </div>
           
           <!-- Format the content preserving paragraphs but remove tags -->
           <div class="daily-entry-content">
