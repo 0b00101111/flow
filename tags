@@ -103,6 +103,7 @@
 !_TAG_ROLE_DESCRIPTION!Python!unknown	imported	/imported from the other module/
 !_TAG_ROLE_DESCRIPTION!Python!unknown	indirectlyImported	/classes\/variables\/functions\/modules imported in alternative name/
 !_TAG_ROLE_DESCRIPTION!Yaml!anchor	alias	/alias/
+#{{- .Title -}}	layouts.bak/_default/list.html	/^<h1 class="mb-14">#{{- .Title -}}<\/h1>$/;"	h
 #{{- .Title -}}	themes/paper/layouts/_default/list.html	/^<h1 class="mb-14">#{{- .Title -}}<\/h1>$/;"	h
 0	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.mastodon.post_windows
 0	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.telegram.post_windows
@@ -117,6 +118,7 @@
 2	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.telegram.post_windows
 2	data/config.json	/^{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials/;"	s	array:sns_channels.threads.post_windows
 2	data/untagged_thoughts.json	/^  {$/;"	o
+404	layouts.bak/404.html	/^<\/h1>$/;"	h
 404	themes/paper/layouts/404.html	/^<\/h1>$/;"	h
 <!--more-->	themes/paper/exampleSite/content/post/rich-content.md	/^## <!--more-->$/;"	s
 @tailwindcss/cli	themes/paper/package.json	/^    "@tailwindcss\/cli": "^4.0.8",$/;"	s	object:dependencies
@@ -1392,6 +1394,7 @@ disabled	themes/paper/exampleSite/hugo.toml	/^    disabled = false$/;"	K	table:p
 disabled	themes/paper/exampleSite/hugo.toml	/^    disabled = false$/;"	K	table:privacy.vimeo
 disabled	themes/paper/exampleSite/hugo.toml	/^    disabled = false$/;"	K	table:privacy.x
 disabled	themes/paper/exampleSite/hugo.toml	/^    disabled = false$/;"	K	table:privacy.youtube
+disqus_thread	layouts.bak/_default/single.html	/^  <div class="mt-24" id="disqus_thread"><\/div>$/;"	I
 disqus_thread	themes/paper/layouts/_default/single.html	/^  <div class="mt-24" id="disqus_thread"><\/div>$/;"	I
 draft	README.md	/^- #draft - Save for later editing$/;"	h	section:key features (to be updated)""Quick Capture + Smart Processing
 e	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400._
@@ -1688,6 +1691,7 @@ get_last_update_id	scripts/utils.py	/^def get_last_update_id():$/;"	f
 get_updates	scripts/telegram_handler.py	/^def get_updates(offset=None):$/;"	f
 github	hugo.toml	/^  github = "yourusername"    # 更新为您的用户名$/;"	K	table:params
 github	themes/paper/exampleSite/hugo.toml	/^  github = 'nanxiaobei'$/;"	K	table:params
+graphcomment	layouts.bak/_default/single.html	/^  <div class="mt-24" id="graphcomment"><\/div>$/;"	I
 graphcomment	themes/paper/layouts/_default/single.html	/^  <div class="mt-24" id="graphcomment"><\/div>$/;"	I
 homepage	themes/paper/theme.toml	/^  homepage = "https:\/\/lee.so\/"$/;"	K	table:author
 homepage	themes/paper/theme.toml	/^homepage = "https:\/\/github.com\/nanxiaobei\/hugo-paper\/"$/;"	K
@@ -2265,19 +2269,15 @@ weight	hugo.toml	/^    weight = 40$/;"	K	arraytable:menu.main
 weight	themes/paper/exampleSite/hugo.toml	/^    weight = 10$/;"	K	arraytable:menu.main
 x	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f
 y	themes/paper/static/highlight.min.js	/^!function(e){var t="object"==typeof window&&window||"object"==typeof self&&self;"undefined"!=typ/;"	f	function:anonymousFunction13e97c6d0400
-{{ .Site.Title }}	layouts/_default/list.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
-{{ .Site.Title }}	layouts/_default/list.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
-{{ .Site.Title }}	layouts/_default/single.html	/^        <h1><a href="{{ .Site.BaseURL }}">{{ .Site.Title }}<\/a><\/h1>$/;"	h
-{{ .Site.Title }}	layouts/index.html	/^        <h1>{{ .Site.Title }}<\/h1>$/;"	h
-{{ .Site.Title }}	layouts/index.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
-{{ .Title }}	layouts/_default/list.html	/^            <h2><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h2>$/;"	i
-{{ .Title }}	layouts/_default/list.html	/^        <h1>{{ .Title }}<\/h1>$/;"	h
-{{ .Title }}	layouts/_default/single.html	/^            <h1>{{ .Title }}<\/h1>$/;"	h
-{{ .Title }}	layouts/index.html	/^            <h3><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h3>$/;"	j
-{{ .Title }} - {{ .Site.Title }}	layouts/_default/single.html	/^    <title>{{ .Title }} - {{ .Site.Title }}<\/title>$/;"	j
-{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}	layouts/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}<\//;"	i
-{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}	layouts/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}<\/h2/;"	i
+{{ .Site.Title }}	layouts.bak/index.html	/^        <h1>{{ .Site.Title }}<\/h1>$/;"	h
+{{ .Site.Title }}	layouts.bak/index.html	/^    <title>{{ .Site.Title }}<\/title>$/;"	j
+{{ .Title }}	layouts.bak/index.html	/^            <h3><a href="{{ .Permalink }}">{{ .Title }}<\/a><\/h3>$/;"	j
+{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}	layouts.bak/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近想法{{ else }}Recent Thoughts{{ end }}<\//;"	i
+{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}	layouts.bak/index.html	/^        <h2>{{ if eq .Site.Language.Lang "zh" }}最近文章{{ else }}Recent Posts{{ end }}<\/h2/;"	i
+{{- .Title -}}	layouts.bak/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
+{{- .Title -}}	layouts.bak/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
 {{- .Title -}}	themes/paper/layouts/_default/list.html	/^  <h2 class="!my-0">{{- .Title -}}<\/h2>$/;"	i
 {{- .Title -}}	themes/paper/layouts/_default/single.html	/^    <h1 class="!my-0 pb-2.5">{{- .Title -}}<\/h1>$/;"	h
+{{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}	layouts.bak/partials/head.html	/^  <\/title>$/;"	j
 {{- if not .IsHome -}}{{- .Title -}} - {{- end -}}{{- site.Title -}}	themes/paper/layouts/partials/head.html	/^  <\/title>$/;"	j
 今日记录	archetypes/zh/daily.md	/^## 今日记录$/;"	s
