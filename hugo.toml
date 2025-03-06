@@ -7,7 +7,7 @@ paginate = 10  # Shows 10 items per page
 [languages]
   [languages.zh]
     languageName = "中文"
-    title = ""
+    title = "47大盗的兔子"
     weight = 1  # 中文优先权重
   [languages.en]
     languageName = "English"
