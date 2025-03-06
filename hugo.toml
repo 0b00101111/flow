@@ -41,6 +41,7 @@ theme = "paper"
   category = "categories"
   tag = "tags"
   series = "series"
+
 # 中文菜单配置
 [menu]
   [[menu.main]]
@@ -55,14 +56,15 @@ theme = "paper"
     weight = 20
   [[menu.main]]
     identifier = "daily"
-    name = "日记"
-    url = "/zh/daily/" 
+    name = "日常"
+    url = "/zh/daily/"
     weight = 30
   [[menu.main]]
     identifier = "language"
     name = "中文 / EN"
     url = "#"
     weight = 40
+
 # 英文菜单配置
 [languages.en.menu]
   [[languages.en.menu.main]]
@@ -77,7 +79,7 @@ theme = "paper"
     weight = 20
   [[languages.en.menu.main]]
     identifier = "daily"
-    name = "Daily"
+    name = "Daily Digest"
     url = "/en/daily/"
     weight = 30
   [[languages.en.menu.main]]
@@ -85,6 +87,7 @@ theme = "paper"
     name = "中文 / EN"
     url = "#"
     weight = 40
+
 # 英文参数
 [languages.en.params]
   bio = "Capturing thoughts as they happen"
