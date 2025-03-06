@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Zhs on 小径分岔的兔子洞</title>
-    <link>https://daily.shuang.blog/zh/</link>
+    <link>http://localhost:1313/zh/</link>
     <description>Recent content in Zhs on 小径分岔的兔子洞</description>
     <generator>Hugo</generator>
     <language>zh</language>
     <lastBuildDate>Thu, 06 Mar 2025 06:08:23 +0000</lastBuildDate>
-    <atom:link href="https://daily.shuang.blog/zh/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/zh/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>2023-11-02</title>
-      <link>https://daily.shuang.blog/zh/thoughts/2025-03-06-2023-11-02/</link>
+      <link>http://localhost:1313/zh/thoughts/2025-03-06-2023-11-02/</link>
       <pubDate>Thu, 06 Mar 2025 06:08:23 +0000</pubDate>
-      <guid>https://daily.shuang.blog/zh/thoughts/2025-03-06-2023-11-02/</guid>
+      <guid>http://localhost:1313/zh/thoughts/2025-03-06-2023-11-02/</guid>
       <description>&lt;p&gt;2023-11-02&lt;/p&gt;&#xA;&lt;p&gt;有人说，今天是一个时代的终结。时代也许是某个具体的时刻终结的，而堕落的开始一定在很久之前。&lt;/p&gt;&#xA;&lt;p&gt;#BLOG&lt;/p&gt;</description>
     </item>
     <item>
       <title>🤖 从理论到实践，带你真正掌握机器学习 —— AIbyDoing</title>
-      <link>https://daily.shuang.blog/zh/thoughts/2025-03-05-aibydoing/</link>
+      <link>http://localhost:1313/zh/thoughts/2025-03-05-aibydoing/</link>
       <pubDate>Wed, 05 Mar 2025 23:30:22 +0000</pubDate>
-      <guid>https://daily.shuang.blog/zh/thoughts/2025-03-05-aibydoing/</guid>
+      <guid>http://localhost:1313/zh/thoughts/2025-03-05-aibydoing/</guid>
       <description>&lt;p&gt;🤖 从理论到实践，带你真正掌握机器学习 —— AIbyDoing&lt;/p&gt;&#xA;&lt;p&gt;如今，机器学习和人工智能已经成为科技领域的热门话题，但如果你对这个概念完全不了解，却又想系统学习，今天我要向你推荐一个神器 —— AIbyDoing！&lt;/p&gt;&#xA;&lt;p&gt;💡 学习这类知识并不容易，尤其是当你面对这些常见问题时：&lt;/p&gt;&#xA;&lt;p&gt;▶ 理论书籍充斥着复杂的数学公式，让人望而生畏；&#xA;▶ 实践书籍只教你调用现成的工具，却不解释背后的原理；&#xA;▶ 代码和理论脱节，学完后依然不知道如何动手实现。&lt;/p&gt;&#xA;&lt;p&gt;如果你也曾被这些问题困扰，那么 AIbyDoing 就是为你量身打造的学习平台！&lt;/p&gt;&#xA;&lt;p&gt;💁 AIbyDoing 是一个专注于机器学习和深度学习的实践教程项目，由一位从 2015 年就开始深耕机器学习领域的作者精心打造。他的目标是帮助你：&lt;/p&gt;&#xA;&lt;p&gt;▶ 既懂原理，又能实践：从算法推导到代码实现，真正做到公式和代码一一对应；&#xA;▶ 动手实战：通过 Jupyter Notebook，边学边练，形成自己的学习笔记；&#xA;▶ 高效学习：无需先啃数学，随学随查，避免耐心被消磨殆尽。&lt;/p&gt;&#xA;&lt;p&gt;📚 目前，教程已更新至 97 章（422,626 字），内容涵盖监督学习、深度学习等核心领域，并持续更新中。无论你是初学者，还是希望巩固基础的进阶者，都能在这里找到适合自己的学习路径。更重要的是，它完全免费，如果你这个春节假期想过得充实点，不妨把这套课程安排进你的日程。&lt;/p&gt;&#xA;&lt;p&gt;💗 作者的自序让我深受触动：「如果你只会调包，而不深入原理，可能连参数的作用都看不懂；如果你只会理论，而不会实践，可能连最简单的模型都写不出来。」AIbyDoing 正是为了解决这些问题而生，它用最接地气的方式，带你从零开始，真正掌握机器学习的精髓。&lt;/p&gt;&#xA;&lt;p&gt;&amp;mdash; 这是一条测试 post &amp;mdash;&#xA;#Blog:post&lt;/p&gt;</description>
     </item>
     <item>
       <title>测试文章</title>
-      <link>https://daily.shuang.blog/zh/posts/test-post/</link>
+      <link>http://localhost:1313/zh/posts/test-post/</link>
       <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://daily.shuang.blog/zh/posts/test-post/</guid>
+      <guid>http://localhost:1313/zh/posts/test-post/</guid>
       <description>&lt;p&gt;这是一个测试文章。&lt;/p&gt;</description>
     </item>
   </channel>

@@ -2,31 +2,31 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on 小径分岔的兔子洞</title>
-    <link>https://daily.shuang.blog/posts/</link>
+    <link>http://localhost:1313/posts/</link>
     <description>Recent content in Posts on 小径分岔的兔子洞</description>
     <generator>Hugo</generator>
     <language>zh</language>
     <lastBuildDate>Wed, 05 Mar 2025 23:21:20 +0000</lastBuildDate>
-    <atom:link href="https://daily.shuang.blog/posts/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>This is a test blog post #BLOG::post</title>
-      <link>https://daily.shuang.blog/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</link>
+      <link>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</link>
       <pubDate>Wed, 05 Mar 2025 23:21:20 +0000</pubDate>
-      <guid>https://daily.shuang.blog/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</guid>
+      <guid>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</guid>
       <description>&lt;p&gt;This is a test blog post #BLOG::post&lt;/p&gt;</description>
     </item>
     <item>
       <title>Debug Post</title>
-      <link>https://daily.shuang.blog/blog/2025/03/debug-post/</link>
+      <link>http://localhost:1313/blog/2025/03/debug-post/</link>
       <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://daily.shuang.blog/blog/2025/03/debug-post/</guid>
+      <guid>http://localhost:1313/blog/2025/03/debug-post/</guid>
       <description>&lt;p&gt;This is a debug post to test the Paper theme.&lt;/p&gt;</description>
     </item>
     <item>
       <title>Test article</title>
-      <link>https://daily.shuang.blog/blog/2025/03/test-article/</link>
+      <link>http://localhost:1313/blog/2025/03/test-article/</link>
       <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>https://daily.shuang.blog/blog/2025/03/test-article/</guid>
+      <guid>http://localhost:1313/blog/2025/03/test-article/</guid>
       <description>&lt;p&gt;This is an test article.&lt;/p&gt;</description>
     </item>
   </channel>

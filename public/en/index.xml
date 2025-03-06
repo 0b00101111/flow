@@ -2,10 +2,10 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Rabbit Holes of Forking Paths</title>
-    <link>https://daily.shuang.blog/en/</link>
+    <link>http://localhost:1313/en/</link>
     <description>Recent content on Rabbit Holes of Forking Paths</description>
     <generator>Hugo</generator>
     <language>en</language>
-    <atom:link href="https://daily.shuang.blog/en/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="http://localhost:1313/en/index.xml" rel="self" type="application/rss+xml" />
   </channel>
 </rss>
