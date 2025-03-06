@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+from sns_manager import post_to_mastodon, post_to_threads, process_sns_queues
 import os
 import sys
 import json
@@ -21,7 +22,7 @@ def get_updates(offset=None):
     params = {"timeout": 60, "allowed_updates": ["message"]}
     if offset:
         params["offset"] = offset
-    
+
     response = requests.get(url, params=params)
     return response.json()
 
@@ -29,33 +30,33 @@ def process_telegram_messages():
     """Process new Telegram messages"""
     last_update_id = get_last_update_id()
     updates = get_updates(last_update_id + 1)
-    
+
     if not updates.get("ok"):
         print(f"Error fetching updates: {updates}")
         return False
-    
+
     new_update_id = last_update_id
     updates_processed = 0
-    
+
     for update in updates.get("result", []):
         update_id = update["update_id"]
-        
+
         if update_id > new_update_id:
             new_update_id = update_id
-        
+
         if "message" in update:
             message = update["message"]
             chat_id = message.get("chat", {}).get("id")
             user_id = message.get("from", {}).get("id")
-            
+
             # Security check - only process from authorized user
             if user_id != AUTHORIZED_USER_ID:
                 continue
-            
+
             # Process message text or commands
             if "text" in message:
                 text = message["text"]
-                
+
                 # Handle queue commands
                 if text.startswith('!'):
                     # Will add this functionality later
@@ -77,23 +78,23 @@ def process_telegram_messages():
                                     print(f"File contents:\n{f.read()}")
                             except Exception as e:
                                 print(f"Error reading file: {e}")
-                                
+
                         # Send a confirmation message back to the user
                         if result.get('type') == 'blog':
                             if result.get('language') == 'zh':
                                 send_telegram_message(chat_id, f"✅ 已处理您的内容: {result.get('title', '无标题')}")
                             else:
                                 send_telegram_message(chat_id, f"✅ Processed your content: {result.get('title', 'Untitled')}")
-                        
+
                         updates_processed += 1
                 except Exception as e:
                     print(f"Error processing message: {e}")
 
-    
+
     # Save the new update ID if we processed any updates
     if new_update_id > last_update_id:
         save_last_update_id(new_update_id)
-    
+
     return updates_processed > 0
 
 def send_reminders():
@@ -101,7 +102,7 @@ def send_reminders():
     try:
         with open('data/untagged_thoughts.json', 'r') as f:
             untagged = json.load(f)
-        
+
         from utils import format_reminder_message
         reminder_message = format_reminder_message(untagged)
         if reminder_message:
@@ -109,37 +110,76 @@ def send_reminders():
             return True
     except Exception as e:
         print(f"Error sending reminders: {e}")
-    
+
     return False
+
+def list_queues():
+    """List all queues and their content."""
+    try:
+        with open('data/queues.json', 'r') as f:
+            queues = json.load(f)
+
+        queue_contents = []
+
+        # Format Threads queue
+        if queues.get("threads"):
+            threads_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["threads"])]
+            queue_contents.append(f"Threads Queue ({len(queues['threads'])} items):\n" + "\n".join(threads_items))
+        else:
+            queue_contents.append("Threads Queue: Empty")
+
+        # Format Mastodon queue
+        if queues.get("mastodon"):
+            mastodon_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["mastodon"])]
+            queue_contents.append(f"Mastodon Queue ({len(queues['mastodon'])} items):\n" + "\n".join(mastodon_items))
+        else:
+            queue_contents.append("Mastodon Queue: Empty")
+
+        # Format Telegram queue
+        if queues.get("telegram"):
+            telegram_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["telegram"])]
+            queue_contents.append(f"Telegram Queue ({len(queues['telegram'])} items):\n" + "\n".join(telegram_items))
+        else:
+            queue_contents.append("Telegram Queue: Empty")
+
+        # Send the queue contents to the authorized user
+        message = "📋 **Current SNS Queues**\n\n" + "\n\n".join(queue_contents)
+        send_telegram_message(AUTHORIZED_USER_ID, message)
+        return True
+    except Exception as e:
+        print(f"Error listing queues: {e}")
+        return False
 
 def main():
     parser = argparse.ArgumentParser(description='Process Telegram messages')
-    parser.add_argument('--action', type=str, default='process', 
+    parser.add_argument('--action', type=str, default='process',
                         choices=['process', 'reminder', 'publish_digest', 'process_queues', 'list_queues'],
                         help='Action to perform')
-    
+
     args = parser.parse_args()
-    
+
     if args.action == 'process':
         # Regular processing of new messages
         process_telegram_messages()
         return 0
-    
+
     elif args.action == 'reminder':
         # Send reminders for untagged thoughts
         send_reminders()
-    
+
     elif args.action == 'publish_digest':
         # Create and publish daily digest
         create_daily_digest()
-    
+
     elif args.action == 'process_queues':
-        # Will implement this later
-        print("Processing queues...")
-    
+        # Process the SNS queues
+        process_sns_queues()
+
     elif args.action == 'list_queues':
-        # Will implement this later
-        print("Listing queues...")
+        # List the contents of the queues
+        list_queues()
+
+        return 0
 
 if __name__ == "__main__":
-    sys.exit(main()) 
+    sys.exit(main())
