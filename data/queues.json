@@ -1,11 +1,5 @@
 {
   "threads": [],
   "telegram": [],
-  "mastodon": [
-    {
-      "text": "This is a test post for Mastodon #SNS::mastodon",
-      "message_id": "22",
-      "timestamp": "2025-03-06T00:28:12.147572"
-    }
-  ]
+  "mastodon": []
 }
