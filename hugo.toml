@@ -11,7 +11,7 @@ paginate = 10  # Shows 10 items per page
     weight = 1  # 中文优先权重
   [languages.en]
     languageName = "English"
-    title = ""
+    title = "47大盗的兔子洞"
     weight = 2
 # 主题配置
 theme = "paper"
