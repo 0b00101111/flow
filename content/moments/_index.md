@@ -1,3 +1,4 @@
 ---
 title: "Moments"
+type: "moments"
 ---
