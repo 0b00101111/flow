@@ -3,11 +3,6 @@
   "telegram": [],
   "mastodon": [
     {
-      "text": "test publishing to Mastodon from my flow system #SNS::mastodon::now",
-      "message_id": "31",
-      "timestamp": "2025-03-06T00:36:10.161198"
-    },
-    {
       "text": "This is a test post for Mastodon #SNS::mastodon",
       "message_id": "22",
       "timestamp": "2025-03-06T00:28:12.147572"
