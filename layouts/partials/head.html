@@ -34,8 +34,16 @@
   <!---->
   {{- $custom := resources.Get "custom.css" -}}
   <!---->
-  {{- $css := slice $main $custom | resources.Concat "main.css" | minify -}}
-  <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
+  {{- if and $main $custom -}}
+    {{- $css := slice $main $custom | resources.Concat "main.css" | minify -}}
+    <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
+  {{- else if $main -}}
+    {{- $css := $main | minify -}}
+    <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
+  {{- else if $custom -}}
+    {{- $css := $custom | minify -}}
+    <link rel="preload stylesheet" as="style" href="{{- $css.Permalink -}}" />
+  {{- end -}}
 
   <!-- dark icon -->
   {{- $dark_icon := "theme.png" -}}
