@@ -1,4 +1,4 @@
-name: Telegram Message Processor
+name: Telegram Thought Processor
 
 on:
   schedule:
@@ -91,6 +91,56 @@ jobs:
             fi
 
             git commit -m "$COMMIT_MSG"
+            git push
+          else
+            echo "No changes to commit"
+            # Make sure the workflow doesn't fail when there are no changes
+            exit 0
+          fi
+
+  # Add a separate job for SNS processing that runs on schedule
+  process-sns:
+    runs-on: ubuntu-latest
+    # Only run this job when triggered by the schedule
+    if: github.event_name == 'schedule'
+    env:
+      TZ: 'America/Vancouver'  # Set Vancouver timezone
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install requests python-telegram-bot python-dateutil pyyaml pytz
+
+      - name: Process SNS queues
+        env:
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          AUTHORIZED_USER_ID: ${{ secrets.TELEGRAM_USER_ID }}
+          THREADS_USERNAME: ${{ secrets.THREADS_USERNAME }}
+          THREADS_PASSWORD: ${{ secrets.THREADS_PASSWORD }}
+          MASTODON_TOKEN: ${{ secrets.MASTODON_TOKEN }}
+          MASTODON_INSTANCE: ${{ secrets.MASTODON_INSTANCE }}
+        run: |
+          python scripts/telegram_handler.py --action process_queues
+
+      - name: Commit changes
+        run: |
+          git config --global user.name "Flow Bot"
+          git config --global user.email "bot@example.com"
+
+          git add data/
+
+          # Only commit if there are changes
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "🚀 Posted content to SNS platforms"
             git push
           else
             echo "No changes to commit"
