@@ -23,8 +23,8 @@ theme = "paper"
   mastodon = "https://yangyang.how/@shuang"  # 更新为您的用户名
   threads = "@0b00101111"    # 更新为您的用户名
   # 首页个人资料
-  avatar = "avatar.jpg"    # 放置在 static/images/ 目录下
-  name = "47 Fork"
+  avatar = "static/images/avatar.jpg"    # 放置在 static/images/ 目录下
+  name = "47Fork"
   bio = "Existence precedes essence."
   # 其他设置
   disableHLJS = true       # 禁用 highlight.js
@@ -56,7 +56,7 @@ theme = "paper"
     weight = 20
   [[menu.main]]
     identifier = "daily"
-    name = "日常"
+    name = "日更"
     url = "/zh/daily/"
     weight = 30
   [[menu.main]]
