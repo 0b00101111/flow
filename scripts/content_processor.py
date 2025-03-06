@@ -143,6 +143,72 @@ def process_blog_content(content, tags, message_id):
         
         return {"type": "blog", "subtype": "idea", "title": title, "file": filename, "language": language}
 
+def process_sns_content(content, tags, message_id):
+    """Process content tagged for SNS."""
+    # Determine which SNS platform(s) to use
+    platforms = []
+    scheduling = "queue"  # Default to queue
+    
+    # Check for SNS tags
+    if 'SNS' in tags:
+        # Add to all platforms if no specific platform is mentioned
+        if not tags.get('SNS'):
+            platforms = ["threads", "mastodon", "telegram"]
+        else:
+            # Check for specific platforms
+            for subtag in tags.get('SNS', []):
+                if subtag.lower() in ['threads', 'mastodon', 'telegram']:
+                    platforms.append(subtag.lower())
+                elif subtag.lower() in ['now', 'next']:
+                    scheduling = subtag.lower()
+    
+    if not platforms:
+        return None
+    
+    # Load the current queues
+    try:
+        with open('data/queues.json', 'r') as f:
+            queues = json.load(f)
+    except (FileNotFoundError, json.JSONDecodeError):
+        queues = {"threads": [], "mastodon": [], "telegram": []}
+    
+    # Prepare the post data
+    post_data = {
+        "text": content,
+        "message_id": str(message_id),
+        "timestamp": datetime.now().isoformat()
+    }
+    
+    results = []
+    
+    # Add to appropriate queues based on scheduling
+    for platform in platforms:
+        if platform not in queues:
+            queues[platform] = []
+        
+        if scheduling == "now":
+            # For "now", put at the beginning of the queue
+            queues[platform].insert(0, post_data)
+            results.append(f"{platform}:now")
+        elif scheduling == "next":
+            # For "next", put it right after the first item
+            if len(queues[platform]) > 0:
+                queues[platform].insert(1, post_data)
+            else:
+                queues[platform].append(post_data)
+            results.append(f"{platform}:next")
+        else:
+            # Default is to append to the queue
+            queues[platform].append(post_data)
+            results.append(f"{platform}:queued")
+    
+    # Save the updated queues
+    with open('data/queues.json', 'w') as f:
+        json.dump(queues, f, indent=2)
+    
+    # Return results
+    return {"type": "sns", "platforms": results}
+
 def add_to_daily_digest(content, message_id, language="zh"):
     """Add content to the daily digest."""
     # Get today's date for the digest file
@@ -321,6 +387,8 @@ def process_content(message):
         # Determine how to process based on tags
         if 'BLOG' in tags:
             return process_blog_content(content, tags, message_id)
+        elif 'SNS' in tags:
+            return process_sns_content(content, tags, message_id)
         else:
             # Store untagged content for later processing
             return process_untagged_content(content, message_id)
