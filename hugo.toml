@@ -56,7 +56,7 @@ theme = "paper"
   [[menu.main]]
     identifier = "daily"
     name = "日记"
-    url = "/daily/"
+    url = "/zh/daily/" 
     weight = 30
   [[menu.main]]
     identifier = "language"
