@@ -1,6 +1,6 @@
 {{ define "main" }}
 <header class="page-header">
-  <h1>{{ .Title }}</h1>
+  <h1>日常</h1>
 </header>
 
 <!-- Get all pages in this section and sort in reverse chronological order -->
@@ -16,23 +16,16 @@
       <li class="daily-entry">
         <article>
           <h2 class="daily-entry-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
+            <a href="{{ .Permalink }}">
+              {{ replace .Title " 日记" "" | replace (printf "%s 第" (slicestr .Date.Format "2006-01-02" 5)) "第" }}
+            </a>
           </h2>
-          <div class="daily-entry-meta">
-            <time>{{ .Date.Format "2006-01-02" }}</time>
-          </div>
           
-          <!-- Format the content preserving paragraphs -->
+          <!-- Format the content preserving paragraphs but remove tags -->
           <div class="daily-entry-content">
             {{ with .Content }}
-              {{ . | safeHTML }}
-            {{ else }}
-              {{ with .Summary }}
-                {{ . | safeHTML }}
-                {{ if $.Truncated }}
-                  <a href="{{ $.Permalink }}" class="read-more">{{ i18n "read_more" | default "Read more" }}</a>
-                {{ end }}
-              {{ end }}
+              {{ $content := . | replaceRE "#BLOG.*$" "" }}
+              {{ $content | safeHTML }}
             {{ end }}
           </div>
         </article>
@@ -68,9 +61,9 @@
   {{ else }}
     <div class="empty-list-message">
       {{ if eq .Lang "zh" }}
-        <p>还没有日记条目。</p>
+        <p>日常空空如也</p>
       {{ else }}
-        <p>No daily entries yet.</p>
+        <p>No daily digest entries yet.</p>
       {{ end }}
     </div>
   {{ end }}
