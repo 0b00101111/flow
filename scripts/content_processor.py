@@ -147,6 +147,12 @@ def add_to_daily_digest(content, message_id, language="zh"):
     """Add content to the daily digest."""
     # Get today's date for the digest file
     today = datetime.now()
+    
+    # Convert to Vancouver time (Pacific Time)
+    import pytz
+    vancouver_tz = pytz.timezone('America/Vancouver')
+    today_vancouver = datetime.now(pytz.utc).astimezone(vancouver_tz)
+    
     date_str = today.strftime('%Y-%m-%d')
     week_num = int(today.strftime('%W')) + 1  # Get ISO week number and add 1
     
@@ -155,7 +161,8 @@ def add_to_daily_digest(content, message_id, language="zh"):
         day_names = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
         day_name = day_names[today.weekday()]
         lang_prefix = "zh/"
-        digest_title = f"{date_str} 第{week_num}周 {day_name}日记"
+        # Using 日常 instead of 日记
+        digest_title = f"{date_str} 第{week_num}周 {day_name}"
     else:
         day_name = today.strftime('%A')
         lang_prefix = ""
@@ -163,6 +170,14 @@ def add_to_daily_digest(content, message_id, language="zh"):
     
     # Create the filename for today's digest
     filename = f"content/{lang_prefix}daily/{date_str}.md"
+    
+    # Process content to ensure proper Markdown formatting
+    # Make sure paragraphs are properly separated with double line breaks
+    formatted_content = content.replace("\n", "\n\n").replace("\n\n\n", "\n\n").strip()
+    
+    # Remove the #BLOG tag if at the end of the content
+    if formatted_content.endswith("#BLOG::today"):
+        formatted_content = formatted_content[:-13].strip()
     
     # Check if the file exists
     if os.path.exists(filename):
@@ -177,9 +192,9 @@ def add_to_daily_digest(content, message_id, language="zh"):
         front_matter = existing_content[:front_matter_end]
         digest_content = existing_content[front_matter_end:]
         
-        # Add the new content with timestamp
-        now = datetime.now().strftime('%H:%M')
-        digest_content += f"\n## {now}\n\n{content}\n\n"
+        # Add the new content with timestamp in Vancouver time
+        now = today_vancouver.strftime('%H:%M')
+        digest_content += f"\n## {now}\n\n{formatted_content}\n\n"
         
         # Write the updated file
         with open(filename, 'w') as f:
@@ -193,14 +208,14 @@ def add_to_daily_digest(content, message_id, language="zh"):
         # Prepare front matter
         front_matter = {
             "title": digest_title,
-            "date": datetime.now().isoformat(),
+            "date": today.isoformat(),
             "type": "daily",
             "draft": False
         }
         
         # Create the initial content with this entry
-        now = datetime.now().strftime('%H:%M')
-        content_with_time = f"## {now}\n\n{content}\n\n"
+        now = today_vancouver.strftime('%H:%M')
+        content_with_time = f"## {now}\n\n{formatted_content}\n\n"
         
         # Write the file
         with open(filename, 'w') as f:
