@@ -1,11 +1,5 @@
 {
-  "threads": [
-    {
-      "text": "test publishing to threads from my flow system #SNS::threads::now",
-      "message_id": "33",
-      "timestamp": "2025-03-06T00:41:14.042176"
-    }
-  ],
+  "threads": [],
   "telegram": [],
   "mastodon": [
     {
