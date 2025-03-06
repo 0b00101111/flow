@@ -1,5 +1,5 @@
 ---
-title: "日记"
+title: "日常"
 layout: "list"
 type: "daily"
 ---
