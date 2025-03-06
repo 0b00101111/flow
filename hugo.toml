@@ -7,7 +7,7 @@ paginate = 10  # Shows 10 items per page
 [languages]
   [languages.zh]
     languageName = "中文"
-    title = "日常思考"
+    title = ""
     weight = 1  # 中文优先权重
   [languages.en]
     languageName = "English"
@@ -20,12 +20,12 @@ theme = "paper"
   # 颜色主题
   color = "linen"  # linen, wheat, gray, light
   # 头部社交图标
-  twitter = "yourusername"  # 更新为您的用户名
-  github = "yourusername"    # 更新为您的用户名
+  mastodon = "https://yangyang.how/@shuang"  # 更新为您的用户名
+  threads = "https://www.threads.net/@0b00101111"    # 更新为您的用户名
   # 首页个人资料
   avatar = "avatar.jpg"    # 放置在 static/images/ 目录下
-  name = "您的名字"
-  bio = "记录瞬间的思考"
+  name = "47"
+  bio = "Existence precedes essence."
   # 其他设置
   disableHLJS = true       # 禁用 highlight.js
   monoDarkIcon = true      # 显示单色暗模式图标
@@ -34,7 +34,7 @@ theme = "paper"
 # 永久链接 - 影响 URL 结构
 [permalinks]
   posts = "/blog/:year/:month/:title/"
-  thoughts = "/thoughts/:year/:month/:title/"
+  moments = "/moments/:year/:month/:title/"
   daily = "/daily/:year/:month/:day/"
 # 分类设置
 [taxonomies]
@@ -50,9 +50,9 @@ theme = "paper"
     url = "/posts/"
     weight = 10
   [[menu.main]]
-    identifier = "thoughts"
-    name = "想法"
-    url = "/thoughts/"
+    identifier = "moments"
+    name = "瞬间"
+    url = "/moments/"
     weight = 20
   [[menu.main]]
     identifier = "daily"
@@ -73,9 +73,9 @@ theme = "paper"
     url = "/en/posts/"
     weight = 10
   [[languages.en.menu.main]]
-    identifier = "thoughts"
-    name = "Thoughts"
-    url = "/en/thoughts/"
+    identifier = "moments"
+    name = "moments"
+    url = "/en/moments/"
     weight = 20
   [[languages.en.menu.main]]
     identifier = "daily"
