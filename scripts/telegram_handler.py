@@ -123,6 +123,7 @@ def main():
     if args.action == 'process':
         # Regular processing of new messages
         process_telegram_messages()
+        return 0
     
     elif args.action == 'reminder':
         # Send reminders for untagged thoughts
@@ -141,4 +142,4 @@ def main():
         print("Listing queues...")
 
 if __name__ == "__main__":
-    main()
+    sys.exit(main()) 
