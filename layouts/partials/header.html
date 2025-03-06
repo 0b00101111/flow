@@ -67,10 +67,12 @@
       {{- range . -}}
       {{- if eq .Identifier "language" -}}
         <!-- Handle language switcher -->
-        {{- if eq $.Site.Language.Lang "zh" -}}
-          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ `/en/` | relLangURL }}">{{- .Name -}}</a>
+        {{- $currentLang := $.Site.Language.Lang -}}
+        {{- $path := strings.TrimPrefix (print "/" $currentLang) $.RelPermalink -}}
+        {{- if eq $currentLang "zh" -}}
+          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ print "/en" $path | relURL }}">{{- .Name -}}</a>
         {{- else -}}
-          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ `/` | relLangURL }}">{{- .Name -}}</a>
+          <a class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal" href="{{ $path | relURL }}">{{- .Name -}}</a>
         {{- end -}}
       {{- else -}}
         <a
