@@ -37,3 +37,63 @@ h1, h2, h3, h4, h5, h6 {
 body {
   font-size: var(--font-size-base);
 }
+
+/* Add these styles to your custom.css file */
+
+/* Match blog styling to daily entries */
+.blog-entries {
+  margin-top: 2rem;
+}
+
+.blog-list {
+  list-style: none;
+  padding: 0;
+}
+
+.blog-entry {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2rem;
+}
+
+.blog-entry:last-child {
+  border-bottom: none;
+}
+
+.blog-entry-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.blog-entry-date {
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.blog-entry-summary {
+  line-height: 1.6;
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 3rem 0;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+/* Ensure pagination looks the same */
+.pagination {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 2rem;
+}
+
+.pagination a {
+  text-decoration: none;
+}
+
+.pagination .page-number {
+  font-size: 0.9em;
+}
