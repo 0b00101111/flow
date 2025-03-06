@@ -86,8 +86,8 @@ def process_telegram_messages():
                                 send_telegram_message(chat_id, f"✅ Processed your content: {result.get('title', 'Untitled')}")
                         
                         updates_processed += 1
-                    except Exception as e:
-                        print(f"Error processing message: {e}")
+                except Exception as e:
+                    print(f"Error processing message: {e}")
 
     
     # Save the new update ID if we processed any updates
