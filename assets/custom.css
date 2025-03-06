@@ -1,2 +1,39 @@
 /* Place custom css here. */
 @reference './app.css';
+
+/* Custom font styles for Noto Serif SC */
+:root {
+  --font-family-base: 'Noto Serif SC', serif;
+  --font-size-base: 18px; /* Adjust this to your preferred size */
+}
+
+/* Apply to all base elements */
+body, 
+.post-content, 
+.post-title, 
+.post-meta,
+.post-summary,
+.site-header, 
+.site-footer,
+.menu,
+.post-header,
+.pagination,
+.categories,
+.tags {
+  font-family: var(--font-family-base);
+}
+
+/* Apply to all headings */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-base);
+}
+
+/* Adjust line height for better readability with Chinese characters */
+.post-content {
+  line-height: 1.8;
+}
+
+/* Adjust font size if needed */
+body {
+  font-size: var(--font-size-base);
+}
