@@ -38,9 +38,7 @@ body {
   font-size: var(--font-size-base);
 }
 
-/* Add these styles to your custom.css file */
-
-/* Match blog styling to daily entries */
+/* Blog entry styles - matching daily entry styles */
 .blog-entries {
   margin-top: 2rem;
 }
@@ -48,6 +46,7 @@ body {
 .blog-list {
   list-style: none;
   padding: 0;
+  margin: 0;
 }
 
 .blog-entry {
@@ -71,29 +70,6 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.blog-entry-summary {
-  line-height: 1.6;
-}
-
-.empty-list-message {
-  text-align: center;
-  padding: 3rem 0;
-  font-style: italic;
-  color: rgba(0, 0, 0, 0.6);
-}
-
-/* Ensure pagination looks the same */
-.pagination {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-top: 2rem;
-}
-
-.pagination a {
-  text-decoration: none;
-}
-
-.pagination .page-number {
-  font-size: 0.9em;
+.blog-entry-content {
+  line-height: 1.8;
 }
