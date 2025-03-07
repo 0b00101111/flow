@@ -383,3 +383,72 @@ body {
     color: rgba(255, 255, 255, 0.5);
   }
 }
+
+/* Table of Contents Styles */
+.article-toc {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  padding: 1.5rem;
+  margin-bottom: 2rem;
+}
+
+.article-toc h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+}
+
+.article-toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-toc li {
+  margin-bottom: 0.5rem;
+}
+
+.article-toc a {
+  text-decoration: none;
+  color: var(--card-text-color-main, #333);
+  line-height: 1.5;
+  font-size: 0.95rem;
+}
+
+.article-toc a:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+/* Make each article's title an anchor target with padding to prevent header overlap */
+.blog-entry {
+  scroll-margin-top: 2rem;
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .article-toc {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .article-toc a {
+    color: var(--card-text-color-main, #eee);
+  }
+  
+  .article-toc a:hover {
+    color: #63b3ed;
+  }
+}
+
+/* On smaller screens, make TOC links more tap-friendly */
+@media (max-width: 640px) {
+  .article-toc li {
+    margin-bottom: 0.75rem;
+  }
+  
+  .article-toc a {
+    font-size: 1rem;
+    padding: 0.25rem 0;
+    display: inline-block;
+  }
+}
