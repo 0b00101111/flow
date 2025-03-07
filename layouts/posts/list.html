@@ -9,58 +9,71 @@
 <!-- Apply pagination -->
 {{ $paginator := .Paginate $pages }}
 
-<!-- Table of Contents -->
-<div class="article-toc">
-  <h2>文章目录</h2>
-  <ul>
-    {{ range $paginator.Pages }}
-    <li>
-      <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
-    </li>
-    {{ end }}
-  </ul>
-</div>
+<div class="blog-container">
+  <!-- Table of Contents (sticky) -->
+  <div class="article-toc-container">
+    <div class="article-toc">
+      <h2>文章目录</h2>
+      <ul>
+        {{ range $paginator.Pages }}
+        <li>
+          <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+          <span class="toc-date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
+        {{ end }}
+      </ul>
+    </div>
+  </div>
 
-<div class="blog-entries">
-  {{ if gt (len $paginator.Pages) 0 }}
-    <ul class="blog-list">
-      {{ range $paginator.Pages }}
-      <li id="{{ .Title | urlize }}" class="blog-entry">
-        <article>
-          <h2 class="blog-entry-title">
-            <a href="{{ .Permalink }}">{{ .Title }}</a>
-          </h2>
+  <!-- Main content area -->
+  <div class="blog-content">
+    <div class="blog-entries">
+      {{ if gt (len $paginator.Pages) 0 }}
+        <ul class="blog-list">
+          {{ range $paginator.Pages }}
+          <li id="{{ .Title | urlize }}" class="blog-entry">
+            <article>
+              <h2 class="blog-entry-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h2>
+              
+              <!-- Display full content -->
+              <div class="blog-entry-content">
+                {{ with .Content }}
+                  {{ . | safeHTML }}
+                {{ end }}
+              </div>
+              
+              <!-- Back to top link -->
+              <div class="back-to-top">
+                <a href="#top">↑ 返回顶部</a>
+              </div>
+            </article>
+          </li>
+          {{ end }}
+        </ul>
+
+        <!-- Pagination links -->
+        {{ if or $paginator.HasPrev $paginator.HasNext }}
+        <div class="pagination">
+          {{ if $paginator.HasPrev }}
+          <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+          {{ end }}
           
-          <!-- Display full content -->
-          <div class="blog-entry-content">
-            {{ with .Content }}
-              {{ . | safeHTML }}
-            {{ end }}
-          </div>
-        </article>
-      </li>
-      {{ end }}
-    </ul>
-
-    <!-- Pagination links -->
-    {{ if or $paginator.HasPrev $paginator.HasNext }}
-    <div class="pagination">
-      {{ if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
-      {{ end }}
+          <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
+          
+          {{ if $paginator.HasNext }}
+          <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+          {{ end }}
+        </div>
+        {{ end }}
       
-      <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-      
-      {{ if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+      {{ else }}
+        <div class="empty-list-message">
+          <p>暂无博客文章</p>
+        </div>
       {{ end }}
     </div>
-    {{ end }}
-  
-  {{ else }}
-    <div class="empty-list-message">
-      <p>暂无博客文章</p>
-    </div>
-  {{ end }}
+  </div>
 </div>
 {{ end }}
