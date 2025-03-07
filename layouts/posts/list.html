@@ -19,9 +19,9 @@
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
           
-          <!-- Display summary -->
+          <!-- Display full content -->
           <div class="blog-entry-content">
-            {{ with .Summary }}
+            {{ with .Content }}
               {{ . | safeHTML }}
             {{ end }}
           </div>
