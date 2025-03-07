@@ -607,3 +607,46 @@ body {
     right: 16px;
   }
 }
+
+/* Direct targeting for TOC elements */
+.article-toc-container {
+  position: relative !important;
+  float: left !important;
+  width: 250px !important;
+  margin-right: 30px !important;
+}
+
+.article-toc {
+  position: sticky !important;
+  top: 2rem !important;
+  background: rgba(0, 0, 0, 0.03) !important;
+  border-radius: 8px !important;
+  padding: 1.5rem !important;
+  max-height: calc(100vh - 4rem) !important;
+  overflow-y: auto !important;
+}
+
+/* Force the blog content to take up remaining space */
+.blog-content {
+  margin-left: 280px !important; /* toc width (250px) + margin-right (30px) */
+}
+
+/* For mobile devices */
+@media (max-width: 768px) {
+  .article-toc-container {
+    float: none !important;
+    width: 100% !important;
+    margin-right: 0 !important;
+    margin-bottom: 2rem !important;
+  }
+  
+  .article-toc {
+    position: relative !important;
+    top: 0 !important;
+    max-height: 300px !important;
+  }
+  
+  .blog-content {
+    margin-left: 0 !important;
+  }
+}
