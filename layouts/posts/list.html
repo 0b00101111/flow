@@ -11,8 +11,8 @@
 
 <div class="blog-container">
   <!-- Table of Contents (sticky) -->
-  <div class="article-toc-container">
-    <div class="article-toc">
+  <aside class="article-toc-container">
+    <nav class="article-toc" id="toc-nav">
       <h2>文章目录</h2>
       <ul>
         {{ range $paginator.Pages }}
@@ -22,20 +22,20 @@
         </li>
         {{ end }}
       </ul>
-    </div>
-  </div>
+    </nav>
+  </aside>
 
   <!-- Main content area -->
-  <div class="blog-content">
+  <main class="blog-content">
     <div class="blog-entries">
       {{ if gt (len $paginator.Pages) 0 }}
         <ul class="blog-list">
           {{ range $paginator.Pages }}
           <li id="{{ .Title | urlize }}" class="blog-entry">
             <article class="collapsible-article">
-              <h2 class="blog-entry-title">
+              <h1 class="blog-entry-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
-              </h2>
+              </h1>
               
               <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
               
@@ -90,7 +90,7 @@
         </div>
       {{ end }}
     </div>
-  </div>
+  </main>
 </div>
 
 <!-- JavaScript for expanding/collapsing articles -->
@@ -116,5 +116,29 @@
       window.scrollTo({top: articleTop - 20, behavior: 'smooth'});
     }
   }
+
+  // Active TOC highlighting
+  document.addEventListener('DOMContentLoaded', function() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute('id');
+        const tocLink = document.querySelector(`.article-toc a[href="#${id}"]`);
+        
+        if (entry.isIntersecting) {
+          document.querySelectorAll('.article-toc a').forEach(link => {
+            link.classList.remove('active');
+          });
+          if (tocLink) {
+            tocLink.classList.add('active');
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: '-10% 0px -80% 0px' });
+    
+    // Observe all blog entries
+    document.querySelectorAll('.blog-entry').forEach(entry => {
+      observer.observe(entry);
+    });
+  });
 </script>
 {{ end }}
