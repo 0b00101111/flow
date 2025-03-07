@@ -32,21 +32,36 @@
         <ul class="blog-list">
           {{ range $paginator.Pages }}
           <li id="{{ .Title | urlize }}" class="blog-entry">
-            <article>
+            <article class="collapsible-article">
               <h2 class="blog-entry-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
               </h2>
               
-              <!-- Display full content -->
-              <div class="blog-entry-content">
+              <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
+              
+              <!-- Display summary -->
+              <div class="blog-entry-summary">
+                {{ with .Summary }}
+                  {{ . | safeHTML }}
+                {{ end }}
+                <div class="summary-fade"></div>
+              </div>
+              
+              <!-- Display full content (initially hidden) -->
+              <div class="blog-entry-content hidden">
                 {{ with .Content }}
                   {{ . | safeHTML }}
                 {{ end }}
+                
+                <!-- Back to top link -->
+                <div class="back-to-top">
+                  <a href="#top">↑ 返回顶部</a>
+                </div>
               </div>
               
-              <!-- Back to top link -->
-              <div class="back-to-top">
-                <a href="#top">↑ 返回顶部</a>
+              <!-- Read more / Collapse button -->
+              <div class="read-more-container">
+                <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
               </div>
             </article>
           </li>
@@ -76,4 +91,29 @@
     </div>
   </div>
 </div>
+
+<!-- JavaScript for expanding/collapsing articles -->
+<script>
+  function toggleArticle(button) {
+    const article = button.closest('.collapsible-article');
+    const summary = article.querySelector('.blog-entry-summary');
+    const content = article.querySelector('.blog-entry-content');
+    
+    if (content.classList.contains('hidden')) {
+      // Expand
+      summary.style.display = 'none';
+      content.classList.remove('hidden');
+      button.textContent = '收起文章';
+    } else {
+      // Collapse
+      summary.style.display = 'block';
+      content.classList.add('hidden');
+      button.textContent = '阅读全文';
+      
+      // Scroll back to article top
+      const articleTop = article.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({top: articleTop - 20, behavior: 'smooth'});
+    }
+  }
+</script>
 {{ end }}
