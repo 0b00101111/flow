@@ -39,11 +39,12 @@
               
               <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
               
-              <!-- Display summary -->
+              <!-- Display summary (truncated) -->
               <div class="blog-entry-summary">
-                {{ with .Summary }}
-                  {{ . | safeHTML }}
-                {{ end }}
+                {{ $content := .Content }}
+                {{ $truncated := cond (gt (len $content) 800) (slicestr $content 0 800) $content }}
+                {{ $truncated | safeHTML }}
+                {{ if gt (len $content) 800 }}...{{ end }}
                 <div class="summary-fade"></div>
               </div>
               
