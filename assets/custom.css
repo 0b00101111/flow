@@ -302,3 +302,84 @@ body {
   }
 }
 /* db-card -------- end */
+
+/* List styles for sections - matching daily entry styles */
+
+/* Blog list styles */
+.blog-entries {
+  margin-top: 2rem;
+}
+
+.blog-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.blog-entry {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2rem;
+}
+
+.blog-entry:last-child {
+  border-bottom: none;
+}
+
+.blog-entry-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.blog-entry-content {
+  line-height: 1.8;
+}
+
+/* Xikang list styles */
+.xikang-entries {
+  margin-top: 2rem;
+}
+
+.xikang-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.xikang-entry {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2rem;
+}
+
+.xikang-entry:last-child {
+  border-bottom: none;
+}
+
+.xikang-entry-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.xikang-entry-content {
+  line-height: 1.8;
+}
+
+/* Common styles for empty lists */
+.empty-list-message {
+  text-align: center;
+  padding: 3rem 0;
+  font-style: italic;
+  color: rgba(0, 0, 0, 0.5);
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .blog-entry, .xikang-entry {
+    border-bottom-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .empty-list-message {
+    color: rgba(255, 255, 255, 0.5);
+  }
+}
