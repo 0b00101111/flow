@@ -192,7 +192,7 @@ body {
 /* Summary and expand functionality */
 .blog-entry-summary {
   position: relative;
-  max-height: 200px;
+  max-height: 10em;
   overflow: hidden;
   line-height: 1.7;
 }
