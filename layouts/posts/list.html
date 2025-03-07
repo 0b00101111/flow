@@ -9,11 +9,23 @@
 <!-- Apply pagination -->
 {{ $paginator := .Paginate $pages }}
 
+<!-- Table of Contents -->
+<div class="article-toc">
+  <h2>文章目录</h2>
+  <ul>
+    {{ range $paginator.Pages }}
+    <li>
+      <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+    </li>
+    {{ end }}
+  </ul>
+</div>
+
 <div class="blog-entries">
   {{ if gt (len $paginator.Pages) 0 }}
     <ul class="blog-list">
       {{ range $paginator.Pages }}
-      <li class="blog-entry">
+      <li id="{{ .Title | urlize }}" class="blog-entry">
         <article>
           <h2 class="blog-entry-title">
             <a href="{{ .Permalink }}">{{ .Title }}</a>
