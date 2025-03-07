@@ -3,6 +3,91 @@
   <h1>博客</h1>
 </header>
 
+<style>
+  /* Direct TOC styling */
+  .article-toc-container {
+    position: fixed;
+    right: calc(50% + 440px);
+    top: 160px;
+    width: 250px;
+    height: auto;
+    z-index: 90;
+  }
+  
+  .article-toc {
+    background: rgba(0, 0, 0, 0.03);
+    border-radius: 8px;
+    padding: 1.5rem;
+    max-height: calc(100vh - 200px);
+    overflow-y: auto;
+  }
+  
+  .read-more-btn {
+    background: #A06AB4 !important;
+    color: white !important;
+  }
+  
+  .read-more-btn:hover {
+    background: #8A4DA0 !important;
+  }
+  
+  /* Mobile styles */
+  @media (max-width: 1200px) {
+    .article-toc-container {
+      display: none;
+    }
+    
+    .toc-toggle {
+      display: block;
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: #A06AB4;
+      color: white;
+      padding: 10px;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      text-align: center;
+      line-height: 30px;
+      z-index: 100;
+      cursor: pointer;
+      font-size: 20px;
+    }
+    
+    .toc-toggle.active + .article-toc-container {
+      display: block;
+      position: fixed;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      width: 80%;
+      max-width: 350px;
+      height: 80%;
+      max-height: 500px;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+      z-index: 101;
+    }
+  }
+  
+  /* Dark mode */
+  @media (prefers-color-scheme: dark) {
+    .article-toc {
+      background: rgba(255, 255, 255, 0.05);
+    }
+    
+    .read-more-btn {
+      background: #B47EC8 !important;
+    }
+    
+    .read-more-btn:hover {
+      background: #A06AB4 !important;
+    }
+  }
+</style>
+
 <!-- Get all pages in this section and sort in reverse chronological order -->
 {{ $pages := .Pages.ByDate.Reverse }}
 
@@ -39,38 +124,38 @@
               <h1 class="blog-entry-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
               </h1>
-
+              
               <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
-
-              <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
+              
+              <!-- Display summary (truncated) -->
               <div class="blog-entry-summary">
                 {{ $content := .Content }}
                 {{ $contentLength := len $content }}
                 {{ $displayContent := $content }}
                 {{ $needsEllipsis := false }}
-
+                
                 {{ if gt $contentLength 800 }}
                   {{ $displayContent = substr $content 0 800 }}
                   {{ $needsEllipsis = true }}
                 {{ end }}
-
+                
                 {{ $displayContent | safeHTML }}
                 {{ if $needsEllipsis }}...{{ end }}
                 <div class="summary-fade"></div>
               </div>
-
+              
               <!-- Display full content (initially hidden) -->
               <div class="blog-entry-content hidden">
                 {{ with .Content }}
                   {{ . | safeHTML }}
                 {{ end }}
-
+                
                 <!-- Back to top link -->
                 <div class="back-to-top">
                   <a href="#top">↑ 返回顶部</a>
                 </div>
               </div>
-
+              
               <!-- Read more / Collapse button -->
               <div class="read-more-container">
                 <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
@@ -86,15 +171,15 @@
           {{ if $paginator.HasPrev }}
           <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
           {{ end }}
-
+          
           <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-
+          
           {{ if $paginator.HasNext }}
           <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
           {{ end }}
         </div>
         {{ end }}
-
+      
       {{ else }}
         <div class="empty-list-message">
           <p>暂无博客文章</p>
@@ -110,7 +195,7 @@
     const article = button.closest(".collapsible-article");
     const summary = article.querySelector(".blog-entry-summary");
     const content = article.querySelector(".blog-entry-content");
-
+    
     if (content.classList.contains("hidden")) {
       // Expand
       summary.style.display = "none";
@@ -121,7 +206,7 @@
       summary.style.display = "block";
       content.classList.add("hidden");
       button.textContent = "阅读全文";
-
+      
       // Scroll back to article top
       const articleTop = article.getBoundingClientRect().top + window.pageYOffset;
       window.scrollTo({top: articleTop - 20, behavior: "smooth"});
@@ -134,7 +219,7 @@
       entries.forEach(entry => {
         const id = entry.target.getAttribute("id");
         const tocLink = document.querySelector(`.article-toc a[href="#${id}"]`);
-
+        
         if (entry.isIntersecting) {
           document.querySelectorAll(".article-toc a").forEach(link => {
             link.classList.remove("active");
@@ -145,13 +230,13 @@
         }
       });
     }, { threshold: 0.1, rootMargin: "-10% 0px -80% 0px" });
-
+    
     // Observe all blog entries
     document.querySelectorAll(".blog-entry").forEach(entry => {
       observer.observe(entry);
     });
   });
-
+  
   // Toggle TOC visibility on mobile
   function toggleToc() {
     document.querySelector('.toc-toggle').classList.toggle('active');
