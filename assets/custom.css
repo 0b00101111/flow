@@ -452,3 +452,147 @@ body {
     display: inline-block;
   }
 }
+
+/* Two-column layout for blog page */
+.blog-container {
+  display: flex;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+/* TOC container and sticky behavior */
+.article-toc-container {
+  flex: 0 0 250px;
+}
+
+.article-toc {
+  background: rgba(0, 0, 0, 0.03);
+  border-radius: 8px;
+  padding: 1.5rem;
+  position: sticky;
+  top: 2rem;
+  max-height: calc(100vh - 4rem);
+  overflow-y: auto;
+}
+
+.article-toc h2 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.2rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.5rem;
+}
+
+.article-toc ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.article-toc li {
+  margin-bottom: 0.75rem;
+  line-height: 1.4;
+}
+
+.article-toc a {
+  text-decoration: none;
+  color: var(--card-text-color-main, #333);
+  font-size: 0.95rem;
+  display: block;
+}
+
+.article-toc a:hover {
+  color: #3182ce;
+  text-decoration: underline;
+}
+
+.toc-date {
+  display: block;
+  font-size: 0.8rem;
+  color: rgba(0, 0, 0, 0.5);
+  margin-top: 0.25rem;
+}
+
+/* Blog content area */
+.blog-content {
+  flex: 1;
+}
+
+/* Make each article's title an anchor target with padding to prevent header overlap */
+.blog-entry {
+  scroll-margin-top: 2rem;
+  position: relative;
+}
+
+/* Back to top link */
+.back-to-top {
+  text-align: right;
+  margin-top: 1.5rem;
+}
+
+.back-to-top a {
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(0, 0, 0, 0.05);
+  border-radius: 4px;
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 0.9rem;
+  transition: all 0.2s ease;
+}
+
+.back-to-top a:hover {
+  background: rgba(0, 0, 0, 0.1);
+  color: rgba(0, 0, 0, 0.8);
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+  .article-toc {
+    background: rgba(255, 255, 255, 0.05);
+  }
+  
+  .article-toc h2 {
+    border-color: rgba(255, 255, 255, 0.1);
+  }
+  
+  .article-toc a {
+    color: var(--card-text-color-main, #eee);
+  }
+  
+  .article-toc a:hover {
+    color: #63b3ed;
+  }
+  
+  .toc-date {
+    color: rgba(255, 255, 255, 0.5);
+  }
+  
+  .back-to-top a {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.7);
+  }
+  
+  .back-to-top a:hover {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+  }
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .blog-container {
+    flex-direction: column;
+  }
+  
+  .article-toc-container {
+    flex: none;
+    width: 100%;
+  }
+  
+  .article-toc {
+    position: static;
+    max-height: none;
+    margin-bottom: 2rem;
+  }
+}
