@@ -9,26 +9,16 @@ from pathlib import Path
 from utils import slugify, detect_language
 
 def parse_tags(text):
-    """Extract tags from text content with support for nested tags."""
-    # Regular expression to match tags: #TAG or #TAG::SUBTAG
-    tag_pattern = r'#([a-zA-Z0-9_]+(?:::[a-zA-Z0-9_]+)*)'
+    """Extract simple hashtags from text content."""
+    # Regular expression to match simple tags like #daily, #threads, #mastodon
+    tag_pattern = r'#([a-zA-Z0-9_]+)'
     
-    tags = {}
+    tags = set()
     matches = re.finditer(tag_pattern, text)
     
     for match in matches:
-        tag_full = match.group(1)  # Without the # prefix
-        
-        # Split into main tag and subtags
-        parts = tag_full.split('::')
-        main_tag = parts[0].upper()
-        
-        # Process nested structure
-        if main_tag not in tags:
-            tags[main_tag] = []
-        
-        if len(parts) > 1:
-            tags[main_tag].extend(parts[1:])
+        tag = match.group(1).lower()  # Extract tag without # and convert to lowercase
+        tags.add(tag)
     
     return tags
 
@@ -42,33 +32,39 @@ def add_to_daily_entry(content, message_id, language="zh"):
     vancouver_tz = pytz.timezone('America/Vancouver')
     today_vancouver = datetime.now(pytz.utc).astimezone(vancouver_tz)
     
-    date_str = today.strftime('%Y-%m-%d')
-    week_num = int(today.strftime('%W')) + 1  # Get ISO week number and add 1
+    date_str = today_vancouver.strftime('%Y-%m-%d')
+    week_num = int(today_vancouver.strftime('%W')) + 1  # Get ISO week number and add 1
     
     # Day name based on language
     if language == "zh":
         day_names = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-        day_name = day_names[today.weekday()]
+        day_name = day_names[today_vancouver.weekday()]
         digest_title = f"{date_str} 第{week_num}周 {day_name}"
     else:
-        day_name = today.strftime('%A')
+        day_name = today_vancouver.strftime('%A')
         digest_title = f"{date_str} Week {week_num} {day_name} Digest"
     
     # Create the filename for today's digest
     filename = f"content/daily/{date_str}.md"
     
+    # Remove tags from the content
+    # This pattern will match hashtags and remove them
+    clean_content = re.sub(r'#[a-zA-Z0-9_]+', '', content).strip()
+    
     # Process content to ensure proper Markdown formatting
     # Make sure paragraphs are properly separated with double line breaks
-    formatted_content = content.replace("\n", "\n\n").replace("\n\n\n", "\n\n").strip()
+    formatted_content = clean_content.replace("\n", "\n\n").replace("\n\n\n", "\n\n").strip()
     
     # Check if the file exists
     if os.path.exists(filename):
         # Load existing content
-        with open(filename, 'r') as f:
+        with open(filename, 'r', encoding='utf-8') as f:
             existing_content = f.read()
         
         # Find the end of the front matter
         front_matter_end = existing_content.find("---\n\n") + 4
+        if front_matter_end < 4:  # If the pattern wasn't found
+            front_matter_end = existing_content.find("---\n") + 4
         
         # Split into front matter and content
         front_matter = existing_content[:front_matter_end]
@@ -79,7 +75,7 @@ def add_to_daily_entry(content, message_id, language="zh"):
         digest_content += f"\n## {now}\n\n{formatted_content}\n\n"
         
         # Write the updated file
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write(front_matter)
             f.write(digest_content)
     
@@ -92,7 +88,7 @@ def add_to_daily_entry(content, message_id, language="zh"):
             "title": digest_title,
             "date": today.isoformat(),
             "type": "daily",
-            "draft": false
+            "draft": False
         }
         
         # Create the initial content with this entry
@@ -100,7 +96,7 @@ def add_to_daily_entry(content, message_id, language="zh"):
         content_with_time = f"## {now}\n\n{formatted_content}\n\n"
         
         # Write the file
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write("---\n")
             f.write(yaml.dump(front_matter, default_flow_style=False))
             f.write("---\n\n")
@@ -108,110 +104,99 @@ def add_to_daily_entry(content, message_id, language="zh"):
     
     return {"type": "daily", "title": digest_title, "file": filename, "language": language}
 
-def process_sns_content(content, tags, message_id):
-    """Process content tagged for SNS."""
-    # Determine which SNS platform(s) to use
-    platforms = []
-    scheduling = "queue"  # Default to queue
-    
-    # Check for SNS tags
-    if 'SNS' in tags:
-        # Add to all platforms if no specific platform is mentioned
-        if not tags.get('SNS'):
-            platforms = ["threads", "mastodon", "telegram"]
-        else:
-            # Check for specific platforms
-            for subtag in tags.get('SNS', []):
-                if subtag.lower() in ['threads', 'mastodon', 'telegram']:
-                    platforms.append(subtag.lower())
-                elif subtag.lower() in ['now', 'next']:
-                    scheduling = subtag.lower()
-    
-    if not platforms:
-        return None
-    
+def add_to_platform_queue(content, platform, message_id):
+    """Add content to a specific platform queue."""
     # Load the current queues
     try:
-        with open('data/queues.json', 'r') as f:
+        with open('data/queues.json', 'r', encoding='utf-8') as f:
             queues = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         queues = {"threads": [], "mastodon": [], "telegram": []}
     
+    # Ensure the platform queue exists
+    if platform not in queues:
+        queues[platform] = []
+    
+    # Remove tags from content
+    clean_content = re.sub(r'#[a-zA-Z0-9_]+', '', content).strip()
+    
     # Prepare the post data
     post_data = {
-        "text": content,
+        "text": clean_content,
         "message_id": str(message_id),
         "timestamp": datetime.now().isoformat()
     }
     
-    results = []
-    
-    # Add to appropriate queues based on scheduling
-    for platform in platforms:
-        if platform not in queues:
-            queues[platform] = []
-        
-        if scheduling == "now":
-            # For "now", put at the beginning of the queue
-            queues[platform].insert(0, post_data)
-            results.append(f"{platform}:now")
-        elif scheduling == "next":
-            # For "next", put it right after the first item
-            if len(queues[platform]) > 0:
-                queues[platform].insert(1, post_data)
-            else:
-                queues[platform].append(post_data)
-            results.append(f"{platform}:next")
-        else:
-            # Default is to append to the queue
-            queues[platform].append(post_data)
-            results.append(f"{platform}:queued")
+    # Add to queue
+    queues[platform].append(post_data)
     
     # Save the updated queues
-    with open('data/queues.json', 'w') as f:
+    with open('data/queues.json', 'w', encoding='utf-8') as f:
         json.dump(queues, f, indent=2)
     
-    # Return results
-    return {"type": "sns", "platforms": results}
+    return f"{platform}:queued"
 
 def process_content(message):
-    """Process message content based on tags or as a daily entry."""
+    """Process message content based on tags."""
     if "text" not in message:
         return None
     
     content = message["text"]
     message_id = message["message_id"]
+    language = detect_language(content)
     
     try:
-        # Check for SNS tags
+        # Parse the tags in the message
         tags = parse_tags(content)
         
-        # If it has SNS tags, process for social media
-        if 'SNS' in tags:
-            return process_sns_content(content, tags, message_id)
+        # Track processing results
+        results = {"platforms": []}
         
-        # Otherwise, process as a daily entry
-        language = detect_language(content)
-        return add_to_daily_entry(content, message_id, language)
+        # Process based on tags
+        # If #daily tag is present or no recognized tags, add to daily entry
+        if 'daily' in tags or not any(tag in tags for tag in ['threads', 'mastodon']):
+            daily_result = add_to_daily_entry(content, message_id, language)
+            results.update(daily_result)
+        
+        # Process platform-specific tags
+        if 'threads' in tags:
+            result = add_to_platform_queue(content, "threads", message_id)
+            results["platforms"].append(result)
+            results["type"] = results.get("type", "sns")
+        
+        if 'mastodon' in tags:
+            result = add_to_platform_queue(content, "mastodon", message_id)
+            results["platforms"].append(result)
+            results["type"] = results.get("type", "sns")
+        
+        return results
     except Exception as e:
         print(f"Error processing content: {e}")
+        import traceback
+        traceback.print_exc()
         return None
 
 def create_daily_entry(language="zh"):
     """Create today's digest if it doesn't exist already."""
     # Get today's date info
     today = datetime.now()
-    date_str = today.strftime('%Y-%m-%d')
-    week_num = int(today.strftime('%W')) + 1
+    
+    # Convert to Vancouver time
+    import pytz
+    vancouver_tz = pytz.timezone('America/Vancouver')
+    today_vancouver = datetime.now(pytz.utc).astimezone(vancouver_tz)
+    
+    date_str = today_vancouver.strftime('%Y-%m-%d')
+    week_num = int(today_vancouver.strftime('%W')) + 1
     
     # Set language-specific parameters
     if language == "zh":
         day_names = ["星期一", "星期二", "星期三", "星期四", "星期五", "星期六", "星期日"]
-        day_name = day_names[today.weekday()]
+        day_name = day_names[today_vancouver.weekday()]
         digest_title = f"{date_str} 第{week_num}周 {day_name}"
         initial_content = "## 日记\n\n今天还没有记录。\n"
     else:
-        day_name = today.strftime('%A')
+        day_name = today_vancouver.strftime('%A')
         digest_title = f"{date_str} Week {week_num} {day_name} Digest"
         initial_content = "## Daily Digest\n\nNo entries yet.\n"
     
@@ -231,7 +216,7 @@ def create_daily_entry(language="zh"):
         }
         
         # Write the file
-        with open(filename, 'w') as f:
+        with open(filename, 'w', encoding='utf-8') as f:
             f.write("---\n")
             f.write(yaml.dump(front_matter, default_flow_style=False))
             f.write("---\n\n")
