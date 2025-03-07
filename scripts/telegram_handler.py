@@ -4,6 +4,7 @@ import sys
 import json
 import argparse
 import requests
+import logging
 from datetime import datetime
 from pathlib import Path
 
@@ -11,6 +12,13 @@ from pathlib import Path
 from utils import get_last_update_id, save_last_update_id, send_telegram_message
 from content_processor import process_content, create_daily_entry
 from sns_manager import process_sns_queues  # Preserving SNS functionality
+
+# Set up logging
+logging.basicConfig(
+    level=logging.INFO,
+    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s'
+)
+logger = logging.getLogger("Telegram Handler")
 
 # Configuration
 BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
@@ -23,13 +31,22 @@ def get_updates(offset=None):
     if offset:
         params["offset"] = offset
     
-    response = requests.get(url, params=params)
-    return response.json()
+    logger.info(f"Fetching updates from Telegram API with offset {offset}")
+    try:
+        response = requests.get(url, params=params)
+        data = response.json()
+        if not data.get("ok"):
+            logger.error(f"Error fetching updates: {data}")
+        return data
+    except Exception as e:
+        logger.error(f"Exception while fetching updates: {str(e)}")
+        return {"ok": False, "error": str(e)}
 
 def list_queues():
     """List all queues and their content."""
     try:
-        with open('data/queues.json', 'r') as f:
+        logger.info("Listing queues")
+        with open('data/queues.json', 'r', encoding='utf-8') as f:
             queues = json.load(f)
         
         queue_contents = []
@@ -48,28 +65,23 @@ def list_queues():
         else:
             queue_contents.append("Mastodon Queue: Empty")
         
-        # Format Telegram queue
-        if queues.get("telegram"):
-            telegram_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["telegram"])]
-            queue_contents.append(f"Telegram Queue ({len(queues['telegram'])} items):\n" + "\n".join(telegram_items))
-        else:
-            queue_contents.append("Telegram Queue: Empty")
-        
         # Send the queue contents to the authorized user
         message = "📋 **Current SNS Queues**\n\n" + "\n\n".join(queue_contents)
         send_telegram_message(AUTHORIZED_USER_ID, message)
         return True
     except Exception as e:
-        print(f"Error listing queues: {e}")
+        logger.error(f"Error listing queues: {e}")
         return False
 
 def process_telegram_messages():
     """Process new Telegram messages"""
     last_update_id = get_last_update_id()
+    logger.info(f"Starting to process messages with last update ID: {last_update_id}")
+    
     updates = get_updates(last_update_id + 1)
     
     if not updates.get("ok"):
-        print(f"Error fetching updates: {updates}")
+        logger.error(f"Error fetching updates: {updates}")
         return False
     
     new_update_id = last_update_id
@@ -77,6 +89,7 @@ def process_telegram_messages():
     
     for update in updates.get("result", []):
         update_id = update["update_id"]
+        logger.info(f"Processing update ID: {update_id}")
         
         if update_id > new_update_id:
             new_update_id = update_id
@@ -88,15 +101,18 @@ def process_telegram_messages():
             
             # Security check - only process from authorized user
             if user_id != AUTHORIZED_USER_ID:
+                logger.warning(f"Unauthorized message from user {user_id}, ignoring")
                 continue
             
             # Process message text or commands
             if "text" in message:
                 text = message["text"]
+                logger.info(f"Processing message: {text[:50]}...")
                 
                 # Handle queue commands
                 if text.startswith('!'):
                     command = text[1:].strip().lower()
+                    logger.info(f"Processing command: {command}")
                     
                     if command == "queues":
                         list_queues()
@@ -109,7 +125,7 @@ def process_telegram_messages():
                         if platform in ["threads", "mastodon", "telegram"]:
                             # Load queues
                             try:
-                                with open('data/queues.json', 'r') as f:
+                                with open('data/queues.json', 'r', encoding='utf-8') as f:
                                     queues = json.load(f)
                                 
                                 # Format items in the queue
@@ -121,6 +137,7 @@ def process_telegram_messages():
                                 
                                 send_telegram_message(chat_id, message)
                             except Exception as e:
+                                logger.error(f"Error listing {platform} queue: {e}")
                                 send_telegram_message(chat_id, f"Error listing {platform} queue: {str(e)}")
                         else:
                             send_telegram_message(chat_id, f"Unknown platform: {platform}")
@@ -132,18 +149,19 @@ def process_telegram_messages():
                         if platform in ["threads", "mastodon", "telegram"]:
                             # Load queues
                             try:
-                                with open('data/queues.json', 'r') as f:
+                                with open('data/queues.json', 'r', encoding='utf-8') as f:
                                     queues = json.load(f)
                                 
                                 # Remove first item if queue isn't empty
                                 if platform in queues and queues[platform]:
                                     removed = queues[platform].pop(0)
-                                    with open('data/queues.json', 'w') as f:
+                                    with open('data/queues.json', 'w', encoding='utf-8') as f:
                                         json.dump(queues, f, indent=2)
                                     send_telegram_message(chat_id, f"Removed first item from {platform} queue:\n{removed['text'][:100]}...")
                                 else:
                                     send_telegram_message(chat_id, f"{platform.capitalize()} Queue is already empty.")
                             except Exception as e:
+                                logger.error(f"Error dequeuing from {platform}: {e}")
                                 send_telegram_message(chat_id, f"Error dequeuing from {platform}: {str(e)}")
                         else:
                             send_telegram_message(chat_id, f"Unknown platform: {platform}")
@@ -157,12 +175,14 @@ def process_telegram_messages():
 
                 # Process regular content as daily entry or SNS post
                 try:
+                    logger.info("Processing content with content_processor")
                     result = process_content(message)
+                    logger.info(f"Processing result: {result}")
+                    
                     if result:
-                        print(f"Processed message with result: {result}")
                         # Check if a file was created
                         if 'file' in result:
-                            print(f"Created/updated file: {result['file']}")
+                            logger.info(f"Created/updated file: {result['file']}")
                             
                         # Send a confirmation message back to the user
                         if result.get('type') == 'daily':
@@ -170,21 +190,27 @@ def process_telegram_messages():
                                 send_telegram_message(chat_id, f"✅ 已添加到日更: {result.get('title', '无标题')}")
                             else:
                                 send_telegram_message(chat_id, f"✅ Added to daily digest: {result.get('title', 'Untitled')}")
-                        elif result.get('type') == 'sns':
+                        
+                        if result.get('platforms'):
                             platform_results = result.get('platforms', [])
                             platforms_str = ", ".join(platform_results)
                             send_telegram_message(chat_id, f"✅ Added to SNS queues: {platforms_str}")
                         
                         updates_processed += 1
+                    else:
+                        logger.warning("No result returned from content_processor")
+                        send_telegram_message(chat_id, "❌ Unable to process your message")
                 except Exception as e:
-                    print(f"Error processing message: {e}")
+                    logger.error(f"Error processing message: {e}", exc_info=True)
                     send_telegram_message(chat_id, f"❌ Error processing your message: {str(e)}")
 
     
     # Save the new update ID if we processed any updates
     if new_update_id > last_update_id:
+        logger.info(f"Saving new update ID: {new_update_id}")
         save_last_update_id(new_update_id)
     
+    logger.info(f"Processed {updates_processed} updates")
     return updates_processed > 0
 
 def main():
@@ -194,6 +220,7 @@ def main():
                         help='Action to perform')
     
     args = parser.parse_args()
+    logger.info(f"Starting with action: {args.action}")
     
     if args.action == 'process':
         # Regular processing of new messages
@@ -201,16 +228,19 @@ def main():
     
     elif args.action == 'create_daily':
         # Create daily entry if it doesn't exist
-        create_daily_entry()
+        result = create_daily_entry()
+        logger.info(f"Daily entry creation result: {result}")
     
     elif args.action == 'process_queues':
-        # Process the SNS queues (preserved functionality)
-        process_sns_queues()
+        # Process the SNS queues
+        result = process_sns_queues()
+        logger.info(f"Queue processing result: {result}")
     
     elif args.action == 'list_queues':
-        # List the contents of the queues (preserved functionality)
+        # List the contents of the queues
         list_queues()
     
+    logger.info(f"Completed action: {args.action}")
     # Always return success to avoid GitHub Actions failures
     return 0
 
