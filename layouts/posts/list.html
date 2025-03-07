@@ -1,6 +1,6 @@
 {{ define "main" }}
 <header class="page-header">
-  <h1>Blog</h1>
+  <h1>博客</h1>
 </header>
 
 <!-- Get all pages in this section and sort in reverse chronological order -->
@@ -19,12 +19,7 @@
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
           
-          <!-- Display date -->
-          <div class="blog-entry-date">
-            {{ .Date.Format "January 2, 2006" }}
-          </div>
-          
-          <!-- Display content preview -->
+          <!-- Display summary -->
           <div class="blog-entry-content">
             {{ with .Summary }}
               {{ . | safeHTML }}
@@ -39,20 +34,20 @@
     {{ if or $paginator.HasPrev $paginator.HasNext }}
     <div class="pagination">
       {{ if $paginator.HasPrev }}
-      <a href="{{ $paginator.Prev.URL }}" class="prev">Previous</a>
+      <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
       {{ end }}
       
-      <span class="page-number">Page {{ $paginator.PageNumber }} of {{ $paginator.TotalPages }}</span>
+      <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
       
       {{ if $paginator.HasNext }}
-      <a href="{{ $paginator.Next.URL }}" class="next">Next</a>
+      <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
       {{ end }}
     </div>
     {{ end }}
   
   {{ else }}
     <div class="empty-list-message">
-      <p>No blog posts yet.</p>
+      <p>暂无博客文章</p>
     </div>
   {{ end }}
 </div>
