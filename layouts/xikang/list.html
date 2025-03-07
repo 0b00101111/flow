@@ -19,9 +19,9 @@
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
           
-          <!-- Display summary -->
+          <!-- Display full content -->
           <div class="xikang-entry-content">
-            {{ with .Summary }}
+            {{ with .Content }}
               {{ . | safeHTML }}
             {{ end }}
           </div>
@@ -47,7 +47,7 @@
   
   {{ else }}
     <div class="empty-list-message">
-      <p>还没吃上细糠</p>
+      <p>暂无细糠内容</p>
     </div>
   {{ end }}
 </div>
