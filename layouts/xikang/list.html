@@ -19,11 +19,6 @@
             <a href="{{ .Permalink }}">{{ .Title }}</a>
           </h2>
           
-          <!-- Display publication date -->
-          <div class="xikang-entry-date">
-            {{ .Date.Format "2006-01-02" }}
-          </div>
-          
           <!-- Display summary -->
           <div class="xikang-entry-content">
             {{ with .Summary }}
