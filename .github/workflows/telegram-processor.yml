@@ -61,7 +61,8 @@ jobs:
         run: |
           python scripts/telegram_handler.py --action $ACTION
 
-      - name: Commit changes
+      - name: Commit and push changes
+        id: commit
         run: |
           git config --global user.name "Flow Bot"
           git config --global user.email "bot@example.com"
@@ -86,11 +87,22 @@ jobs:
 
             git commit -m "$COMMIT_MSG"
             git push
+            echo "changes_made=true" >> $GITHUB_OUTPUT
           else
             echo "No changes to commit"
+            echo "changes_made=false" >> $GITHUB_OUTPUT
             # Make sure the workflow doesn't fail when there are no changes
             exit 0
           fi
+
+      # Trigger Cloudflare deployment if content was updated
+      - name: Trigger Cloudflare deployment workflow
+        if: steps.commit.outputs.changes_made == 'true'
+        run: |
+          # Trigger the cloudflare-pages workflow
+          gh workflow run cloudflare-pages.yml
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
   # Add a separate job for SNS processing that runs on schedule
   process-sns:
