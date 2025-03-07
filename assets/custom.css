@@ -4,7 +4,7 @@
 /* Custom font styles for Noto Serif SC */
 :root {
   --font-family-base: 'Noto Serif SC', serif;
-  --font-size-base: 14px; /* Adjust this to your preferred size */
+  --font-size-base: 14px; /* Adjusted from 18px to 16px */
 }
 
 /* Apply to all base elements */
@@ -23,9 +23,25 @@ body,
   font-family: var(--font-family-base);
 }
 
-/* Apply to all headings */
-h1, h2, h3, h4, h5, h6 {
+/* Apply to all headings with reduced sizes */
+h1 {
   font-family: var(--font-family-base);
+  font-size: 1.8em; /* Reduced heading size */
+}
+
+h2 {
+  font-family: var(--font-family-base);
+  font-size: 1.5em; /* Reduced heading size */
+}
+
+h3 {
+  font-family: var(--font-family-base);
+  font-size: 1.3em; /* Reduced heading size */
+}
+
+h4, h5, h6 {
+  font-family: var(--font-family-base);
+  font-size: 1.1em; /* Reduced heading size */
 }
 
 /* Adjust line height for better readability with Chinese characters */
@@ -33,12 +49,22 @@ h1, h2, h3, h4, h5, h6 {
   line-height: 1.8;
 }
 
-/* Adjust font size if needed */
+/* Adjust font size */
 body {
   font-size: var(--font-size-base);
 }
 
-/* Blog entry styles - matching daily entry styles */
+/* Make post titles smaller */
+.post-title {
+  font-size: 1.6em;
+}
+
+/* Make post meta info smaller */
+.post-meta {
+  font-size: 0.85em;
+}
+
+/* Blog entry styles */
 .blog-entries {
   margin-top: 2rem;
 }
@@ -70,6 +96,64 @@ body {
   margin-bottom: 0.75rem;
 }
 
-.blog-entry-content {
+.blog-entry-summary {
   line-height: 1.8;
+}
+
+/* Xikang (细糠) entry styles */
+.xikang-entries {
+  margin-top: 2rem;
+}
+
+.xikang-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.xikang-entry {
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 2rem;
+}
+
+.xikang-entry:last-child {
+  border-bottom: none;
+}
+
+.xikang-entry-title {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+}
+
+.xikang-entry-date {
+  font-size: 0.9em;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.75rem;
+}
+
+.xikang-entry-content {
+  line-height: 1.8;
+}
+
+/* Styling for media items within xikang entries */
+.media-item {
+  margin-bottom: 1.5rem;
+  padding-left: 1rem;
+  border-left: 3px solid rgba(0, 0, 0, 0.1);
+}
+
+.media-title {
+  font-weight: bold;
+  margin-bottom: 0.3rem;
+}
+
+.media-meta {
+  font-size: 0.85em;
+  color: rgba(0, 0, 0, 0.6);
+  margin-bottom: 0.5rem;
+}
+
+.media-comment {
+  font-style: italic;
 }
