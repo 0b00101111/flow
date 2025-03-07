@@ -80,6 +80,46 @@ def detect_language(text):
     else:
         return 'en'
 
+def format_reminder_message(untagged_thoughts):
+    """Format reminder message based on the language of each thought"""
+    if not untagged_thoughts:
+        return None
+    
+    # Group thoughts by language
+    en_thoughts = []
+    zh_thoughts = []
+    
+    for thought in untagged_thoughts:
+        language = thought.get("language", "zh")  # Default to Chinese
+        if language == "zh":
+            zh_thoughts.append(thought)
+        else:
+            en_thoughts.append(thought)
+    
+    # Create message parts
+    message_parts = []
+    
+    # Chinese reminders (priority)
+    if zh_thoughts:
+        zh_message = "🔔 *提醒：您有未标记的想法*\n\n"
+        for thought in zh_thoughts:
+            snippet = thought["content"][:50] + "..." if len(thought["content"]) > 50 else thought["content"]
+            zh_message += f"• {snippet}\n"
+        zh_message += "\n请为这些想法添加标签以进行处理。"
+        message_parts.append(zh_message)
+    
+    # English reminders
+    if en_thoughts:
+        en_message = "🔔 *Reminder: You have untagged thoughts*\n\n"
+        for thought in en_thoughts:
+            snippet = thought["content"][:50] + "..." if len(thought["content"]) > 50 else thought["content"]
+            en_message += f"• {snippet}\n"
+        en_message += "\nPlease tag these thoughts to process them."
+        message_parts.append(en_message)
+    
+    # Combine messages
+    return "\n\n---\n\n".join(message_parts)
+
 def ensure_directory_exists(filepath):
     """Ensure the directory for a file path exists"""
     directory = os.path.dirname(filepath)
