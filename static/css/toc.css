@@ -1,7 +1,7 @@
 /* TOC specific styles to position it outside the blog container */
 .article-toc-container {
   position: fixed !important;
-  left: 20px !important; /* Space from the left edge of the screen */
+  right: calc(50% + 440px) !important; /* Position relative to the blog container */
   top: 160px !important; /* Below the header - adjust as needed */
   width: 250px !important;
   height: auto !important;
@@ -28,6 +28,22 @@
   width: 100% !important;
 }
 
+/* Change the read more button color */
+.read-more-btn {
+  background: #A06AB4 !important;
+  color: white !important;
+  border: none !important;
+  padding: 0.5rem 1.5rem !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  font-size: 0.9rem !important;
+  transition: background 0.2s ease !important;
+}
+
+.read-more-btn:hover {
+  background: #8A4DA0 !important; /* Slightly darker on hover */
+}
+
 /* Responsive adjustment */
 @media (max-width: 1200px) {
   .article-toc-container {
@@ -40,7 +56,7 @@
     position: fixed !important;
     bottom: 20px !important;
     right: 20px !important;
-    background: #3182ce !important;
+    background: #A06AB4 !important; /* Match the read more button */
     color: white !important;
     padding: 10px !important;
     border-radius: 50% !important;
@@ -76,22 +92,30 @@
 
 /* Add some indication when TOC items are active */
 .article-toc a.active {
-  background-color: rgba(49, 130, 206, 0.1) !important;
-  color: #3182ce !important;
+  background-color: rgba(160, 106, 180, 0.1) !important; /* Match the purple theme */
+  color: #A06AB4 !important;
   font-weight: 600 !important;
-  border-left: 3px solid #3182ce !important;
+  border-left: 3px solid #A06AB4 !important;
   padding-left: calc(0.5rem - 3px) !important;
 }
 
 /* Dark mode support */
 @media (prefers-color-scheme: dark) {
   .article-toc a.active {
-    background-color: rgba(99, 179, 237, 0.1) !important;
-    color: #63b3ed !important;
-    border-left-color: #63b3ed !important;
+    background-color: rgba(180, 126, 200, 0.1) !important;
+    color: #B47EC8 !important; /* Lighter purple for dark mode */
+    border-left-color: #B47EC8 !important;
   }
 
   .toc-toggle {
-    background: #4299e1 !important;
+    background: #B47EC8 !important;
+  }
+
+  .read-more-btn {
+    background: #B47EC8 !important;
+  }
+
+  .read-more-btn:hover {
+    background: #A06AB4 !important;
   }
 }
