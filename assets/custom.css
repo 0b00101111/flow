@@ -96,50 +96,11 @@ body {
   border-bottom: none;
 }
 
-/* ===== Title and Heading Styles ===== */
-
-/* Remove underline from all blog entry titles and make them bold */
-.blog-entry-title {
+.blog-entry-title,
+.daily-entry-title,
+.xikang-entry-title {
   margin-top: 0;
   margin-bottom: 0.5rem;
-  font-size: 1.6em;
-  line-height: 1.3;
-}
-
-.blog-entry-title a {
-  text-decoration: none !important;
-  font-weight: 600;
-  color: #333;
-  transition: color 0.2s ease;
-}
-
-.blog-entry-title a:hover {
-  color: #3182ce;
-}
-
-/* Smaller heading styles for content within articles */
-.blog-entry-content h2 {
-  font-size: 1.3em !important;
-  margin-top: 1.5em !important;
-  margin-bottom: 0.75em !important;
-  font-weight: 500 !important;
-  color: #444;
-  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  padding-bottom: 0.3em;
-}
-
-.blog-entry-content h3 {
-  font-size: 1.15em !important;
-  margin-top: 1.3em !important;
-  margin-bottom: 0.6em !important;
-  font-weight: 500 !important;
-  color: #555;
-}
-
-.blog-entry-content h4 {
-  font-size: 1.05em !important;
-  font-weight: 500 !important;
-  color: #666;
 }
 
 .blog-entry-date,
@@ -164,7 +125,7 @@ body {
   color: rgba(0, 0, 0, 0.5);
 }
 
-/* ===== Blog Container with TOC ===== */
+/* Blog Container with TOC */
 .blog-container {
   display: flex;
   gap: 3rem;
@@ -172,14 +133,12 @@ body {
   position: relative;
 }
 
-/* TOC Container */
 .article-toc-container {
   flex: 0 0 250px;
   position: relative;
   height: 100%;
 }
 
-/* TOC itself */
 .article-toc {
   background: rgba(0, 0, 0, 0.03);
   border-radius: 8px;
@@ -243,11 +202,52 @@ body {
   padding-left: 0.5rem;
 }
 
-/* Main content area */
 .blog-content {
   flex: 1;
   min-width: 0; /* Prevents content from overflowing */
   max-width: 100%;
+}
+
+/* Title and Heading Styles */
+.blog-entry-title {
+  font-size: 1.6em;
+  line-height: 1.3;
+}
+
+.blog-entry-title a {
+  text-decoration: none !important;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.2s ease;
+}
+
+.blog-entry-title a:hover {
+  color: #3182ce;
+}
+
+/* Smaller heading styles for content within articles */
+.blog-entry-content h2 {
+  font-size: 1.3em !important;
+  margin-top: 1.5em !important;
+  margin-bottom: 0.75em !important;
+  font-weight: 500 !important;
+  color: #444;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  padding-bottom: 0.3em;
+}
+
+.blog-entry-content h3 {
+  font-size: 1.15em !important;
+  margin-top: 1.3em !important;
+  margin-bottom: 0.6em !important;
+  font-weight: 500 !important;
+  color: #555;
+}
+
+.blog-entry-content h4 {
+  font-size: 1.05em !important;
+  font-weight: 500 !important;
+  color: #666;
 }
 
 /* Summary and expand functionality */
@@ -438,7 +438,7 @@ body {
   background-image: url(data:image/svg+xml;base64,PHN2ZyBjbGFzcz0iaWNvbiIgdmlld0JveD0iMCAwIDEwMjQgMTAyNCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB3aWR0aD0iMzIiIGhlaWdodD0iMzIiPjxwYXRoIGQ9Ik05MDguMSAzNTMuMWwtMjUzLjktMzYuOUw1NDAuNyA4Ni4xYy0zLjEtNi4zLTguMi0xMS40LTE0LjUtMTQuNS0xNS44LTcuOC0zNS0xLjMtNDIuOSAxNC41TDM2OS44IDMxNi4ybC0yNTMuOSAzNi45Yy03IDEtMTMuNCA0LjMtMTguMyA5LjMtMTIuMyAxMi43LTEyLjEgMzIuOS42IDQ1LjNsMTgzLjcgMTc5LjEtNDMuNCAyNTIuOWMtMS4yIDYuOS0uMSAxNC4xIDMuMiAyMC4zIDguMiAxNS42IDI3LjYgMjEuNyA0My4yIDEzLjRMNTEyIDc1NGwyMjcuMSAxMTkuNGM2LjIgMy4zIDEzLjQgNC40IDIwLjMgMy4yIDE3LjQtMyAyOS4xLTE5LjUgMjYuMS0zNi45bC00My40LTI1Mi45IDE4My43LTE3OS4xYzUtNC45IDguMy0xMS4zIDkuMy0xOC4zIDIuNy0xNy41LTkuNS0zMy43LTI3LTM2LjN6IiBmaWxsPSIjZjk5YjAxIi8+PC9zdmc+);
 }
 
-/* ===== Pagination ===== */
+/* Pagination styling */
 .pagination {
   display: flex;
   justify-content: center;
