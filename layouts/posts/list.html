@@ -4,14 +4,26 @@
 </header>
 
 <style>
-  /* Direct TOC styling */
+  /* Main layout with flexbox */
+  .page-layout {
+    display: flex;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    position: relative;
+  }
+  
   .article-toc-container {
-    position: fixed;
-    right: calc(50% + 440px);
-    top: 160px;
     width: 250px;
-    height: auto;
-    z-index: 90;
+    margin-right: 30px;
+    position: sticky;
+    top: 160px;
+    align-self: flex-start;
+    height: fit-content;
+  }
+  
+  .blog-container {
+    width: 680px;
   }
   
   .article-toc {
@@ -31,10 +43,21 @@
     background: #8A4DA0 !important;
   }
   
-  /* Mobile styles */
-  @media (max-width: 1200px) {
+  /* Responsive styling */
+  @media (max-width: 1000px) {
+    .page-layout {
+      flex-direction: column;
+    }
+    
     .article-toc-container {
       display: none;
+      width: 100%;
+      margin-right: 0;
+      margin-bottom: 20px;
+    }
+    
+    .blog-container {
+      width: 100%;
     }
     
     .toc-toggle {
@@ -72,7 +95,16 @@
     }
   }
   
-  /* Dark mode */
+  /* Active TOC item styling */
+  .article-toc a.active {
+    background-color: rgba(160, 106, 180, 0.1);
+    color: #A06AB4;
+    font-weight: 600;
+    border-left: 3px solid #A06AB4;
+    padding-left: calc(0.5rem - 3px);
+  }
+  
+  /* Dark mode support */
   @media (prefers-color-scheme: dark) {
     .article-toc {
       background: rgba(255, 255, 255, 0.05);
@@ -85,6 +117,16 @@
     .read-more-btn:hover {
       background: #A06AB4 !important;
     }
+    
+    .toc-toggle.active + .article-toc-container {
+      background: #222;
+    }
+    
+    .article-toc a.active {
+      background-color: rgba(180, 126, 200, 0.1);
+      color: #B47EC8;
+      border-left-color: #B47EC8;
+    }
   }
 </style>
 
@@ -94,99 +136,102 @@
 <!-- Apply pagination -->
 {{ $paginator := .Paginate $pages }}
 
-<!-- TOC Toggle Button for Mobile -->
+<!-- Mobile TOC toggle button -->
 <div class="toc-toggle" onclick="toggleToc()">🗂</div>
 
-<!-- Table of Contents (sticky) -->
-<aside class="article-toc-container">
-  <nav class="article-toc" id="toc-nav">
-    <h2>文章目录</h2>
-    <ul>
-      {{ range $paginator.Pages }}
-      <li>
-        <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
-        <span class="toc-date">{{ .Date.Format "2006-01-02" }}</span>
-      </li>
-      {{ end }}
-    </ul>
-  </nav>
-</aside>
-
-<div class="blog-container">
-  <!-- Main content area -->
-  <main class="blog-content">
-    <div class="blog-entries">
-      {{ if gt (len $paginator.Pages) 0 }}
-        <ul class="blog-list">
-          {{ range $paginator.Pages }}
-          <li id="{{ .Title | urlize }}" class="blog-entry">
-            <article class="collapsible-article">
-              <h1 class="blog-entry-title">
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-              </h1>
-              
-              <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
-              
-              <!-- Display summary (truncated) -->
-              <div class="blog-entry-summary">
-                {{ $content := .Content }}
-                {{ $contentLength := len $content }}
-                {{ $displayContent := $content }}
-                {{ $needsEllipsis := false }}
-                
-                {{ if gt $contentLength 800 }}
-                  {{ $displayContent = substr $content 0 800 }}
-                  {{ $needsEllipsis = true }}
-                {{ end }}
-                
-                {{ $displayContent | safeHTML }}
-                {{ if $needsEllipsis }}...{{ end }}
-                <div class="summary-fade"></div>
-              </div>
-              
-              <!-- Display full content (initially hidden) -->
-              <div class="blog-entry-content hidden">
-                {{ with .Content }}
-                  {{ . | safeHTML }}
-                {{ end }}
-                
-                <!-- Back to top link -->
-                <div class="back-to-top">
-                  <a href="#top">↑ 返回顶部</a>
-                </div>
-              </div>
-              
-              <!-- Read more / Collapse button -->
-              <div class="read-more-container">
-                <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
-              </div>
-            </article>
-          </li>
-          {{ end }}
-        </ul>
-
-        <!-- Pagination links -->
-        {{ if or $paginator.HasPrev $paginator.HasNext }}
-        <div class="pagination">
-          {{ if $paginator.HasPrev }}
-          <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
-          {{ end }}
-          
-          <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-          
-          {{ if $paginator.HasNext }}
-          <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
-          {{ end }}
-        </div>
+<!-- Flex layout container -->
+<div class="page-layout">
+  <!-- TOC navigation -->
+  <aside class="article-toc-container">
+    <nav class="article-toc" id="toc-nav">
+      <h2>文章目录</h2>
+      <ul>
+        {{ range $paginator.Pages }}
+        <li>
+          <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+          <span class="toc-date">{{ .Date.Format "2006-01-02" }}</span>
+        </li>
         {{ end }}
-      
-      {{ else }}
-        <div class="empty-list-message">
-          <p>暂无博客文章</p>
-        </div>
-      {{ end }}
-    </div>
-  </main>
+      </ul>
+    </nav>
+  </aside>
+
+  <!-- Main blog container -->
+  <div class="blog-container">
+    <main class="blog-content">
+      <div class="blog-entries">
+        {{ if gt (len $paginator.Pages) 0 }}
+          <ul class="blog-list">
+            {{ range $paginator.Pages }}
+            <li id="{{ .Title | urlize }}" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h1>
+                
+                <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
+                
+                <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
+                <div class="blog-entry-summary">
+                  {{ $content := .Content }}
+                  {{ $contentLength := len $content }}
+                  {{ $displayContent := $content }}
+                  {{ $needsEllipsis := false }}
+                  
+                  {{ if gt $contentLength 800 }}
+                    {{ $displayContent = substr $content 0 800 }}
+                    {{ $needsEllipsis = true }}
+                  {{ end }}
+                  
+                  {{ $displayContent | safeHTML }}
+                  {{ if $needsEllipsis }}...{{ end }}
+                  <div class="summary-fade"></div>
+                </div>
+                
+                <!-- Display full content (initially hidden) -->
+                <div class="blog-entry-content hidden">
+                  {{ with .Content }}
+                    {{ . | safeHTML }}
+                  {{ end }}
+                  
+                  <!-- Back to top link -->
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                <!-- Read more / Collapse button -->
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            {{ end }}
+          </ul>
+
+          <!-- Pagination links -->
+          {{ if or $paginator.HasPrev $paginator.HasNext }}
+          <div class="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+            {{ end }}
+            
+            <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
+            
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+            {{ end }}
+          </div>
+          {{ end }}
+        
+        {{ else }}
+          <div class="empty-list-message">
+            <p>暂无博客文章</p>
+          </div>
+        {{ end }}
+      </div>
+    </main>
+  </div>
 </div>
 
 <!-- JavaScript for expanding/collapsing articles -->
