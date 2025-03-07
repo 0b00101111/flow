@@ -39,12 +39,20 @@
               
               <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
               
-              <!-- Display summary (truncated) -->
+              <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
               <div class="blog-entry-summary">
                 {{ $content := .Content }}
-                {{ $truncated := cond (gt (len $content) 800) (slicestr $content 0 800) $content }}
-                {{ $truncated | safeHTML }}
-                {{ if gt (len $content) 800 }}...{{ end }}
+                {{ $contentLength := len $content }}
+                {{ $displayContent := $content }}
+                {{ $needsEllipsis := false }}
+                
+                {{ if gt $contentLength 800 }}
+                  {{ $displayContent = substr $content 0 800 }}
+                  {{ $needsEllipsis = true }}
+                {{ end }}
+                
+                {{ $displayContent | safeHTML }}
+                {{ if $needsEllipsis }}...{{ end }}
                 <div class="summary-fade"></div>
               </div>
               
