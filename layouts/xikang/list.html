@@ -1,0 +1,59 @@
+{{ define "main" }}
+<header class="page-header">
+  <h1>细糠</h1>
+</header>
+
+<!-- Get all pages in this section and sort in reverse chronological order -->
+{{ $pages := .Pages.ByDate.Reverse }}
+
+<!-- Apply pagination -->
+{{ $paginator := .Paginate $pages }}
+
+<div class="xikang-entries">
+  {{ if gt (len $paginator.Pages) 0 }}
+    <ul class="xikang-list">
+      {{ range $paginator.Pages }}
+      <li class="xikang-entry">
+        <article>
+          <h2 class="xikang-entry-title">
+            <a href="{{ .Permalink }}">{{ .Title }}</a>
+          </h2>
+          
+          <!-- Display publication date -->
+          <div class="xikang-entry-date">
+            {{ .Date.Format "2006-01-02" }}
+          </div>
+          
+          <!-- Display summary -->
+          <div class="xikang-entry-content">
+            {{ with .Summary }}
+              {{ . | safeHTML }}
+            {{ end }}
+          </div>
+        </article>
+      </li>
+      {{ end }}
+    </ul>
+
+    <!-- Pagination links -->
+    {{ if or $paginator.HasPrev $paginator.HasNext }}
+    <div class="pagination">
+      {{ if $paginator.HasPrev }}
+      <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+      {{ end }}
+      
+      <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
+      
+      {{ if $paginator.HasNext }}
+      <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+      {{ end }}
+    </div>
+    {{ end }}
+  
+  {{ else }}
+    <div class="empty-list-message">
+      <p>暂无细糠内容</p>
+    </div>
+  {{ end }}
+</div>
+{{ end }}
