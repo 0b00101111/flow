@@ -9,7 +9,8 @@ from pathlib import Path
 
 # Import local modules
 from utils import get_last_update_id, save_last_update_id, send_telegram_message
-from content_processor import process_daily_entry, create_daily_entry
+from content_processor import process_content, create_daily_entry
+from sns_manager import process_sns_queues  # Preserving SNS functionality
 
 # Configuration
 BOT_TOKEN = os.environ.get('TELEGRAM_BOT_TOKEN')
@@ -24,6 +25,43 @@ def get_updates(offset=None):
     
     response = requests.get(url, params=params)
     return response.json()
+
+def list_queues():
+    """List all queues and their content."""
+    try:
+        with open('data/queues.json', 'r') as f:
+            queues = json.load(f)
+        
+        queue_contents = []
+        
+        # Format Threads queue
+        if queues.get("threads"):
+            threads_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["threads"])]
+            queue_contents.append(f"Threads Queue ({len(queues['threads'])} items):\n" + "\n".join(threads_items))
+        else:
+            queue_contents.append("Threads Queue: Empty")
+        
+        # Format Mastodon queue
+        if queues.get("mastodon"):
+            mastodon_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["mastodon"])]
+            queue_contents.append(f"Mastodon Queue ({len(queues['mastodon'])} items):\n" + "\n".join(mastodon_items))
+        else:
+            queue_contents.append("Mastodon Queue: Empty")
+        
+        # Format Telegram queue
+        if queues.get("telegram"):
+            telegram_items = [f"  {i+1}. {item['text'][:50]}..." for i, item in enumerate(queues["telegram"])]
+            queue_contents.append(f"Telegram Queue ({len(queues['telegram'])} items):\n" + "\n".join(telegram_items))
+        else:
+            queue_contents.append("Telegram Queue: Empty")
+        
+        # Send the queue contents to the authorized user
+        message = "📋 **Current SNS Queues**\n\n" + "\n\n".join(queue_contents)
+        send_telegram_message(AUTHORIZED_USER_ID, message)
+        return True
+    except Exception as e:
+        print(f"Error listing queues: {e}")
+        return False
 
 def process_telegram_messages():
     """Process new Telegram messages"""
@@ -52,35 +90,95 @@ def process_telegram_messages():
             if user_id != AUTHORIZED_USER_ID:
                 continue
             
-            # Process message text
+            # Process message text or commands
             if "text" in message:
                 text = message["text"]
                 
-                # Process message as daily entry
+                # Handle queue commands
+                if text.startswith('!'):
+                    command = text[1:].strip().lower()
+                    
+                    if command == "queues":
+                        list_queues()
+                        send_telegram_message(chat_id, "Queues listed above.")
+                        updates_processed += 1
+                        continue
+                    
+                    elif command.startswith("queue_"):
+                        platform = command[6:]  # Extract platform name
+                        if platform in ["threads", "mastodon", "telegram"]:
+                            # Load queues
+                            try:
+                                with open('data/queues.json', 'r') as f:
+                                    queues = json.load(f)
+                                
+                                # Format items in the queue
+                                if platform in queues and queues[platform]:
+                                    items = [f"{i+1}. {item['text'][:50]}..." for i, item in enumerate(queues[platform])]
+                                    message = f"{platform.capitalize()} Queue ({len(queues[platform])} items):\n" + "\n".join(items)
+                                else:
+                                    message = f"{platform.capitalize()} Queue is empty."
+                                
+                                send_telegram_message(chat_id, message)
+                            except Exception as e:
+                                send_telegram_message(chat_id, f"Error listing {platform} queue: {str(e)}")
+                        else:
+                            send_telegram_message(chat_id, f"Unknown platform: {platform}")
+                        updates_processed += 1
+                        continue
+                    
+                    elif command.startswith("dequeue_"):
+                        platform = command[8:]  # Extract platform name
+                        if platform in ["threads", "mastodon", "telegram"]:
+                            # Load queues
+                            try:
+                                with open('data/queues.json', 'r') as f:
+                                    queues = json.load(f)
+                                
+                                # Remove first item if queue isn't empty
+                                if platform in queues and queues[platform]:
+                                    removed = queues[platform].pop(0)
+                                    with open('data/queues.json', 'w') as f:
+                                        json.dump(queues, f, indent=2)
+                                    send_telegram_message(chat_id, f"Removed first item from {platform} queue:\n{removed['text'][:100]}...")
+                                else:
+                                    send_telegram_message(chat_id, f"{platform.capitalize()} Queue is already empty.")
+                            except Exception as e:
+                                send_telegram_message(chat_id, f"Error dequeuing from {platform}: {str(e)}")
+                        else:
+                            send_telegram_message(chat_id, f"Unknown platform: {platform}")
+                        updates_processed += 1
+                        continue
+                    
+                    else:
+                        send_telegram_message(chat_id, f"Unknown command: {command}")
+                        updates_processed += 1
+                        continue
+
+                # Process regular content as daily entry or SNS post
                 try:
-                    result = process_daily_entry(message)
+                    result = process_content(message)
                     if result:
-                        print(f"Processed daily entry with result: {result}")
+                        print(f"Processed message with result: {result}")
                         # Check if a file was created
                         if 'file' in result:
                             print(f"Created/updated file: {result['file']}")
-                            # Print the contents of the file to check it
-                            try:
-                                with open(result['file'], 'r') as f:
-                                    print(f"File contents:\n{f.read()}")
-                            except Exception as e:
-                                print(f"Error reading file: {e}")
-                                
+                            
                         # Send a confirmation message back to the user
-                        if result.get('language') == 'zh':
-                            send_telegram_message(chat_id, f"✅ 已添加到日更: {result.get('title', '无标题')}")
-                        else:
-                            send_telegram_message(chat_id, f"✅ Added to daily digest: {result.get('title', 'Untitled')}")
+                        if result.get('type') == 'daily':
+                            if result.get('language') == 'zh':
+                                send_telegram_message(chat_id, f"✅ 已添加到日更: {result.get('title', '无标题')}")
+                            else:
+                                send_telegram_message(chat_id, f"✅ Added to daily digest: {result.get('title', 'Untitled')}")
+                        elif result.get('type') == 'sns':
+                            platform_results = result.get('platforms', [])
+                            platforms_str = ", ".join(platform_results)
+                            send_telegram_message(chat_id, f"✅ Added to SNS queues: {platforms_str}")
                         
                         updates_processed += 1
                 except Exception as e:
-                    print(f"Error processing daily entry: {e}")
-                    send_telegram_message(chat_id, f"❌ Error adding to daily digest: {str(e)}")
+                    print(f"Error processing message: {e}")
+                    send_telegram_message(chat_id, f"❌ Error processing your message: {str(e)}")
 
     
     # Save the new update ID if we processed any updates
@@ -90,9 +188,9 @@ def process_telegram_messages():
     return updates_processed > 0
 
 def main():
-    parser = argparse.ArgumentParser(description='Process Telegram messages for daily entries')
+    parser = argparse.ArgumentParser(description='Process Telegram messages')
     parser.add_argument('--action', type=str, default='process', 
-                        choices=['process', 'create_daily'],
+                        choices=['process', 'create_daily', 'process_queues', 'list_queues'],
                         help='Action to perform')
     
     args = parser.parse_args()
@@ -104,6 +202,14 @@ def main():
     elif args.action == 'create_daily':
         # Create daily entry if it doesn't exist
         create_daily_entry()
+    
+    elif args.action == 'process_queues':
+        # Process the SNS queues (preserved functionality)
+        process_sns_queues()
+    
+    elif args.action == 'list_queues':
+        # List the contents of the queues (preserved functionality)
+        list_queues()
     
     # Always return success to avoid GitHub Actions failures
     return 0
