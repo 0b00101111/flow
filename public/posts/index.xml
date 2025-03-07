@@ -1,33 +1,19 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>Posts on 小径分岔的兔子洞</title>
-    <link>http://localhost:1313/posts/</link>
-    <description>Recent content in Posts on 小径分岔的兔子洞</description>
+    <title>博客 on 小径分岔的兔子洞</title>
+    <link>https://daily.shuang.blog/posts/</link>
+    <description>Recent content in 博客 on 小径分岔的兔子洞</description>
     <generator>Hugo</generator>
-    <language>zh</language>
-    <lastBuildDate>Wed, 05 Mar 2025 23:21:20 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <language>zh-cn</language>
+    <lastBuildDate>Mon, 09 Oct 2023 10:00:00 +0800</lastBuildDate>
+    <atom:link href="https://daily.shuang.blog/posts/index.xml" rel="self" type="application/rss+xml" />
     <item>
-      <title>This is a test blog post #BLOG::post</title>
-      <link>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</link>
-      <pubDate>Wed, 05 Mar 2025 23:21:20 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2025/03/this-is-a-test-blog-post-%23blogpost/</guid>
-      <description>&lt;p&gt;This is a test blog post #BLOG::post&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Debug Post</title>
-      <link>http://localhost:1313/blog/2025/03/debug-post/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2025/03/debug-post/</guid>
-      <description>&lt;p&gt;This is a debug post to test the Paper theme.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title>Test article</title>
-      <link>http://localhost:1313/blog/2025/03/test-article/</link>
-      <pubDate>Wed, 05 Mar 2025 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/blog/2025/03/test-article/</guid>
-      <description>&lt;p&gt;This is an test article.&lt;/p&gt;</description>
+      <title>第一次去尼泊尔</title>
+      <link>https://daily.shuang.blog/posts/2023/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8E%BB%E5%B0%BC%E6%B3%8A%E5%B0%94/</link>
+      <pubDate>Mon, 09 Oct 2023 10:00:00 +0800</pubDate>
+      <guid>https://daily.shuang.blog/posts/2023/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8E%BB%E5%B0%BC%E6%B3%8A%E5%B0%94/</guid>
+      <description>&lt;p&gt;这次国庆长假，我去了趟尼泊尔，是跟着一个徒步团去的。尽管交通时间远远超过实际徒步时间，我们依然觉得非常值。尼泊尔的风景太美了，人文也很值得体验。&lt;/p&gt;&#xA;&lt;h2 id=&#34;探险家的失落&#34;&gt;探险家的失落&lt;/h2&gt;&#xA;&lt;p&gt;我们是从成都飞加德满都进入尼泊尔的。1 这趟航班最酷的地方在于：它贴着喜马拉雅山脉飞了一段，产生了一个看珠峰的绝佳位置。&lt;/p&gt;&#xA;&lt;p&gt;眼下从国内直飞加德满都的城市好像只有成都和广州。如果从广州飞，会从很南的地方飞临加德满都，离珠峰相当远。但从广州的航班上观看珠峰，即使能看到，也远没有成都航班的位置好。&#xA;&lt;img src=&#34;https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/chengdu2LKTMOverEverest.png&#34; alt=&#34;成都到加德满都，看珠峰很近&#34;&gt;&#xA;&lt;img src=&#34;https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/guangzhou2KTMFarFromEverest.png&#34; alt=&#34;广州到加德满都，珠峰有点远&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;珠峰出现在飞机右侧的那一刻，我想到了星野道夫。&lt;/p&gt;&#xA;&lt;p&gt;去尼泊尔之前，我正在看知名生态摄影师星野道夫的书：《旅行之木》。其中一小篇写到他第一次去南美的时候，一觉醒来，脚下就已经是南美的大地。他突然感到很失落。对探险家来讲，世界好像是个无限的宝藏。飞机旅行的速度太快，毁掉了这种小心翼翼、充满等待和未知的探索的感觉。睡一觉就到了南美，多睡几觉就走遍了全世界。就像攒了很久的零花钱一下子就花掉了，本应该“宽广深邃”的世界突然变得很“有限”，于是他怅然若失。&lt;/p&gt;&#xA;&lt;p&gt;我对珠峰也有点那种捂着舍不得拿出来看的期待。十几年前在支教的时候，我们哪些支教老师都是些刚毕业的少年。多数人对未来的想象都是找一份喜欢的工作。有要考公务员的，有要去继续读研的，有准备申请领事馆的工作的，都是些很务实的计划。但有一天我从邻县的某支教老师那里听到了完全不一样的答案：她计划支教结束后去爬珠峰。&lt;/p&gt;&#xA;&lt;p&gt;她后来有没有去爬我就不知道了。我只清楚记得我当时的想法：我怕是一辈子都不会想去爬珠峰吧。如果能抗住高反的话，我也许可以努力一下，走到珠峰大本营去看一眼它就好了。虽然山就在那里，人为什么非得爬上去呢？&lt;/p&gt;&#xA;&lt;p&gt;快到尼泊尔的时候，突然我就这样毫不费力地看到了珠峰。它就在那里，毫无铺垫就突然出现了。（虽然经别人指点才明白哪座山头是它）。&#xA;&lt;img src=&#34;https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/Everest.jpg&#34; alt=&#34;珠峰！&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;太美了。&lt;/p&gt;&#xA;&lt;p&gt;还真是有一点奇怪的失落。不能这么轻松就过去了，我回头还是要再去一趟，去走一次EBC徒步，去到珠峰大本营，从那里正式仰望一下珠峰。&lt;/p&gt;&#xA;&lt;h2 id=&#34;干净与不干净&#34;&gt;干净与不干净&lt;/h2&gt;&#xA;&lt;p&gt;尼泊尔有一点很神奇。有时候它的干净程度令人惊叹，有时候又遍地粪便，几乎无处下脚。&lt;/p&gt;&#xA;&lt;p&gt;从加德满都坐车去博卡拉的路上，在安娜普纳山区徒步时，即使最偏僻的厕所，都很难闻到异味。往往见到的是白色陶瓷的蹲厕。徒步人的鞋子上往往很多泥土，但我这次见过的全部厕所，就连旁边脚踩的地方，都是冲洗得干干净净的。今年夏天去四姑娘山，以前在云南的山区，往往遇到那种旱厕，不可描述。在尼泊尔完全不用担心这个。&lt;/p&gt;&#xA;&lt;p&gt;然而在加德满都杜巴广场，在游客偷懒简称为“猴庙”的斯瓦扬布纳特（Swayambhunath）神庙，在游客很少去的闹市中的佛塔周围，有硬有软，黄的黑的白的，完整的，被碾压过的，各式各样的粪便，人们却熟视无睹。&lt;/p&gt;&#xA;&lt;p&gt;前一分钟，我还在拍晨风穿过树枝，阳光下美丽的加德满都老城。下一分钟，一只过分热情的大狗踮起脚来，两只前爪在胸前印下两个黄色的爪印。我还以为是泥巴，低头闻了下，那味道比我出门10天才回家后的猫砂盆还臭。&lt;/p&gt;&#xA;&lt;p&gt;后来我想明白了。尼泊尔人其实很注意人的卫生。早上看到路边等着上学的孩童，都是穿得干干净净的。（当然晚上就未必，因为街上灰实在太大了。一天下来别说衣服了，路人皮肤上都是灰尘。）但他们不太在意动物的卫生。在大街和神庙这样的共同场所，猴子，鸽子，大狗，大牛，都是自由闲逛的。动物逛到哪拉到哪，也不固定时候，如果不把动物赶走，我想了想好像也没有什么好办法。&lt;/p&gt;&#xA;&lt;p&gt;尼泊尔的人口中大多数人信仰印度教，所以在尼泊尔也经常可以看到大牛在自由流浪，比第欧根尼还超凡潇洒。人口中还有小部分信仰佛教。持这些信仰的人们往往尊重动物，肯定不会像其他地方一样，把动物赶走或者圈养起来。&lt;/p&gt;&#xA;&lt;h2 id=&#34;幸逢因陀罗节&#34;&gt;幸逢因陀罗节&lt;/h2&gt;&#xA;&lt;p&gt;去博卡拉的路上，也没有信号，&lt;/p&gt;&#xA;&lt;p&gt;我对印度教的印象只有那个长相很可爱的象神 Ganesha。好多年前看过一个后来很有争议的广告，设置的场景是世界不同宗教的神们聚在一起吃烧烤。&lt;/p&gt;&#xA;&lt;p&gt;一起吃烧烤的有：宙斯，阿佛洛狄忒，象神 Ganesha，耶稣，佛祖，摩西，观音，外星人👽，还有好多我不认识的神。进来一个人说，神啊，感谢你赐予我的羊肉。桌上每个神都回答：“别客气”。&lt;/p&gt;&#xA;&lt;p&gt;佛祖突然开玩笑说： So, should we address the elephant in the room?&lt;/p&gt;&#xA;&lt;p&gt;象神立刻就恼了，食指（和象鼻子一起）翘起，瞪着佛陀说： Not funny 2500 years ago! Not funny now!&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/Ganesha.png&#34; alt=&#34;象神 Ganesha&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;我没有不敬的意思，只觉得象神实在太可爱了。我还听过印度教里另一位动物形象的神：哈努曼 Hanuman。是一位神猴。加德满都的皇宫门口就有它的塑像。胡适等前代学者认为，神猴哈努曼就是西游记里孙大圣的原型。&lt;/p&gt;&#xA;&lt;p&gt;落地加德满都那个下午，我们逛完游客爱去的泰米尔区后，做了个事后看来很庆幸的决定：去加德满都杜巴广场。去了后才知道，我们刚好赶上了因陀罗节。&lt;/p&gt;&#xA;&lt;p&gt;&lt;img src=&#34;https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/Indrajatra.png&#34; alt=&#34;因陀罗节的三位主角&#34;&gt;&lt;/p&gt;&#xA;&lt;p&gt;这差不多是尼泊尔最盛大的节日。象神在这个节日也有出场。除了象神之外，广场另一端还有一个巨大的神像，是权力之神 Swet Bhairab。神像牙齿间伸出一根管子。后来我才知道，管子里会出来“圣酒”，民众都期盼能喝上圣酒，据说喝到可以祛病祈福。&lt;/p&gt;&#xA;&lt;p&gt;因陀罗节另一位主角，就是神秘的“活女神” Kumari 了。&lt;/p&gt;&#xA;&lt;p&gt;Kumari 是女神在凡间的化身。她们是经过严格的标准，从释迦族的幼女中挑选出来的。&lt;/p&gt;&#xA;&lt;p&gt;在更早的时候，尼泊尔有很多大大小小的王国，每个王国都会挑选自己的 Kumari。后来中央王室一统全国后，就只有加德满都有一位 Kumari 了。而现在尼泊尔已经不再是君主制国家，除了加德满都的 Kumari 外，各大城市也会有自己的 Kumari。&lt;/p&gt;&#xA;&lt;p&gt;加德满都的 Kumari 人们讨论得最多。她们还是幼女时被选中后，就会送到神庙之中生活，直到进入青春期时退休，多年都不能离开神庙。除了照顾自己的人以外，Kumari 很少见到外人。只在特殊节日从神庙的窗户中露面，供民众参拜。Kumari 见民众时不能有任何表情，因为据说不管是笑容还是其他表情，甚至小动作，都表示灾祸将降临到参拜的民众身上。&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>

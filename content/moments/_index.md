@@ -1,4 +1,0 @@
----
-title: "Moments"
-type: "moments"
----
