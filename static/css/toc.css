@@ -1,0 +1,41 @@
+/* TOC specific styles that override anything else */
+.blog-container {
+  display: block !important;
+  position: relative !important;
+}
+
+.article-toc-container {
+  position: absolute !important;
+  left: 0 !important;
+  top: 0 !important;
+  width: 250px !important;
+}
+
+.article-toc {
+  position: fixed !important;
+  top: 2rem !important;
+  width: 250px !important;
+  z-index: 100 !important;
+}
+
+.blog-content {
+  margin-left: 280px !important;
+}
+
+@media (max-width: 768px) {
+  .article-toc-container {
+    position: relative !important;
+    width: 100% !important;
+    margin-bottom: 2rem !important;
+  }
+
+  .article-toc {
+    position: relative !important;
+    top: 0 !important;
+    width: 100% !important;
+  }
+
+  .blog-content {
+    margin-left: 0 !important;
+  }
+}
