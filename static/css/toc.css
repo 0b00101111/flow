@@ -1,41 +1,97 @@
-/* TOC specific styles that override anything else */
-.blog-container {
-  display: block !important;
-  position: relative !important;
-}
-
+/* TOC specific styles to position it outside the blog container */
 .article-toc-container {
-  position: absolute !important;
-  left: 0 !important;
-  top: 0 !important;
+  position: fixed !important;
+  left: 20px !important; /* Space from the left edge of the screen */
+  top: 160px !important; /* Below the header - adjust as needed */
   width: 250px !important;
+  height: auto !important;
+  z-index: 90 !important; /* Below header but above content */
 }
 
 .article-toc {
-  position: fixed !important;
-  top: 2rem !important;
-  width: 250px !important;
-  z-index: 100 !important;
+  position: relative !important;
+  width: 100% !important;
+  max-height: calc(100vh - 200px) !important; /* Ensure it doesn't extend too far */
+  overflow-y: auto !important;
+}
+
+/* Make the blog container not adjust for the TOC */
+.blog-container {
+  display: block !important;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 680px !important; /* Match your theme's main content width */
 }
 
 .blog-content {
-  margin-left: 280px !important;
+  margin-left: 0 !important; /* Remove any margin that was pushing content */
+  width: 100% !important;
 }
 
-@media (max-width: 768px) {
+/* Responsive adjustment */
+@media (max-width: 1200px) {
   .article-toc-container {
-    position: relative !important;
-    width: 100% !important;
-    margin-bottom: 2rem !important;
+    display: none !important; /* Hide on smaller screens */
   }
 
-  .article-toc {
-    position: relative !important;
-    top: 0 !important;
-    width: 100% !important;
+  /* Add a button to toggle TOC visibility on mobile */
+  .toc-toggle {
+    display: block !important;
+    position: fixed !important;
+    bottom: 20px !important;
+    right: 20px !important;
+    background: #3182ce !important;
+    color: white !important;
+    padding: 10px !important;
+    border-radius: 50% !important;
+    width: 50px !important;
+    height: 50px !important;
+    text-align: center !important;
+    line-height: 30px !important;
+    z-index: 100 !important;
+    cursor: pointer !important;
+    font-size: 20px !important;
   }
 
-  .blog-content {
-    margin-left: 0 !important;
+  .toc-toggle.active + .article-toc-container {
+    display: block !important;
+    position: fixed !important;
+    left: 50% !important;
+    top: 50% !important;
+    transform: translate(-50%, -50%) !important;
+    width: 80% !important;
+    max-width: 350px !important;
+    height: 80% !important;
+    max-height: 500px !important;
+    background: white !important;
+    border-radius: 8px !important;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+    z-index: 101 !important;
+  }
+
+  .dark .toc-toggle.active + .article-toc-container {
+    background: #222 !important;
+  }
+}
+
+/* Add some indication when TOC items are active */
+.article-toc a.active {
+  background-color: rgba(49, 130, 206, 0.1) !important;
+  color: #3182ce !important;
+  font-weight: 600 !important;
+  border-left: 3px solid #3182ce !important;
+  padding-left: calc(0.5rem - 3px) !important;
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+  .article-toc a.active {
+    background-color: rgba(99, 179, 237, 0.1) !important;
+    color: #63b3ed !important;
+    border-left-color: #63b3ed !important;
+  }
+
+  .toc-toggle {
+    background: #4299e1 !important;
   }
 }

@@ -9,22 +9,25 @@
 <!-- Apply pagination -->
 {{ $paginator := .Paginate $pages }}
 
-<div class="blog-container">
-  <!-- Table of Contents (sticky) -->
-  <aside class="article-toc-container">
-    <nav class="article-toc" id="toc-nav">
-      <h2>文章目录</h2>
-      <ul>
-        {{ range $paginator.Pages }}
-        <li>
-          <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
-          <span class="toc-date">{{ .Date.Format "2006-01-02" }}</span>
-        </li>
-        {{ end }}
-      </ul>
-    </nav>
-  </aside>
+<!-- TOC Toggle Button for Mobile -->
+<div class="toc-toggle" onclick="toggleToc()">📑</div>
 
+<!-- Table of Contents (sticky) -->
+<aside class="article-toc-container">
+  <nav class="article-toc" id="toc-nav">
+    <h2>文章目录</h2>
+    <ul>
+      {{ range $paginator.Pages }}
+      <li>
+        <a href="#{{ .Title | urlize }}">{{ .Title }}</a>
+        <span class="toc-date">{{ .Date.Format "2006-01-02" }}</span>
+      </li>
+      {{ end }}
+    </ul>
+  </nav>
+</aside>
+
+<div class="blog-container">
   <!-- Main content area -->
   <main class="blog-content">
     <div class="blog-entries">
@@ -36,38 +39,38 @@
               <h1 class="blog-entry-title">
                 <a href="{{ .Permalink }}">{{ .Title }}</a>
               </h1>
-              
+
               <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
-              
+
               <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
               <div class="blog-entry-summary">
                 {{ $content := .Content }}
                 {{ $contentLength := len $content }}
                 {{ $displayContent := $content }}
                 {{ $needsEllipsis := false }}
-                
+
                 {{ if gt $contentLength 800 }}
                   {{ $displayContent = substr $content 0 800 }}
                   {{ $needsEllipsis = true }}
                 {{ end }}
-                
+
                 {{ $displayContent | safeHTML }}
                 {{ if $needsEllipsis }}...{{ end }}
                 <div class="summary-fade"></div>
               </div>
-              
+
               <!-- Display full content (initially hidden) -->
               <div class="blog-entry-content hidden">
                 {{ with .Content }}
                   {{ . | safeHTML }}
                 {{ end }}
-                
+
                 <!-- Back to top link -->
                 <div class="back-to-top">
                   <a href="#top">↑ 返回顶部</a>
                 </div>
               </div>
-              
+
               <!-- Read more / Collapse button -->
               <div class="read-more-container">
                 <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
@@ -83,15 +86,15 @@
           {{ if $paginator.HasPrev }}
           <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
           {{ end }}
-          
+
           <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-          
+
           {{ if $paginator.HasNext }}
           <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
           {{ end }}
         </div>
         {{ end }}
-      
+
       {{ else }}
         <div class="empty-list-message">
           <p>暂无博客文章</p>
@@ -104,49 +107,54 @@
 <!-- JavaScript for expanding/collapsing articles -->
 <script>
   function toggleArticle(button) {
-    const article = button.closest('.collapsible-article');
-    const summary = article.querySelector('.blog-entry-summary');
-    const content = article.querySelector('.blog-entry-content');
-    
-    if (content.classList.contains('hidden')) {
+    const article = button.closest(".collapsible-article");
+    const summary = article.querySelector(".blog-entry-summary");
+    const content = article.querySelector(".blog-entry-content");
+
+    if (content.classList.contains("hidden")) {
       // Expand
-      summary.style.display = 'none';
-      content.classList.remove('hidden');
-      button.textContent = '收起文章';
+      summary.style.display = "none";
+      content.classList.remove("hidden");
+      button.textContent = "收起文章";
     } else {
       // Collapse
-      summary.style.display = 'block';
-      content.classList.add('hidden');
-      button.textContent = '阅读全文';
-      
+      summary.style.display = "block";
+      content.classList.add("hidden");
+      button.textContent = "阅读全文";
+
       // Scroll back to article top
       const articleTop = article.getBoundingClientRect().top + window.pageYOffset;
-      window.scrollTo({top: articleTop - 20, behavior: 'smooth'});
+      window.scrollTo({top: articleTop - 20, behavior: "smooth"});
     }
   }
 
   // Active TOC highlighting
-  document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener("DOMContentLoaded", function() {
     const observer = new IntersectionObserver(entries => {
       entries.forEach(entry => {
-        const id = entry.target.getAttribute('id');
+        const id = entry.target.getAttribute("id");
         const tocLink = document.querySelector(`.article-toc a[href="#${id}"]`);
-        
+
         if (entry.isIntersecting) {
-          document.querySelectorAll('.article-toc a').forEach(link => {
-            link.classList.remove('active');
+          document.querySelectorAll(".article-toc a").forEach(link => {
+            link.classList.remove("active");
           });
           if (tocLink) {
-            tocLink.classList.add('active');
+            tocLink.classList.add("active");
           }
         }
       });
-    }, { threshold: 0.1, rootMargin: '-10% 0px -80% 0px' });
-    
+    }, { threshold: 0.1, rootMargin: "-10% 0px -80% 0px" });
+
     // Observe all blog entries
-    document.querySelectorAll('.blog-entry').forEach(entry => {
+    document.querySelectorAll(".blog-entry").forEach(entry => {
       observer.observe(entry);
     });
   });
+
+  // Toggle TOC visibility on mobile
+  function toggleToc() {
+    document.querySelector('.toc-toggle').classList.toggle('active');
+  }
 </script>
 {{ end }}
