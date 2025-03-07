@@ -1,4 +1,4 @@
-name: Telegram Thought Processor
+name: Telegram Captures Processor
 
 on:
   schedule:
@@ -13,8 +13,7 @@ on:
         type: choice
         options:
           - process
-          - reminder
-          - publish_digest
+          - create_daily
           - process_queues
           - list_queues
 
@@ -41,18 +40,14 @@ jobs:
       - name: Prepare directories
         run: |
           mkdir -p data
-          mkdir -p content/zh/posts
-          mkdir -p content/zh/thoughts
-          mkdir -p content/zh/daily
           mkdir -p content/posts
-          mkdir -p content/thoughts
           mkdir -p content/daily
+          mkdir -p content/xikang
 
           # Initialize JSON files if they don't exist
           [ -f data/queues.json ] || echo '{"threads":[],"telegram":[],"mastodon":[]}' > data/queues.json
-          [ -f data/untagged_thoughts.json ] || echo '[]' > data/untagged_thoughts.json
           [ -f data/last_update_id.txt ] || echo '0' > data/last_update_id.txt
-          [ -f data/config.json ] || echo '{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials":{}},"telegram":{"enabled":true,"post_windows":["08:00","13:00","20:00"],"credentials":{}},"mastodon":{"enabled":true,"post_windows":["09:00","15:00","21:00"],"credentials":{}}},"blog":{"daily_digest_time":"21:45","reminder_time":"21:45"}}' > data/config.json
+          [ -f data/config.json ] || echo '{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials":{}},"telegram":{"enabled":true,"post_windows":["08:00","13:00","20:00"],"credentials":{}},"mastodon":{"enabled":true,"post_windows":["09:00","15:00","21:00"],"credentials":{}}},"blog":{"daily_digest_time":"21:45"}}' > data/config.json
 
       - name: Run specified action
         env:
@@ -76,14 +71,13 @@ jobs:
           # Only commit if there are changes
           if [ -n "$(git status --porcelain)" ]; then
             # Customize commit message based on content changes
-            if git status --porcelain | grep -q "content/zh/posts"; then
-              BLOG_COUNT=$(git status --porcelain | grep "content/zh/posts" | wc -l)
+            if git status --porcelain | grep -q "content/posts"; then
+              BLOG_COUNT=$(git status --porcelain | grep "content/posts" | wc -l)
               COMMIT_MSG="📝 Added ${BLOG_COUNT} blog posts"
-            elif git status --porcelain | grep -q "content/zh/thoughts"; then
-              THOUGHT_COUNT=$(git status --porcelain | grep "content/zh/thoughts" | wc -l)
-              COMMIT_MSG="💭 Added ${THOUGHT_COUNT} thoughts"
-            elif git status --porcelain | grep -q "content/zh/daily"; then
-              COMMIT_MSG="📅 Added daily digest"
+            elif git status --porcelain | grep -q "content/daily"; then
+              COMMIT_MSG="📅 Added daily entry"
+            elif git status --porcelain | grep -q "content/xikang"; then
+              COMMIT_MSG="📑 Added to 细糠"
             elif git status --porcelain | grep -q "data/"; then
               COMMIT_MSG="🔄 Updated data files"
             else
