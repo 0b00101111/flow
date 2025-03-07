@@ -4,7 +4,7 @@ date: 2020-10-16T10:00:00+08:00
 draft: false
 ---
 
-![下头了](%E7%A5%9B%E9%AD%85)(![](https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/qumei.webp))
+![下头了](https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/qumei.webp)
 
 时隔多年再看《三体》，觉得不好看了，甚至看不下去。
 
