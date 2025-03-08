@@ -1,11 +1,5 @@
 {
   "threads": [],
   "telegram": [],
-  "mastodon": [
-    {
-      "text": "\u672c\u6765\u89c9\u5f97 YMCA \u633a\u597d\u542c\u7684\uff0c\u81ea\u4ece\u53d8\u6210\u5ddd\u666e\u548c\u9a6c\u65af\u514b\u7684\u6218\u6b4c\u540e\uff0c\u4e5f\u53d8\u6076\u5fc3\u4e86\u3002",
-      "message_id": "59",
-      "timestamp": "2025-03-07T15:33:38.996903"
-    }
-  ]
+  "mastodon": []
 }
