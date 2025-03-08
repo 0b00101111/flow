@@ -4,19 +4,25 @@
 </header>
 
 <style>
-  /* Reset blog container to ensure it keeps its width */
+  /* Create a wrapper for proper positioning */
+  .content-wrapper {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  /* Make blog container independent */
   .blog-container {
     width: 680px !important;
     margin: 0 auto !important;
-    padding: 0 !important;
     position: relative !important;
   }
   
-  /* Position TOC outside and to the left */
+  /* Position TOC completely outside the blog container */
   .article-toc-container {
     position: absolute !important;
     width: 250px !important;
-    right: calc(100% + 100px) !important; /* 100px gap between TOC and content */
+    left: calc(50% - 440px) !important; /* Center - half blog width - TOC width - gap */
     top: 0 !important; /* Align with top of blog container */
   }
   
@@ -83,7 +89,6 @@
       border-radius: 8px !important;
       box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
       z-index: 101 !important;
-      right: auto !important;
     }
   }
   
@@ -131,9 +136,9 @@
 <!-- Mobile TOC toggle button -->
 <div class="toc-toggle" onclick="toggleToc()">🗂</div>
 
-<!-- Main blog container -->
-<div class="blog-container">
-  <!-- TOC navigation (positioned absolutely relative to blog container) -->
+<!-- Content wrapper for positioning -->
+<div class="content-wrapper">
+  <!-- TOC navigation (positioned absolutely) -->
   <aside class="article-toc-container">
     <nav class="article-toc" id="toc-nav">
       <h2>文章目录</h2>
@@ -148,80 +153,82 @@
     </nav>
   </aside>
 
-  <!-- Main content area -->
-  <main class="blog-content">
-    <div class="blog-entries">
-      {{ if gt (len $paginator.Pages) 0 }}
-        <ul class="blog-list">
-          {{ range $paginator.Pages }}
-          <li id="{{ .Title | urlize }}" class="blog-entry">
-            <article class="collapsible-article">
-              <h1 class="blog-entry-title">
-                <a href="{{ .Permalink }}">{{ .Title }}</a>
-              </h1>
-              
-              <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
-              
-              <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
-              <div class="blog-entry-summary">
-                {{ $content := .Content }}
-                {{ $contentLength := len $content }}
-                {{ $displayContent := $content }}
-                {{ $needsEllipsis := false }}
+  <!-- Blog container at full width -->
+  <div class="blog-container">
+    <main class="blog-content">
+      <div class="blog-entries">
+        {{ if gt (len $paginator.Pages) 0 }}
+          <ul class="blog-list">
+            {{ range $paginator.Pages }}
+            <li id="{{ .Title | urlize }}" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="{{ .Permalink }}">{{ .Title }}</a>
+                </h1>
                 
-                {{ if gt $contentLength 800 }}
-                  {{ $displayContent = substr $content 0 800 }}
-                  {{ $needsEllipsis = true }}
-                {{ end }}
+                <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
                 
-                {{ $displayContent | safeHTML }}
-                {{ if $needsEllipsis }}...{{ end }}
-                <div class="summary-fade"></div>
-              </div>
-              
-              <!-- Display full content (initially hidden) -->
-              <div class="blog-entry-content hidden">
-                {{ with .Content }}
-                  {{ . | safeHTML }}
-                {{ end }}
-                
-                <!-- Back to top link -->
-                <div class="back-to-top">
-                  <a href="#top">↑ 返回顶部</a>
+                <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
+                <div class="blog-entry-summary">
+                  {{ $content := .Content }}
+                  {{ $contentLength := len $content }}
+                  {{ $displayContent := $content }}
+                  {{ $needsEllipsis := false }}
+                  
+                  {{ if gt $contentLength 800 }}
+                    {{ $displayContent = substr $content 0 800 }}
+                    {{ $needsEllipsis = true }}
+                  {{ end }}
+                  
+                  {{ $displayContent | safeHTML }}
+                  {{ if $needsEllipsis }}...{{ end }}
+                  <div class="summary-fade"></div>
                 </div>
-              </div>
-              
-              <!-- Read more / Collapse button -->
-              <div class="read-more-container">
-                <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
-              </div>
-            </article>
-          </li>
-          {{ end }}
-        </ul>
+                
+                <!-- Display full content (initially hidden) -->
+                <div class="blog-entry-content hidden">
+                  {{ with .Content }}
+                    {{ . | safeHTML }}
+                  {{ end }}
+                  
+                  <!-- Back to top link -->
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                <!-- Read more / Collapse button -->
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            {{ end }}
+          </ul>
 
-        <!-- Pagination links -->
-        {{ if or $paginator.HasPrev $paginator.HasNext }}
-        <div class="pagination">
-          {{ if $paginator.HasPrev }}
-          <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+          <!-- Pagination links -->
+          {{ if or $paginator.HasPrev $paginator.HasNext }}
+          <div class="pagination">
+            {{ if $paginator.HasPrev }}
+            <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+            {{ end }}
+            
+            <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
+            
+            {{ if $paginator.HasNext }}
+            <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+            {{ end }}
+          </div>
           {{ end }}
-          
-          <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-          
-          {{ if $paginator.HasNext }}
-          <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
-          {{ end }}
-        </div>
+        
+        {{ else }}
+          <div class="empty-list-message">
+            <p>暂无博客文章</p>
+          </div>
         {{ end }}
-      
-      {{ else }}
-        <div class="empty-list-message">
-          <p>暂无博客文章</p>
-        </div>
-      {{ end }}
-    </div>
-  </main>
+      </div>
+    </main>
+  </div>
 </div>
 
 <!-- JavaScript for expanding/collapsing articles -->
