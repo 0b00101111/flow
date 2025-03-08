@@ -4,110 +4,108 @@
 </header>
 
 <style>
-  /* Main layout with flexbox */
-  .page-layout {
-    display: flex;
-    justify-content: center;
-    max-width: 1200px;
-    margin: 0 auto;
-    position: relative;
-  }
-  
-  .article-toc-container {
-    width: 250px;
-    margin-right: 30px;
-    position: sticky;
-    top: 160px;
-    align-self: flex-start;
-    height: fit-content;
-  }
-  
+  /* Reset blog container to ensure it keeps its width */
   .blog-container {
-    width: 680px;
+    width: 680px !important;
+    margin: 0 auto !important;
+    padding: 0 !important;
+    position: relative !important;
+  }
+  
+  /* Position TOC outside and to the left */
+  .article-toc-container {
+    position: absolute !important;
+    width: 250px !important;
+    right: calc(100% + 100px) !important; /* 100px gap between TOC and content */
+    top: 0 !important; /* Align with top of blog container */
   }
   
   .article-toc {
-    background: rgba(0, 0, 0, 0.03);
-    border-radius: 8px;
-    padding: 1.5rem;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
+    position: sticky !important;
+    top: 160px !important; /* Keep it below header */
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    max-height: calc(100vh - 200px) !important;
+    overflow-y: auto !important;
   }
   
+  /* Read more button styling */
   .read-more-btn {
     background: #A06AB4 !important;
     color: white !important;
+    border: none !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
   }
   
   .read-more-btn:hover {
     background: #8A4DA0 !important;
   }
   
-  /* Responsive styling */
-  @media (max-width: 1000px) {
-    .page-layout {
-      flex-direction: column;
-    }
-    
+  /* Mobile styles */
+  @media (max-width: 1200px) {
     .article-toc-container {
-      display: none;
-      width: 100%;
-      margin-right: 0;
-      margin-bottom: 20px;
-    }
-    
-    .blog-container {
-      width: 100%;
+      display: none !important;
     }
     
     .toc-toggle {
-      display: block;
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: #A06AB4;
-      color: white;
-      padding: 10px;
-      border-radius: 50%;
-      width: 50px;
-      height: 50px;
-      text-align: center;
-      line-height: 30px;
-      z-index: 100;
-      cursor: pointer;
-      font-size: 20px;
+      display: block !important;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      background: #A06AB4 !important;
+      color: white !important;
+      padding: 10px !important;
+      border-radius: 50% !important;
+      width: 50px !important;
+      height: 50px !important;
+      text-align: center !important;
+      line-height: 30px !important;
+      z-index: 100 !important;
+      cursor: pointer !important;
+      font-size: 20px !important;
     }
     
     .toc-toggle.active + .article-toc-container {
-      display: block;
-      position: fixed;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 80%;
-      max-width: 350px;
-      height: 80%;
-      max-height: 500px;
-      background: white;
-      border-radius: 8px;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-      z-index: 101;
+      display: block !important;
+      position: fixed !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: 80% !important;
+      max-width: 350px !important;
+      height: 80% !important;
+      max-height: 500px !important;
+      background: white !important;
+      border-radius: 8px !important;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+      z-index: 101 !important;
+      right: auto !important;
     }
   }
   
-  /* Active TOC item styling */
+  /* Active item styling */
   .article-toc a.active {
-    background-color: rgba(160, 106, 180, 0.1);
-    color: #A06AB4;
-    font-weight: 600;
-    border-left: 3px solid #A06AB4;
-    padding-left: calc(0.5rem - 3px);
+    background-color: rgba(160, 106, 180, 0.1) !important;
+    color: #A06AB4 !important;
+    font-weight: 600 !important;
+    border-left: 3px solid #A06AB4 !important;
+    padding-left: calc(0.5rem - 3px) !important;
   }
   
   /* Dark mode support */
   @media (prefers-color-scheme: dark) {
     .article-toc {
-      background: rgba(255, 255, 255, 0.05);
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .article-toc a.active {
+      background-color: rgba(180, 126, 200, 0.1) !important;
+      color: #B47EC8 !important;
+      border-left-color: #B47EC8 !important;
     }
     
     .read-more-btn {
@@ -119,13 +117,7 @@
     }
     
     .toc-toggle.active + .article-toc-container {
-      background: #222;
-    }
-    
-    .article-toc a.active {
-      background-color: rgba(180, 126, 200, 0.1);
-      color: #B47EC8;
-      border-left-color: #B47EC8;
+      background: #222 !important;
     }
   }
 </style>
@@ -139,9 +131,9 @@
 <!-- Mobile TOC toggle button -->
 <div class="toc-toggle" onclick="toggleToc()">🗂</div>
 
-<!-- Flex layout container -->
-<div class="page-layout">
-  <!-- TOC navigation -->
+<!-- Main blog container -->
+<div class="blog-container">
+  <!-- TOC navigation (positioned absolutely relative to blog container) -->
   <aside class="article-toc-container">
     <nav class="article-toc" id="toc-nav">
       <h2>文章目录</h2>
@@ -156,82 +148,80 @@
     </nav>
   </aside>
 
-  <!-- Main blog container -->
-  <div class="blog-container">
-    <main class="blog-content">
-      <div class="blog-entries">
-        {{ if gt (len $paginator.Pages) 0 }}
-          <ul class="blog-list">
-            {{ range $paginator.Pages }}
-            <li id="{{ .Title | urlize }}" class="blog-entry">
-              <article class="collapsible-article">
-                <h1 class="blog-entry-title">
-                  <a href="{{ .Permalink }}">{{ .Title }}</a>
-                </h1>
+  <!-- Main content area -->
+  <main class="blog-content">
+    <div class="blog-entries">
+      {{ if gt (len $paginator.Pages) 0 }}
+        <ul class="blog-list">
+          {{ range $paginator.Pages }}
+          <li id="{{ .Title | urlize }}" class="blog-entry">
+            <article class="collapsible-article">
+              <h1 class="blog-entry-title">
+                <a href="{{ .Permalink }}">{{ .Title }}</a>
+              </h1>
+              
+              <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
+              
+              <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
+              <div class="blog-entry-summary">
+                {{ $content := .Content }}
+                {{ $contentLength := len $content }}
+                {{ $displayContent := $content }}
+                {{ $needsEllipsis := false }}
                 
-                <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
+                {{ if gt $contentLength 800 }}
+                  {{ $displayContent = substr $content 0 800 }}
+                  {{ $needsEllipsis = true }}
+                {{ end }}
                 
-                <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
-                <div class="blog-entry-summary">
-                  {{ $content := .Content }}
-                  {{ $contentLength := len $content }}
-                  {{ $displayContent := $content }}
-                  {{ $needsEllipsis := false }}
-                  
-                  {{ if gt $contentLength 800 }}
-                    {{ $displayContent = substr $content 0 800 }}
-                    {{ $needsEllipsis = true }}
-                  {{ end }}
-                  
-                  {{ $displayContent | safeHTML }}
-                  {{ if $needsEllipsis }}...{{ end }}
-                  <div class="summary-fade"></div>
+                {{ $displayContent | safeHTML }}
+                {{ if $needsEllipsis }}...{{ end }}
+                <div class="summary-fade"></div>
+              </div>
+              
+              <!-- Display full content (initially hidden) -->
+              <div class="blog-entry-content hidden">
+                {{ with .Content }}
+                  {{ . | safeHTML }}
+                {{ end }}
+                
+                <!-- Back to top link -->
+                <div class="back-to-top">
+                  <a href="#top">↑ 返回顶部</a>
                 </div>
-                
-                <!-- Display full content (initially hidden) -->
-                <div class="blog-entry-content hidden">
-                  {{ with .Content }}
-                    {{ . | safeHTML }}
-                  {{ end }}
-                  
-                  <!-- Back to top link -->
-                  <div class="back-to-top">
-                    <a href="#top">↑ 返回顶部</a>
-                  </div>
-                </div>
-                
-                <!-- Read more / Collapse button -->
-                <div class="read-more-container">
-                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
-                </div>
-              </article>
-            </li>
-            {{ end }}
-          </ul>
-
-          <!-- Pagination links -->
-          {{ if or $paginator.HasPrev $paginator.HasNext }}
-          <div class="pagination">
-            {{ if $paginator.HasPrev }}
-            <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
-            {{ end }}
-            
-            <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
-            
-            {{ if $paginator.HasNext }}
-            <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
-            {{ end }}
-          </div>
+              </div>
+              
+              <!-- Read more / Collapse button -->
+              <div class="read-more-container">
+                <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+              </div>
+            </article>
+          </li>
           {{ end }}
-        
-        {{ else }}
-          <div class="empty-list-message">
-            <p>暂无博客文章</p>
-          </div>
+        </ul>
+
+        <!-- Pagination links -->
+        {{ if or $paginator.HasPrev $paginator.HasNext }}
+        <div class="pagination">
+          {{ if $paginator.HasPrev }}
+          <a href="{{ $paginator.Prev.URL }}" class="prev">上一页</a>
+          {{ end }}
+          
+          <span class="page-number">第 {{ $paginator.PageNumber }} 页，共 {{ $paginator.TotalPages }} 页</span>
+          
+          {{ if $paginator.HasNext }}
+          <a href="{{ $paginator.Next.URL }}" class="next">下一页</a>
+          {{ end }}
+        </div>
         {{ end }}
-      </div>
-    </main>
-  </div>
+      
+      {{ else }}
+        <div class="empty-list-message">
+          <p>暂无博客文章</p>
+        </div>
+      {{ end }}
+    </div>
+  </main>
 </div>
 
 <!-- JavaScript for expanding/collapsing articles -->
