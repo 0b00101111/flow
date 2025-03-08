@@ -4,36 +4,37 @@
 </header>
 
 <style>
-  /* Create a wrapper for proper positioning */
+  /* Main container for proper layout */
   .content-wrapper {
-    position: relative;
-    max-width: 1200px;
+    max-width: 1280px;
     margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
   }
   
-  /* Make blog container independent */
-  .blog-container {
-    width: 680px !important;
-    margin: 0 auto !important;
-    position: relative !important;
-  }
-  
-  /* Position TOC completely outside the blog container */
+  /* Position TOC at precise measurements */
   .article-toc-container {
     position: absolute !important;
     width: 250px !important;
-    left: calc(50% - 440px) !important; /* Center - half blog width - TOC width - gap */
-    top: 0 !important; /* Align with top of blog container */
+    left: calc(50% - 340px - 100px - 250px) !important; /* Center - half article width - gap - toc width */
+    top: 0 !important;
   }
   
   .article-toc {
     position: sticky !important;
-    top: 160px !important; /* Keep it below header */
+    top: 160px !important;
     background: rgba(0, 0, 0, 0.03) !important;
     border-radius: 8px !important;
     padding: 1.5rem !important;
     max-height: calc(100vh - 200px) !important;
     overflow-y: auto !important;
+  }
+  
+  /* Blog container with exact 680px width */
+  .blog-container {
+    width: 680px !important;
+    margin: 0 auto !important;
+    position: relative !important;
   }
   
   /* Read more button styling */
@@ -51,12 +52,19 @@
     background: #8A4DA0 !important;
   }
   
-  /* Mobile styles */
-  @media (max-width: 1200px) {
+  /* Mobile TOC toggle - hidden on desktop */
+  .toc-toggle {
+    display: none !important;
+  }
+  
+  /* Responsive styles */
+  @media (max-width: 1100px) {
+    /* Hide TOC on smaller screens */
     .article-toc-container {
       display: none !important;
     }
     
+    /* Show TOC toggle button on mobile */
     .toc-toggle {
       display: block !important;
       position: fixed !important;
@@ -75,6 +83,7 @@
       font-size: 20px !important;
     }
     
+    /* Mobile TOC popup when toggle is clicked */
     .toc-toggle.active + .article-toc-container {
       display: block !important;
       position: fixed !important;
@@ -92,7 +101,16 @@
     }
   }
   
-  /* Active item styling */
+  /* Mobile article layout (30px padding) */
+  @media (max-width: 768px) {
+    .blog-container {
+      width: auto !important;
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
+  }
+  
+  /* Active TOC link styling */
   .article-toc a.active {
     background-color: rgba(160, 106, 180, 0.1) !important;
     color: #A06AB4 !important;
@@ -136,9 +154,9 @@
 <!-- Mobile TOC toggle button -->
 <div class="toc-toggle" onclick="toggleToc()">🗂</div>
 
-<!-- Content wrapper for positioning -->
+<!-- Main wrapper -->
 <div class="content-wrapper">
-  <!-- TOC navigation (positioned absolutely) -->
+  <!-- TOC navigation (absolutely positioned) -->
   <aside class="article-toc-container">
     <nav class="article-toc" id="toc-nav">
       <h2>文章目录</h2>
@@ -153,7 +171,7 @@
     </nav>
   </aside>
 
-  <!-- Blog container at full width -->
+  <!-- Blog container at exactly 680px wide -->
   <div class="blog-container">
     <main class="blog-content">
       <div class="blog-entries">
@@ -168,7 +186,7 @@
                 
                 <div class="blog-entry-date">{{ .Date.Format "2006-01-02" }}</div>
                 
-                <!-- Display summary (truncated) - Fixed to avoid slicestr errors -->
+                <!-- Display summary (truncated) -->
                 <div class="blog-entry-summary">
                   {{ $content := .Content }}
                   {{ $contentLength := len $content }}
