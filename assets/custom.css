@@ -637,7 +637,6 @@ body {
 /* Force the blog content to take up remaining space */
 .blog-content {
   width: auto !important;
-  margin-left: 280px !important; /* toc width (250px) + margin (30px) */
 }
 
 /* For mobile devices */
