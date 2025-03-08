@@ -35,6 +35,33 @@
     width: 680px !important;
     margin: 0 auto !important;
     position: relative !important;
+    box-sizing: border-box !important;
+  }
+  
+  /* Ensure all content elements respect the width */
+  .blog-content,
+  .blog-entries,
+  .blog-list,
+  .blog-entry,
+  .collapsible-article,
+  .blog-entry-summary,
+  .blog-entry-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+  /* Override any prose max-width styles */
+  .prose {
+    max-width: none !important;
+  }
+  
+  /* Make sure images don't overflow */
+  img {
+    max-width: 100% !important;
+    height: auto !important;
   }
   
   /* Read more button styling */
@@ -104,9 +131,19 @@
   /* Mobile article layout (30px padding) */
   @media (max-width: 768px) {
     .blog-container {
-      width: auto !important;
+      width: calc(100% - 60px) !important;
       padding-left: 30px !important;
       padding-right: 30px !important;
+    }
+    
+    .blog-content,
+    .blog-entries,
+    .blog-list,
+    .blog-entry,
+    .collapsible-article,
+    .blog-entry-summary,
+    .blog-entry-content {
+      width: 100% !important;
     }
   }
   
@@ -249,8 +286,24 @@
   </div>
 </div>
 
-<!-- JavaScript for expanding/collapsing articles -->
+<!-- Force reset of any external styles that might override our widths -->
 <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    // Force recalculation of widths
+    const container = document.querySelector('.blog-container');
+    if (container) {
+      container.style.width = '680px';
+      
+      // Force all child elements to respect width
+      const elements = container.querySelectorAll('.blog-content, .blog-entries, .blog-list, .blog-entry, .collapsible-article, .blog-entry-summary, .blog-entry-content');
+      elements.forEach(el => {
+        el.style.width = '100%';
+        el.style.maxWidth = '100%';
+        el.style.boxSizing = 'border-box';
+      });
+    }
+  });
+
   function toggleArticle(button) {
     const article = button.closest(".collapsible-article");
     const summary = article.querySelector(".blog-entry-summary");
