@@ -15,14 +15,16 @@ draft: false
 ## 第一版方案
 
 一开始的想法是跟着 Typora 的设置走，Typora 提供了设置图片上传的地方，可以通过 PicGo 这类的应用，实现当图片被粘贴到 Typora 里，自动上传到图床并获取公开链接，并自动替换掉 markdown 文件里的链接。
+![WechatIMG3124](https://img.shuang.blog/2025/03/ae9861ac2f4fe9980fa3eba02d8eb0ef.png)
 
-![CleanShot 2025-03-14 at 00.54.04@2x](https://img.shuang.blog/2025/03/5363ffa747a59f091503bcacccb8f356.png)
+
 
 看了眼这些支持的用来上传图片的应用，PicGo 比较眼熟，以前在别的地方用过，而且那时候还弄好了 CloudFlare 的 R2 bucket 做图床，那就用它了。
 
 但弄了好久，不管怎么设置都不对。我打开 Claude，跟它把场景和需求都描述清楚，正要请它帮忙 debug 的时候，我看到 PicGo 的隐私协议，瞬间就不想弄它了，收集上传我的数据，还向第三方披露，“包括但不限于”，真敢说啊。我赶紧卸载掉。
+![IMG_8142](https://img.shuang.blog/2025/03/8a33350cd2bb5ea505276169d08e699c.png)
 
-![CleanShot 2025-03-13 at 22.35.16@2x](https://img.shuang.blog/2025/03/ea4438446a938746d2bafb01018b7437.png)
+
 
 
 
@@ -83,15 +85,11 @@ pre-commit 脚本顺便加了水印，左下角是版权声明，右下角是个
 
 **很快温哥华就进入了漫长的雨季，每天都看不到什么阳光，很容易抑郁。但偶尔会看到超美的彩虹啊。**
 
-![IMG_8142](https://img.shuang.blog/2025/03/8a33350cd2bb5ea505276169d08e699c.png)
+
+![CleanShot 2025-03-13 at 22.35.16@2x](https://img.shuang.blog/2025/03/ea4438446a938746d2bafb01018b7437.png)
 
 
-
-**除了彩虹之外，还看到了极光，以及就在敲这篇文字的时候，室友喊我去阳台看到的“血月”。**
-
-![WechatIMG3124](https://img.shuang.blog/2025/03/ae9861ac2f4fe9980fa3eba02d8eb0ef.png)
-
-
+---
 
 ## Claude 总结的流程
 
