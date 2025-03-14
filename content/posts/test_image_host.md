@@ -86,7 +86,7 @@ pre-commit 脚本顺便加了水印，左下角是版权声明，右下角是个
 **很快温哥华就进入了漫长的雨季，每天都看不到什么阳光，很容易抑郁。但偶尔会看到超美的彩虹啊。**
 
 
-![CleanShot 2025-03-13 at 22.35.16@2x](https://img.shuang.blog/2025/03/ea4438446a938746d2bafb01018b7437.png#wm:both)
+![IMG_8142](https://img.shuang.blog/2025/03/6a8569f87c8c188e1b493c21b2fb98af_watermarked_combined.png#wm:both)
 
 
 ---
