@@ -22,4 +22,13 @@ draft: false
 
 
 
-![FullSizeRender_VSCO 8](test_image_host.assets/FullSizeRender_VSCO%208.JPG#wm::both)
+![FullSizeRender_VSCO 8](https://img.shuang.blog/2025/03/cb244034fb7886a880f7dc7311e5f55c_watermarked_combined.png#wm:both)
+
+刚才那张还是没成功，再测一个。
+
+![FullSizeRender_VSCO 9](https://img.shuang.blog/2025/03/f40a6e3b1f85fd8528e4ac241b8ca894_watermarked_combined.png#wm:both)
+
+
+
+
+
