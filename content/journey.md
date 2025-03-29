@@ -12,12 +12,15 @@ type: "page"
 ## 雇我干活
 我预计2026年春季毕业。在那之前，如你要找实习生或兼职，我在市场、运营、数据和系统方面的经验也许可以为你所用，请联系我。
 
----
+<div class="english-section">
 
-I'm currently pursuing a Master's degree in Computer Science in Vancouver.
+### Currently
+I'm pursuing a Master's degree in Computer Science in Vancouver.
 
-## Meet Up
+### Meet Up
 If you're in the area, Vancouver has many excellent restaurants - I'd be happy to join you for a meal. Additionally, the hiking trails around Vancouver are fantastic, and I'm always up for some outdoor activity.
 
-## Work With Me
-I expect to graduate in Spring 2026. Until then, if you're looking for an intern or part-time help, my experience in marketing, operations, data, and systems might be valuable to you. Please reach out. 
+### Work With Me
+I expect to graduate in Spring 2026. Until then, if you're looking for an intern or part-time help, my experience in marketing, operations, data, and systems might be valuable to you. Please reach out.
+
+</div> 
