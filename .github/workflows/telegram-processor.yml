@@ -46,7 +46,8 @@ jobs:
 
           # Initialize JSON files if they don't exist
           [ -f data/queues.json ] || echo '{"threads":[],"telegram":[],"mastodon":[]}' > data/queues.json
-          [ -f data/last_update_id.txt ] || echo '0' > data/last_update_id.txt
+          mkdir -p bot_data
+          [ -f bot_data/last_update_id.txt ] || echo '0' > bot_data/last_update_id.txt
           [ -f data/config.json ] || echo '{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials":{}},"telegram":{"enabled":true,"post_windows":["08:00","13:00","20:00"],"credentials":{}},"mastodon":{"enabled":true,"post_windows":["09:00","15:00","21:00"],"credentials":{}}},"blog":{"daily_digest_time":"21:45"}}' > data/config.json
 
       - name: Run specified action
@@ -67,7 +68,7 @@ jobs:
           git config --global user.name "Flow Bot"
           git config --global user.email "bot@example.com"
 
-          git add data/ content/
+          git add data/ content/ bot_data/
 
           # Only commit if there are changes
           if [ -n "$(git status --porcelain)" ]; then
@@ -142,7 +143,7 @@ jobs:
           git config --global user.name "Flow Bot"
           git config --global user.email "bot@example.com"
 
-          git add data/
+          git add data/ bot_data/
 
           # Only commit if there are changes
           if [ -n "$(git status --porcelain)" ]; then
