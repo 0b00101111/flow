@@ -7,8 +7,6 @@
   </header>
   
   <div class="post-content">
-    {{ .Content }}
-    
     <div class="cards-container">
       {{ range $.Site.Data.timeline.milestones }}
         <div class="timeline-card">
@@ -21,6 +19,10 @@
         </div>
       {{ end }}
     </div>
+    
+    <hr class="timeline-divider">
+    
+    {{ .Content }}
   </div>
 </article>
 
@@ -41,6 +43,14 @@
   margin: 40px auto;
   max-width: 1200px;
   padding: 0 1rem;
+}
+
+.timeline-divider {
+  margin: 40px auto;
+  width: 80%;
+  border: 0;
+  height: 1px;
+  background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.15), rgba(0, 0, 0, 0));
 }
 
 .timeline-card {
