@@ -1,5 +1,5 @@
 ---
-title: "Journey"
+title: ""
 layout: "journey"
 type: "page"
 --- 

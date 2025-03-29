@@ -57,7 +57,7 @@ theme = "paper"
     weight = 30
   [[menu.main]]
     identifier = "timeline"
-    name = "Journey"
+    name = "这些年"
     url = "/journey/"
     weight = 40
 
