@@ -1,0 +1,193 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>2025-03-24 第13周 星期一-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="11:41
+本来订的猫粮时间是7点起来喂猫的，起床都11点了，可怜的大福饿着了。下次要睡懒觉先起来喂个猫再睡。
+16:27
+不管做过多少次presentation，还是会提前紧张。到快轮到自己的时候，反而不紧张了。之前准备了 script，以防万一卡壳的话，可以直接念下去。临到时间的时候，也不想继续用 script了。冲！ 毕竟我是这个教室里目前最懂 Unix 的 process 的人（除教授以外）
+17:27
+presentation 很成功。本来怕时间不够讲不完，结果我们组员最后说 thank you 的时候，刚好敲在最后一秒上，完美的时间控制。 我们分享的是 Unix Time-Sharing System 那篇论文，听完后教授问我们，你们觉得像 Unix 这样产生了巨大影响的成就，在我们这个时代还可能么？ 我用 Rust 的例子说了下，如果能够在 low level 创新，还是有可能的。老师最后问所以你是说有可能吗，我说，I&rsquo;m just being optimistic，然后教授和同学们都笑了。在这个 CS 学生很可能毕业即失业的 AI 时代，我们都需要一点点乐观精神。
+23:46
+晚上回家就玩东玩西，整理了一些订阅源，然后还开始玩起了 LogSeq（我发现相比Obsidian我更喜欢它，因为它和 Roam 一样是 bulletin 格式的）。还好最后把自己从椅子上拽起来，去骑了一个小时车。骑完车提交了一个小作业。今天早睡又没戏了，没关系，明天照样可以早起（其实是被迫早起，8点多要上课）。" />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">2025-03-24 第13周 星期一</h1><div class="text-xs antialiased opacity-60"><time>Mar 24, 2025</time></div></header>
+
+  <section><h2 id="1141">11:41</h2>
+<p>本来订的猫粮时间是7点起来喂猫的，起床都11点了，可怜的大福饿着了。下次要睡懒觉先起来喂个猫再睡。</p>
+<h2 id="1627">16:27</h2>
+<p>不管做过多少次presentation，还是会提前紧张。到快轮到自己的时候，反而不紧张了。之前准备了 script，以防万一卡壳的话，可以直接念下去。临到时间的时候，也不想继续用 script了。冲！ 毕竟我是这个教室里目前最懂 Unix 的 process 的人（除教授以外）</p>
+<h2 id="1727">17:27</h2>
+<p>presentation 很成功。本来怕时间不够讲不完，结果我们组员最后说 thank you 的时候，刚好敲在最后一秒上，完美的时间控制。 我们分享的是 Unix Time-Sharing System 那篇论文，听完后教授问我们，你们觉得像 Unix 这样产生了巨大影响的成就，在我们这个时代还可能么？ 我用 Rust 的例子说了下，如果能够在 low level 创新，还是有可能的。老师最后问所以你是说有可能吗，我说，I&rsquo;m just being optimistic，然后教授和同学们都笑了。在这个 CS 学生很可能毕业即失业的 AI 时代，我们都需要一点点乐观精神。</p>
+<h2 id="2346">23:46</h2>
+<p>晚上回家就玩东玩西，整理了一些订阅源，然后还开始玩起了 LogSeq（我发现相比Obsidian我更喜欢它，因为它和 Roam 一样是 bulletin 格式的）。还好最后把自己从椅子上拽起来，去骑了一个小时车。骑完车提交了一个小作业。今天早睡又没戏了，没关系，明天照样可以早起（其实是被迫早起，8点多要上课）。</p>
+</section>
+
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/daily/2025/03/25/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>2025-03-25 Week 13 Tuesday Digest</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="http://localhost:1313/daily/2025/03/23/"
+      ><span>2025-03-23 第12周 星期日</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

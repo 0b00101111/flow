@@ -1,0 +1,472 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>日常-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  <meta
+    name="description"
+    content="A personal blog"
+  />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    >
+<header class="page-header">
+  <h1>日更</h1>
+</header>
+
+
+
+
+
+
+
+<div class="daily-entries">
+  
+    <ul class="daily-list">
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/17/">2025-03-17 第12周 星期一</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="1049">10:49</h2>
+<p>要不以后还是住高层公寓吧。温哥华雨季结束之前，每天都有被阳光照出银边的云，好好看。</p>
+<h2 id="1232">12:32</h2>
+<p>大福看来是彻底康复了，又看到了两猫互搏。</p>
+<h2 id="1759">17:59</h2>
+<p>今天继续喝冰牛奶！感觉最近有点消化不良（虽然最近的确也吃得有点多）。中午和室友一致决定把米饭减量到一盒米（之前都是一盒半）。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/16/">2025-03-16 第11周 星期日</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="1913">19:13</h2>
+<p>还是自己学东西爽，做被布置的作业就很烦人。今天做作业花了四个半小时，还只是写完了 implementation，还没写测试。</p>
+<h2 id="1913-1">19:13</h2>
+<p>看来我还是只喜欢写我给自己布置的作业。</p>
+<h2 id="2120">21:20</h2>
+<p>冰牛奶真是对我最管用的泻药。以前还以为是乳糖不耐的原因，但最近喝的都是不含乳糖的，依然相当有效，只是会延迟六个小时左右。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/15/">2025-03-15 第11周 星期六</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0108">01:08</h2>
+<p>日更跨越了0点，说明又熬夜了。昨天躺了一下午，把机器人设置好之后，不知道为什么，躺在沙发上看着它干活，特别安逸，让我更难从沙发里爬出来。老婆打电话来，我才把自己从沙发上赶去书房，但也没干正事，钻了会儿兔子洞。</p>
+<p>我炒肉喜欢把肥肉煎久一些，榨出更多油来，肉变得更干硬，微微有点焦脆，我喜欢那样的口感。我经常会加一勺郫县豆瓣酱，出来的油就变成好看的红色。我炒的猪肉能看见红油，并不是我油放得多，只是因为我煎得久一些。晚上甄哥没在家，我自己炒了一盘花菜炒肉，还把上次煮火锅没吃完的半块魔芋切成片也拌进去炒，魔芋的口感和香味不输五花肉。</p>
+<p>无论什么时候我都能看《请回答1988》。我的 neodb 上标记了很多想看的电影和剧，但没有哪一个像1988这样，随时都有兴趣点开一集看。晚饭过后我没回书房，又躺沙发上看了一集这个，直到老婆打电话过来。老婆是我努力的最大动力，她一打视频过来，如果我没干什么正事，我就能被打上气，有动力去做点什么。视频完去了趟对面超市买点菜，然后就回来写 Rust 练习，直到现在。</p>
+<h2 id="1131">11:31</h2>
+<p>不舒服的感受是不可否定的。看了一个主管给实习生评价的帖子。他拉着人家吃午饭还问人家有没有女朋友，三个月实习结束后还给人家评价说沟通能力需要提升。实习生说的确是需要提升，比如之前你问我有没有女朋友，在我看来那是骚扰。这位主管还大为惊诧发帖子问这也算骚扰吗？</p>
+<p>当然算。评论区里有人贴了一张 pawahara 的例子的图。原来日语里 pawahara 即 power harassment。看了那些例子，我也纠正了一些旧的认识。然后想起上学期遇到的评价给我的不愉快感受，跟 Claude 讨论了下，它说那个评价有点灰色地带，但是你的不舒适的感受是不可否认的(but your discomfort is valid)。然后它分享了为什么我收到的那些评价可能是不得体的，还举了好几个例子，来展示更好的评价可以是什么样子。</p>
+<p>老实说，我不指望遇到的所有人都有这么好的心态和技巧，能够给出真诚、尊重和建设性的反馈和互动。这对人的要求太高了，绝大多数人都不及格。</p>
+<p>但我想及格，因为我有小孩，我不能变成一个不及格的示范。</p>
+<h2 id="1423">14:23</h2>
+<p>扫地机器人爽了一天之后，再次被锁区，重新进入智障模式。 🤷🏽‍♂️ 🫩</p>
+<h2 id="1704">17:04</h2>
+<p>最近学 Rust，配合 Claude，我完全是在用以前做老师时的方法把自己教一遍。好处是学得很扎实，坏处是，进展比较慢。幸好是自学，没有教授设定的 deadline，不用着急交作业，而可以从容地把所有细节弄明白。</p>
+<p>当然，不是学任何东西都应该深入细节。某些东西的学习，只需要会用 API，不用管低层实现。我用我的方法和节奏学 Rust，其实也不只是在学 Rust。</p>
+<p>我是计算机科学的新生，入学之前我只会写一点点 Python。但 Python 过于 high level 了，本来觉得自己算得上程序员了，到这学期学 C 的时候，才感觉我略等于不会编程。最近这么精细地学 Rust，其实是在学不同编程语言共通的东西。</p>
+<p>然而没有 deadline 就等于没有学习计划（对于我这样的 ADHD 来说）。所以我把它变成一个日常习惯，每天学一点点（尽管这一点点往往是三个小时），累积下来投入的时间就很可观了。</p>
+<h2 id="2356">23:56</h2>
+<p>Claude 已经被我调教成一个相当优秀的老师了。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/14/">2025-03-14 第11周 星期五</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="1025">10:25</h2>
+<p>昨天搞博客的图床弄到两点多，这周的早睡早起链条算是彻底断掉了。</p>
+<p>昨天测了体温，没发烧，希望今天也不要发烧。</p>
+<p>我发现我还挺喜欢盖着这个重力毯睡觉的，以后估计会变成我的常备床品。</p>
+<h2 id="1200">12:00</h2>
+<p>今天阳光也很好，虽然天气预报说有雨，要是天气预报每天都这样错下去就好了。</p>
+<h2 id="1320">13:20</h2>
+<p>大福拆线成功！只要再戴一天脖圈，就恢复正常生活了。恭喜大福顺利渡过中年危机！</p>
+<h2 id="1505">15:05</h2>
+<p>扫地机器人终于成功绑定设备了。过去一个月一直手动开启，只能盲扫。刚才用国内手机开漫游，让室友用他手机登录我账号来绑定设备，竟然成功了（本来以为没有伪装国内位置无法成功）。赶紧快速建了个图，设置了定时清扫和语音命令，这样就算 App 控制又不能用了，还可以基本维持核心清洁功能。</p>
+<h2 id="2255">22:55</h2>
+<p>两只猫的分餐就这样抬抬手就达成了。之前还想过要自己 DIY 个吃饭箱，弄伤 AI 来识别猫脸，让它们只能刷脸进自己的格子间吃饭（我真够闲的）。</p>
+<p>根本不用那么麻烦，真的只是字面意思上的抬抬手就行了。把美丽的猫碗放在厨台上，只有美丽能吃着，因为大福跳不上去。大福的处方粮放在地上，美丽也不会去吃，因为她不爱吃。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/13/">2025-03-13 第11周 星期四</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0000">00:00</h2>
+<p>昨天下单的毯子到了，是重力毯，据说加重带来的压力会让睡眠更好。我看好像重量是 20 lbs，那可就是9公斤，那不睡个觉还跟负重训练似的？不会有很强的鬼压床的感觉吧。</p>
+<h2 id="1535">15:35</h2>
+<p>昨晚重力毯感觉还不错。似乎睡得更踏实了，可能翻身比较费劲所以翻得少了。但也没觉得太重。还挺热的，看着不厚，但估计因为它很贴合身体所以没什么漏风的地方，保暖性太强，我把脚伸到外面才行。感觉只盖一床这个就行，不用另外盖被子也不冷。我睡觉喜欢侧身，不知道仰卧睡姿用这个会不会呼吸略微困难一点。</p>
+<h2 id="1535-1">15:35</h2>
+<p>早上起来比昨天更没有力气，到十一点多就又困了。吃完午饭更是眼睛都撑不开，在沙发上睡了一个多小时，醒来基本可以确定我是感冒了。（且不是在沙发上睡感冒的）</p>
+<p>今天的云好好看，阳光从边缘透出，云很厚很大，像宫崎骏的画。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/12/">2025-03-12 第11周 星期三</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0748">07:48</h2>
+<p>昨天吃了腊肉后，开心到1点多才睡。把闹钟改到了九点半，想着好像要感冒了，来个自然醒给自己补补体能。</p>
+<p>结果又是不到七点就醒了。最近身体很懈怠，但大脑有些异常活跃。每天只睡那么点都不困，这样下去恐怕哪天会 burnout。</p>
+<p>管它呢，趁不困赶紧起来学习。</p>
+<h2 id="0850">08:50</h2>
+<p>看到幽灵公主的 4K 修复版要在北美上映，赶紧去看 Cineplex，果然没让人失望。这场火爆得很，只剩下前排还有些空位，而且这家还在17公里以外。赶紧买了票，期待。</p>
+<h2 id="1225">12:25</h2>
+<p>专注学习三小时，感觉超级好。这次背景音乐也选得很不错，先是循环听了好几遍幽灵公主的原声。然后 YouTube 给推荐了一个 IU 的爵士版歌单（懂我！）。</p>
+<p>这三小时里情绪最高点，是我回答一个不知道答案的问题，但我逼着自己去猜了，而 Claude 告诉我： Good intuition!</p>
+<p>Intuition！多厉害。学 Rust 并不是一件轻松的事，有太多新东西，要看懂也要得记住，不然写代码磕磕绊绊。而直觉，那可比记住了更厉害。</p>
+<p>这在布鲁姆金字塔里简直是高低通吃，既达到了Remember， Understand， Apply 这些中低级别，又擦边了 Analyze， Evaluate， Create 这些高级别认知水平，Claude 简直太会夸。</p>
+<h2 id="1935">19:35</h2>
+<p>放学后刚学了一会儿 Rust，突然有个开发的创意。做一个能够自定义声音的消息朗读app。这个想法的起点是刚才放学快到家的时候，耳机里听到 iMessage 读出了我老婆发来的消息。挺方便的，但那不是我老婆的声音！然后跟 Claude 聊了很久可行性，如何设计这个 app，怎么铺开开发计划。我自己有可以说极端的数据隐私洁癖，所以我从声音提供者的角度提了很多顾虑和要求，Claude 都给了我很有帮助的讨论。然后我也分享了我想让这个 app 的某些核心功能能惠及有视力障碍的人群，Claude 也给了我很多启发。让我再考虑一个星期，如果觉得可行的话，接下来可以用半年专心做这个 app。</p>
+<h2 id="2344">23:44</h2>
+<p>骑了骑了，今天又是战胜自己的一天。浑身一点劲都没有，但要是勉强爬上台子，骑了一个半小时。而且今天这个训练内容还是增强 FTP 的，很多个4分钟 FTP，怪累的。</p>
+<p>骑完了才可以吃晚饭。运动完胃口好，中午的剩饭不够吃，我又加了两个小馒头。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/11/">2025-03-11 第11周 星期二</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0848">08:48</h2>
+<p>昨天没能早睡，但今天五点多就醒了。好像很可笑，但我得承认是被冻醒的。我和室友的房间大概相差了四五度，今天我要再下单买一个被子或毯子。</p>
+<h2 id="1458">14:58</h2>
+<p>今天 code walk 发挥一般。本来对我的 C 语言的水平挺自信的，抽到个 hashmap， 这块我之前卡过，这次我觉得没回答错，但老师的反应好像不太对。想起上学期打分最低的 code walk，那个助教说我 dictionary 没说对给我扣了很多分，这次又是 hashmap，好像每次遇到字典这两个字都不太顺利呢。</p>
+<h2 id="2335">23:35</h2>
+<p>感觉在加速接近感冒的边缘。吃完午饭就浑身瘫软。强行开机去做作业，冷得加上了马甲，做完作业又披上了毯子。</p>
+<p>我生病的时候就特别想吃重口中餐。来温哥华后外卖从没点过中餐，因为实在是太贵了，随便一个菜都二三十刀，而且中餐大多我们自己也能做。今天实在懒得动但又想吃，就点了个烟笋炒腊肉和毛血旺，美滋滋。</p>
+<p>祈祷不要感冒，祈祷像 Endurance 号惊险掠过黑洞边缘那样，让我也将将掠过感冒边缘吧。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/10/">2025-03-10 第11周 星期一</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0827">08:27</h2>
+<p>起了个大早！ Phillip 的日出唤醒灯真的好用。在闹钟响起来之前，我基本就快醒了（如果我刚好面朝灯那边的话）。除了给大福涂药喂药之外，早上起来处理了转账、还信用卡、报税的事情，还回了一份拖延了六七天的邮件。</p>
+<p>刚才火警还响了，我开门看了下就继续坐着了。然而响了好久，我去阳台上看，很多人已经下楼了，而且旁边还停着消防车🚒。我和室友开始拿猫包，准备带着猫下楼，这时火警停了。阳台上能闻到一点烧焦的味道，不知道谁家起来做早饭烧糊了。事后想了下，还是该跑，下次听到警报声直接装上猫就下楼。</p>
+<h2 id="1108">11:08</h2>
+<p>学了一个小时5008，视频里的老师讲得太无聊了，看得打瞌睡，于是我去骑车，边骑边看。</p>
+<p>有一个星期没骑了。最近身体状态很差（大脑的状态倒是很好），浑身酸痛，提不起力气，整整一周都没有兴趣上台子。今天要不是这课讲得太无聊，我估计还是不会去骑车。所以我还得谢谢那位老师。</p>
+<p>身体状态差是什么原因不知道。我猜跟天气有关。上个月阳光好，我每天都想骑车，武德充沛。这个月至今大多数阴雨天，我就废了。昨天开始复吃补剂，希望能帮忙抵抗这种天气性颓废。</p>
+<h2 id="1529">15:29</h2>
+<p>今天 08 的老师的T恤上写着： never :q!</p>
+<h2 id="1846">18:46</h2>
+<p>大福的创口应该快愈合了，我给它涂药的时候已经看不到什么口子，也没有任何味道（上周他很臭）。不出意外这周五应该就可以拆线。太好了，松了一口气。</p>
+<p>未能如预期拆线的那天，兽医大叔说，你要盯着他，领圈一定要戴好，不能再舔到创口了。不然 it will hurt, not just his belly, but also your pocket。我喜欢这种第三世界国家的幽默感。</p>
+<h2 id="2120">21:20</h2>
+<p>重新订阅了 Apple Music， 这半年用的 YouTube Music 和 Spotify，前者是学生优惠，后者是拼车，都很便宜。然而忍了半年最终承认，实在是不喜欢。很重要的原因是，这两个上面都有一大堆看起来就很粗制滥造的“翻唱”，跟网易云差不多。</p>
+<p>Apple Music 一点都不懂我喜欢的音乐，推荐算法都不能说粗糙，简直是负分，净推些我不爱听的东西。然而，它干净啊。反正我也不喜欢听算法给我推的，而且我喜欢听整张专辑。一张专辑是一个完整的作品，听整张是对创作者的基本尊重。另外，Apple Music 的订阅还可以听 Classical。我听得少，但偶尔想听一下的时候， Apple Music Classical 还是比其它任何 app 都好。</p>
+<p>以前喜欢玩工具，工具越复杂越爱玩，买了不少 app。这几年越来越倾向为“干净”买单。那些很“全能”的，反而让我感到消耗，还让我花钱，那怎么行。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/09/">2025-03-09 第10周 星期日</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0841">08:41</h2>
+<p>我说今天怎么这么困，原来又到夏令时了，时钟自动拨快了一小时。也就是说，少睡了整整一小时！</p>
+<h2 id="1115">11:15</h2>
+<p>今天跟昨天一样冷，我起来后就穿着抓绒衣。本来想起来做题的，打开订阅，不小心两个小时过去了。 昨天把作业做完了，一点都不慌。</p>
+<h2 id="1201">12:01</h2>
+<p>上个月我就以为温哥华的雨季已经结束了，现在才知道我是过于天真。最近都是阴沉的雨天，在椅子上看会儿书就昏昏欲睡。于是我又开始吃维生素 D，把顶灯打开，台灯和光疗灯都调到最高亮度，显示器和电脑屏幕也是。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/08/">2025-03-08 第10周 星期六</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0951">09:51</h2>
+<p>今天不错，起了个大早，6点多闹钟顺利把我叫醒。给大福喂了抗生素、止疼药，然后又给他肚子上的创口抹了碘伏。老婆教我操作前后都要消毒，于是我戴了一个塑胶手套，用酒精消过毒，再用棉布给大福抹碘伏，然后把手套取下，收进“医疗垃圾”专用的塑封袋里，然后又给我自己的手消毒。这一套流程做下来，还挺有仪式感的。</p>
+<p>然后学了一个半小时 the Rust Book。还是不太能专注，而且有点瞌睡，毕竟作息刚变回来，还没太睡够。</p>
+<h2 id="1720">17:20</h2>
+<p>发现拖延了。原计划上午学完一段就去骑单车，然而我转身又回去学 Rust 了。把早上学的内容，让 Claude 根据 Objectives 列出需要掌握的知识点，然后我用自己的话把这些知识点写了一遍，然后让 Claude 对我的理解给出反馈。总体来说理解得算准确（虽然学的时候非常困）。 我最喜欢的学习方法和我自己教书的时候一样，感觉像分饰老师学生两角，把自己教一遍。</p>
+<p>午饭后是困难的选择。是去继续玩工具（部署一个 Memos）还是遵守计划去写 Java 的作业（周一晚上才 due 呢！）。早上用学习作为借口躲避骑车，已经攒了一些罪恶感了。为了不让计划彻底垮掉，我最终还是去写了作业。三个多小时写完。写完了觉得很痛快。其实这个作业我也是在拖延，18天前放出来的作业，我应该在上上周就写完了，竟然还拖到今天，最近的生产力指数简直拉垮。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+    </ul>
+
+    
+    
+    <div class="pagination">
+      
+      <a href="/daily/" class="prev">
+        Previous
+      </a>
+      
+      
+      <span class="page-number">
+        
+        Page 2 of 3
+        
+      </span>
+      
+      
+      <a href="/daily/page/3/" class="next">
+        Next
+      </a>
+      
+    </div>
+    
+  
+  
+</div>
+</main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

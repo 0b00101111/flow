@@ -1,0 +1,357 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="这些年去哪了？" />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/timeline/"
+          >时间线</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    >
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title"></h1>
+  </header>
+  
+  <div class="post-content">
+    <p>这些年去哪了？</p>
+
+    
+    <div class="timeline">
+      
+      
+      
+        
+        
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <span class="timeline-dot"></span>
+            <div class="timeline-period">Sept 2024 - 至今</div>
+            <div class="timeline-location">温哥华</div>
+            <div class="timeline-activity">study</div>
+          </div>
+        </div>
+        
+      
+        
+        
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <span class="timeline-dot"></span>
+            <div class="timeline-period">Jan 2024 - Sept 2024</div>
+            <div class="timeline-location">大理</div>
+            <div class="timeline-activity">生活</div>
+          </div>
+        </div>
+        
+      
+        
+        
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <span class="timeline-dot"></span>
+            <div class="timeline-period">June 2020 - Dec 2023</div>
+            <div class="timeline-location">深圳</div>
+            <div class="timeline-activity">上班</div>
+          </div>
+        </div>
+        
+      
+        
+        
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <span class="timeline-dot"></span>
+            <div class="timeline-period">May 2015 - June 2020</div>
+            <div class="timeline-location">北京</div>
+            <div class="timeline-activity">上班</div>
+          </div>
+        </div>
+        
+      
+        
+        
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <span class="timeline-dot"></span>
+            <div class="timeline-period">June 2011 - May 2015</div>
+            <div class="timeline-location">大理，云南</div>
+            <div class="timeline-activity">支教</div>
+          </div>
+        </div>
+        
+      
+    </div>
+  </div>
+</article>
+
+<style>
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 3px;
+  background-color: #e1e1e1;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 60px;
+}
+
+.timeline-dot {
+  position: absolute;
+  width: 16px;
+  height: 16px;
+  left: -38px;
+  top: 50%;
+  margin-top: -10px;
+  background-color: #fff;
+  border: 4px solid #5a67d8;
+  border-radius: 50%;
+  z-index: 2;
+  box-shadow: 0 0 0 4px rgba(90, 103, 216, 0.2);
+  transition: all 0.3s ease;
+}
+
+.timeline-item-content {
+  position: relative;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+}
+
+.timeline-item-content::after {
+  content: '';
+  position: absolute;
+  width: 25px;
+  height: 2px;
+  background-color: #e1e1e1;
+  top: 50%;
+  left: -25px;
+}
+
+.timeline-period {
+  font-weight: bold;
+  font-size: 1.1em;
+  margin-bottom: 8px;
+  color: #2d3748;
+}
+
+.timeline-location {
+  font-style: italic;
+  margin-bottom: 8px;
+  font-size: 1.05em;
+  color: #4a5568;
+}
+
+.timeline-activity {
+  color: #718096;
+  font-size: 1em;
+}
+
+ 
+.timeline-item:nth-child(odd) .timeline-item-content {
+  background-color: #f8f9ff;
+  border-left: 4px solid #5a67d8;
+}
+
+.timeline-item:nth-child(even) .timeline-item-content {
+  background-color: #f0f4ff;
+  border-left: 4px solid #4c51bf;
+}
+
+ 
+.timeline-item:hover .timeline-dot {
+  background-color: #5a67d8;
+  box-shadow: 0 0 0 6px rgba(90, 103, 216, 0.3);
+}
+
+.timeline-item:hover .timeline-item-content {
+  box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+  transform: translateY(-2px);
+}
+
+ 
+@media (max-width: 768px) {
+  .timeline-item {
+    padding-left: 40px;
+  }
+  
+  .timeline-dot {
+    left: -28px;
+  }
+  
+  .timeline-item-content::after {
+    width: 15px;
+    left: -15px;
+  }
+}
+</style>
+</main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

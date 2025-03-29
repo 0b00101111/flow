@@ -1,0 +1,189 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>2025-03-08 第10周 星期六-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="09:51
+今天不错，起了个大早，6点多闹钟顺利把我叫醒。给大福喂了抗生素、止疼药，然后又给他肚子上的创口抹了碘伏。老婆教我操作前后都要消毒，于是我戴了一个塑胶手套，用酒精消过毒，再用棉布给大福抹碘伏，然后把手套取下，收进“医疗垃圾”专用的塑封袋里，然后又给我自己的手消毒。这一套流程做下来，还挺有仪式感的。
+然后学了一个半小时 the Rust Book。还是不太能专注，而且有点瞌睡，毕竟作息刚变回来，还没太睡够。
+17:20
+发现拖延了。原计划上午学完一段就去骑单车，然而我转身又回去学 Rust 了。把早上学的内容，让 Claude 根据 Objectives 列出需要掌握的知识点，然后我用自己的话把这些知识点写了一遍，然后让 Claude 对我的理解给出反馈。总体来说理解得算准确（虽然学的时候非常困）。 我最喜欢的学习方法和我自己教书的时候一样，感觉像分饰老师学生两角，把自己教一遍。
+午饭后是困难的选择。是去继续玩工具（部署一个 Memos）还是遵守计划去写 Java 的作业（周一晚上才 due 呢！）。早上用学习作为借口躲避骑车，已经攒了一些罪恶感了。为了不让计划彻底垮掉，我最终还是去写了作业。三个多小时写完。写完了觉得很痛快。其实这个作业我也是在拖延，18天前放出来的作业，我应该在上上周就写完了，竟然还拖到今天，最近的生产力指数简直拉垮。" />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">2025-03-08 第10周 星期六</h1><div class="text-xs antialiased opacity-60"><time>Mar 8, 2025</time></div></header>
+
+  <section><h2 id="0951">09:51</h2>
+<p>今天不错，起了个大早，6点多闹钟顺利把我叫醒。给大福喂了抗生素、止疼药，然后又给他肚子上的创口抹了碘伏。老婆教我操作前后都要消毒，于是我戴了一个塑胶手套，用酒精消过毒，再用棉布给大福抹碘伏，然后把手套取下，收进“医疗垃圾”专用的塑封袋里，然后又给我自己的手消毒。这一套流程做下来，还挺有仪式感的。</p>
+<p>然后学了一个半小时 the Rust Book。还是不太能专注，而且有点瞌睡，毕竟作息刚变回来，还没太睡够。</p>
+<h2 id="1720">17:20</h2>
+<p>发现拖延了。原计划上午学完一段就去骑单车，然而我转身又回去学 Rust 了。把早上学的内容，让 Claude 根据 Objectives 列出需要掌握的知识点，然后我用自己的话把这些知识点写了一遍，然后让 Claude 对我的理解给出反馈。总体来说理解得算准确（虽然学的时候非常困）。 我最喜欢的学习方法和我自己教书的时候一样，感觉像分饰老师学生两角，把自己教一遍。</p>
+<p>午饭后是困难的选择。是去继续玩工具（部署一个 Memos）还是遵守计划去写 Java 的作业（周一晚上才 due 呢！）。早上用学习作为借口躲避骑车，已经攒了一些罪恶感了。为了不让计划彻底垮掉，我最终还是去写了作业。三个多小时写完。写完了觉得很痛快。其实这个作业我也是在拖延，18天前放出来的作业，我应该在上上周就写完了，竟然还拖到今天，最近的生产力指数简直拉垮。</p>
+</section>
+
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/daily/2025/03/09/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>2025-03-09 第10周 星期日</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="http://localhost:1313/daily/2025/03/07/"
+      ><span>2025-03-07 第10周 星期五</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

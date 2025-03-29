@@ -11,7 +11,7 @@
   style="--bg:#faf8f1"
   lang="zh-cn"
   dir="ltr"
-><head>
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta
@@ -33,43 +33,27 @@
   <meta name="author" content="47Fork" />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-  <link rel="preload stylesheet" as="style" href="https://daily.shuang.blog/main.min.css" />
-  <link rel="preload" as="image" href="https://daily.shuang.blog/theme.svg" />
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
 
   <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
 
-  <link rel="preload" as="image" href="https://daily.shuang.blog/mastodon.svg" /><link rel="preload" as="image" href="https://daily.shuang.blog/threads.svg" />
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
 
   
 
   
   <link
     rel="icon"
-    href="https://daily.shuang.blog/favicon.ico"
+    href="http://localhost:1313/favicon.ico"
   />
   <link
     rel="apple-touch-icon"
-    href="https://daily.shuang.blog/apple-touch-icon.png"
+    href="http://localhost:1313/apple-touch-icon.png"
   />
 
   <meta name="generator" content="Hugo 0.145.0">
-  <meta itemprop="name" content="博客">
-  <meta itemprop="datePublished" content="2023-10-09T10:00:00+08:00">
-  <meta itemprop="dateModified" content="2023-10-09T10:00:00+08:00"><meta property="og:url" content="https://daily.shuang.blog/posts/">
-  <meta property="og:site_name" content="小径分岔的兔子洞">
-  <meta property="og:title" content="博客">
-  <meta property="og:locale" content="zh_cn">
-  <meta property="og:type" content="website">
 
-  <meta name="twitter:card" content="summary">
-  <meta name="twitter:title" content="博客">
-<link
-    rel="alternate"
-    type="application/rss&#43;xml"
-    href="https://daily.shuang.blog/posts/index.xml"
-    title="小径分岔的兔子洞"
-  />
-  <link rel="canonical" href="https://daily.shuang.blog/posts/" />
 </head>
 <body class="text-black duration-200 ease-out dark:text-white"><header
   class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
@@ -144,6 +128,10 @@
           class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
           href="/xikang/"
           >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
         ></nav><nav
       class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
     >
@@ -168,34 +156,623 @@
       class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
     >
 <header class="page-header">
-  <h1>Blog</h1>
+  <h1>博客</h1>
 </header>
 
-
-
-
-
-
-
-<div class="blog-entries">
+<style>
+   
+  .content-wrapper {
+    max-width: 1280px;
+    margin: 0 auto;
+    position: relative;
+    box-sizing: border-box;
+  }
   
-    <ul class="blog-list">
-      
-      <li class="blog-entry">
-        <article>
-          <h2 class="blog-entry-title">
-            <a href="https://daily.shuang.blog/posts/2023/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8E%BB%E5%B0%BC%E6%B3%8A%E5%B0%94/">第一次去尼泊尔</a>
-          </h2>
-          
-          
-          <div class="blog-entry-date">
-            October 9, 2023
-          </div>
-          
-          
-          <div class="blog-entry-content">
+   
+  .article-toc-container {
+    position: absolute !important;
+    width: 250px !important;
+    left: calc(50% + 340px + 25px) !important;  
+    top: 0 !important;
+  }
+  
+  .article-toc {
+    position: sticky !important;
+    top: 160px !important;
+    background: rgba(0, 0, 0, 0.03) !important;
+    border-radius: 8px !important;
+    padding: 1.5rem !important;
+    max-height: calc(100vh - 200px) !important;
+    overflow-y: auto !important;
+  }
+  
+   
+  .blog-container {
+    width: 680px !important;
+    margin: 0 auto !important;
+    position: relative !important;
+    box-sizing: border-box !important;
+  }
+  
+   
+  .blog-content,
+  .blog-entries,
+  .blog-list,
+  .blog-entry,
+  .collapsible-article,
+  .blog-entry-summary,
+  .blog-entry-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    box-sizing: border-box !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+  
+   
+  .prose {
+    max-width: none !important;
+  }
+  
+   
+  img {
+    max-width: 100% !important;
+    height: auto !important;
+  }
+  
+   
+  .read-more-btn {
+    background: #A06AB4 !important;
+    color: white !important;
+    border: none !important;
+    padding: 0.5rem 1.5rem !important;
+    border-radius: 4px !important;
+    cursor: pointer !important;
+    transition: background 0.2s ease !important;
+  }
+  
+  .read-more-btn:hover {
+    background: #8A4DA0 !important;
+  }
+  
+   
+  .toc-toggle {
+    display: none !important;
+  }
+  
+   
+  @media (max-width: 1100px) {
+     
+    .article-toc-container {
+      display: none !important;
+    }
+    
+     
+    .toc-toggle {
+      display: block !important;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      background: #A06AB4 !important;
+      color: white !important;
+      padding: 10px !important;
+      border-radius: 50% !important;
+      width: 50px !important;
+      height: 50px !important;
+      text-align: center !important;
+      line-height: 30px !important;
+      z-index: 100 !important;
+      cursor: pointer !important;
+      font-size: 20px !important;
+    }
+    
+     
+    .toc-toggle.active + .article-toc-container {
+      display: block !important;
+      position: fixed !important;
+      left: 50% !important;
+      top: 50% !important;
+      transform: translate(-50%, -50%) !important;
+      width: 80% !important;
+      max-width: 350px !important;
+      height: 80% !important;
+      max-height: 500px !important;
+      background: white !important;
+      border-radius: 8px !important;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.2) !important;
+      z-index: 101 !important;
+    }
+  }
+  
+   
+  @media (max-width: 768px) {
+    .blog-container {
+      width: calc(100% - 60px) !important;
+      padding-left: 30px !important;
+      padding-right: 30px !important;
+    }
+    
+    .blog-content,
+    .blog-entries,
+    .blog-list,
+    .blog-entry,
+    .collapsible-article,
+    .blog-entry-summary,
+    .blog-entry-content {
+      width: 100% !important;
+    }
+  }
+  
+   
+  .article-toc a.active {
+    background-color: rgba(160, 106, 180, 0.1) !important;
+    color: #A06AB4 !important;
+    font-weight: 600 !important;
+    border-left: 3px solid #A06AB4 !important;
+    padding-left: calc(0.5rem - 3px) !important;
+  }
+  
+   
+  @media (prefers-color-scheme: dark) {
+    .article-toc {
+      background: rgba(255, 255, 255, 0.05) !important;
+    }
+    
+    .article-toc a.active {
+      background-color: rgba(180, 126, 200, 0.1) !important;
+      color: #B47EC8 !important;
+      border-left-color: #B47EC8 !important;
+    }
+    
+    .read-more-btn {
+      background: #B47EC8 !important;
+    }
+    
+    .read-more-btn:hover {
+      background: #A06AB4 !important;
+    }
+    
+    .toc-toggle.active + .article-toc-container {
+      background: #222 !important;
+    }
+  }
+</style>
+
+
+
+
+
+
+
+
+<div class="toc-toggle" onclick="toggleToc()">🗂</div>
+
+
+<div class="content-wrapper">
+  
+  <aside class="article-toc-container">
+    <nav class="article-toc" id="toc-nav">
+      <h2>文章目录</h2>
+      <ul>
+        
+        <li>
+          <a href="#%25E4%25B8%25BA%25E5%258D%259A%25E5%25AE%25A2%25E6%25B7%25BB%25E5%258A%25A0-cloudflare-%25E5%259B%25BE%25E5%25BA%258A%25E5%25B9%25B6%25E5%259C%25A8-typora-%25E4%25B8%25AD%25E8%2587%25AA%25E5%258A%25A8%25E6%259B%25BF%25E6%258D%25A2%25E9%2593%25BE%25E6%258E%25A5">为博客添加 CloudFlare 图床并在 Typora 中自动替换链接</a>
+          <span class="toc-date">2025-03-13</span>
+        </li>
+        
+        <li>
+          <a href="#%25E7%25AC%25AC%25E4%25B8%2580%25E6%25AC%25A1%25E5%258E%25BB%25E5%25B0%25BC%25E6%25B3%258A%25E5%25B0%2594">第一次去尼泊尔</a>
+          <span class="toc-date">2023-10-09</span>
+        </li>
+        
+        <li>
+          <a href="#%25E8%25BA%25B2%25E4%25B8%258D%25E5%25BC%2580%25E7%259A%2584%25E9%259A%2590%25E5%2596%25BB">躲不开的隐喻</a>
+          <span class="toc-date">2022-08-09</span>
+        </li>
+        
+        <li>
+          <a href="#%25E4%25B8%2589%25E4%25BD%2593%25E7%25A5%259B%25E9%25AD%2585">《三体》祛魅</a>
+          <span class="toc-date">2020-10-16</span>
+        </li>
+        
+      </ul>
+    </nav>
+  </aside>
+
+  
+  <div class="blog-container">
+    <main class="blog-content">
+      <div class="blog-entries">
+        
+          <ul class="blog-list">
             
-              <p>这次国庆长假，我去了趟尼泊尔，是跟着一个徒步团去的。尽管交通时间远远超过实际徒步时间，我们依然觉得非常值。尼泊尔的风景太美了，人文也很值得体验。</p>
+            <li id="%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-cloudflare-%E5%9B%BE%E5%BA%8A%E5%B9%B6%E5%9C%A8-typora-%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%9B%BF%E6%8D%A2%E9%93%BE%E6%8E%A5" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="http://localhost:1313/posts/2025/03/%E4%B8%BA%E5%8D%9A%E5%AE%A2%E6%B7%BB%E5%8A%A0-cloudflare-%E5%9B%BE%E5%BA%8A%E5%B9%B6%E5%9C%A8-typora-%E4%B8%AD%E8%87%AA%E5%8A%A8%E6%9B%BF%E6%8D%A2%E9%93%BE%E6%8E%A5/">为博客添加 CloudFlare 图床并在 Typora 中自动替换链接</a>
+                </h1>
+                
+                <div class="blog-entry-date">2025-03-13</div>
+                
+                
+                <div class="blog-entry-summary">
+                  
+                  
+                  
+                  
+                  
+                  
+                    
+                    
+                  
+                  
+                  <p>博客搭好后，我都是在 GitHub Desktop 里编辑 markdown 文件。但我不喜欢 GitHub Desktop，于是今天想来试试用 Typora 写博客。</p>
+<p>其实我一直有 Ulysses 的订阅，但每次用它的体验并不好，盛名之下其实难副。最不喜欢的是它的 markdown 渲染乱七八糟的，纯文字的写作可能还能忍受，但代码的显示就太丑了。当然人家的目标用户本就是纯文字工作者，也不是为咱们程序员设计的，也不用太吐槽它。</p>
+<h2 id="第一版方案">第一版方案</h2>
+<p>一开始的想法是跟着 Typora 的设置走，Typora 提供了设置图片上传的地方，可以通过 PicGo 这类的应用，实现当图片被粘贴到 Typora 里，自动上传到图床并获取公开链接，并自动替换掉 markdown 文件里的链接。
+<img src="https://img.shuang.blog/2025/03/ae9861ac2f4fe9980fa3eba02d8eb0ef.png" alt="WechatIMG3124"></p>
+<p>看了眼这些支持的用来上传图片的应用，PicGo 比较眼熟，以前在别的地方用过，而且那时候还弄好了 CloudFlare 的 R2 bucket 做图床，那就用它了。</p>
+<p>但弄了好久，不管怎么设置都不对。我打开 Claude，跟它把场景和需求都描述清楚，正要请它帮忙 debug 的时候，我看到 PicGo 的隐私协议，瞬间就不想弄它了，收集上传我的数据，还向第三方披露，“包括但不限于”，真敢说啊。我赶紧卸载掉。
+<img src="https://img.shuang.blog/2025/03/8a33350cd2bb5ea505276169d08e699c.png" alt="IMG_8142"></p>
+<h2 
+                  ...
+                  <div class="summary-fade"></div>
+                </div>
+                
+                
+                <div class="blog-entry-content hidden">
+                  
+                    <p>博客搭好后，我都是在 GitHub Desktop 里编辑 markdown 文件。但我不喜欢 GitHub Desktop，于是今天想来试试用 Typora 写博客。</p>
+<p>其实我一直有 Ulysses 的订阅，但每次用它的体验并不好，盛名之下其实难副。最不喜欢的是它的 markdown 渲染乱七八糟的，纯文字的写作可能还能忍受，但代码的显示就太丑了。当然人家的目标用户本就是纯文字工作者，也不是为咱们程序员设计的，也不用太吐槽它。</p>
+<h2 id="第一版方案">第一版方案</h2>
+<p>一开始的想法是跟着 Typora 的设置走，Typora 提供了设置图片上传的地方，可以通过 PicGo 这类的应用，实现当图片被粘贴到 Typora 里，自动上传到图床并获取公开链接，并自动替换掉 markdown 文件里的链接。
+<img src="https://img.shuang.blog/2025/03/ae9861ac2f4fe9980fa3eba02d8eb0ef.png" alt="WechatIMG3124"></p>
+<p>看了眼这些支持的用来上传图片的应用，PicGo 比较眼熟，以前在别的地方用过，而且那时候还弄好了 CloudFlare 的 R2 bucket 做图床，那就用它了。</p>
+<p>但弄了好久，不管怎么设置都不对。我打开 Claude，跟它把场景和需求都描述清楚，正要请它帮忙 debug 的时候，我看到 PicGo 的隐私协议，瞬间就不想弄它了，收集上传我的数据，还向第三方披露，“包括但不限于”，真敢说啊。我赶紧卸载掉。
+<img src="https://img.shuang.blog/2025/03/8a33350cd2bb5ea505276169d08e699c.png" alt="IMG_8142"></p>
+<h2 id="第二版方案">第二版方案</h2>
+<p>然后我就问 Claude，我不愿意弄 PicGo 了，咱们试试别的法子吧。它给了我4个想法，我看最后一个：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">### Alternative 4: GitHub-based solution
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Create a Git repository for your markdown files and images
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Set up GitHub Actions to automatically process images and upload to R2
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Use GitHub Pages with your custom domain
+</span></span></code></pre></div><p>就它了，反正我的博客就在一个 GitHub Repo 里，而且我已经在用 Actions 来发布了，正好就着现在基础改。</p>
+<p>但想了想，我跟它说，要改一下，我不想把图片发到 Repo 里，我想让这个博客保持轻量。然后 Claude 跟我讲了一个我从没接触到的领域：可以写脚本让 Git 在 每次 commit 之前执行一些任务。</p>
+<p>这样流程就变成了：</p>
+<ul>
+<li>文章里的图片直接粘贴到 markdown 文件里。</li>
+<li>Typora 对该文章创建一个 asset 子目录，图片暂存在那个子目录里。</li>
+<li>Git Commit 的时候，一个叫 pre-commit 的脚本先执行，给图片打上水印，上传给 CloudFlare，拿到公开 url，自动替换掉 markdown 里的链接。本地的图片是加到了 .gitignore 里的，不会 push 到 GitHub。</li>
+<li>Git push，触发 Github Actions，文章发布成功。</li>
+</ul>
+<h2 id="几张测试图片">几张测试图片</h2>
+<p><strong>带着猫刚登陆温哥华的那天：</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/cb244034fb7886a880f7dc7311e5f55c_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 8"></p>
+<p>pre-commit 脚本顺便加了水印，左下角是版权声明，右下角是个透明背景的字。加这俩水印的时候自动加了个白色的边框，还挺好看，算是意外之喜。</p>
+<p><strong>拉开猫包拉链，胸背带都还没解开，就要往前冲，搜遍每个房间。</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/f40a6e3b1f85fd8528e4ac241b8ca894_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 9"></p>
+<p><strong>刚到新生活的第一个小时，猫和我都还觉得很新鲜</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/9c96bc55d21295e8b87cc7f8718eb1fb_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 7"></p>
+<p><strong>很快温哥华就进入了漫长的雨季，每天都看不到什么阳光，很容易抑郁。但偶尔会看到超美的彩虹啊。</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/6a8569f87c8c188e1b493c21b2fb98af_watermarked_combined.png#wm:both" alt="IMG_8142"></p>
+<hr>
+<h2 id="claude-总结的流程">Claude 总结的流程</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Complete Typora-CloudFlare Image Workflow Guide
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This document provides comprehensive instructions for setting up and using your new image workflow, which automatically processes images pasted in Typora, uploads them to CloudFlare R2, and updates your Markdown files with the correct URLs.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Table of Contents
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">1.</span> [<span style="color:#f92672">System Overview</span>](<span style="color:#a6e22e">#system-overview</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> [<span style="color:#f92672">Initial Setup</span>](<span style="color:#a6e22e">#initial-setup</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> [<span style="color:#f92672">Using the Workflow with Typora</span>](<span style="color:#a6e22e">#using-the-workflow-with-typora</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> [<span style="color:#f92672">Watermark Commands Reference</span>](<span style="color:#a6e22e">#watermark-commands-reference</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> [<span style="color:#f92672">Integration with Existing Workflows</span>](<span style="color:#a6e22e">#integration-with-existing-workflows</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> [<span style="color:#f92672">Troubleshooting</span>](<span style="color:#a6e22e">#troubleshooting</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## System Overview
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>This workflow solves several problems in one unified process:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="font-weight:bold">**Images are processed locally**</span> before commit - no images stored in your Git repository
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> <span style="font-weight:bold">**Automatic uploading**</span> to CloudFlare R2 with proper file organization
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> <span style="font-weight:bold">**Flexible watermarking**</span> with character image and/or copyright text
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> <span style="font-weight:bold">**URL replacement**</span> in Markdown files with your custom domain
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> <span style="font-weight:bold">**Seamless integration**</span> with your existing Hugo blog workflows
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Workflow Diagram
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>┌─────────────┐     ┌─────────────┐     ┌────────────────┐
+</span></span><span style="display:flex;"><span>│ Paste image │ ──► │ Edit in     │ ──► │ Commit changes │
+</span></span><span style="display:flex;"><span>│ in Typora   │     │ Markdown    │     │ (pre-commit    │
+</span></span><span style="display:flex;"><span>└─────────────┘     └─────────────┘     │ hook activates)│
+</span></span><span style="display:flex;"><span>                                         └────────┬───────┘
+</span></span><span style="display:flex;"><span>                                                  │
+</span></span><span style="display:flex;"><span>┌─────────────┐     ┌─────────────┐     ┌────────▼───────┐
+</span></span><span style="display:flex;"><span>│ GitHub      │ ◄── │ Push to     │ ◄── │ Images uploaded│
+</span></span><span style="display:flex;"><span>│ publishes   │     │ GitHub      │     │ URLs updated   │
+</span></span><span style="display:flex;"><span>│ your blog   │     │             │     └────────────────┘
+</span></span><span style="display:flex;"><span>└─────────────┘     └─────────────┘
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Initial Setup
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 1. Set Up Directory Structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>First, create the necessary directories:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>cd your-repository-path
+</span></span><span style="display:flex;"><span>mkdir -p .git/hooks
+</span></span><span style="display:flex;"><span>mkdir -p .watermarks
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 2. Add the Character Watermark
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Place your character watermark image in the <span style="color:#e6db74">`.watermarks`</span> directory:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#75715e"># Copy your watermark image to the .watermarks directory</span>
+</span></span><span style="display:flex;"><span>cp path/to/shuangZhuanCharacter.png .watermarks/
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 3. Create the Pre-commit Hook
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Create a new file at <span style="color:#e6db74">`.git/hooks/pre-commit`</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>touch .git/hooks/pre-commit
+</span></span><span style="display:flex;"><span>chmod +x .git/hooks/pre-commit
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Copy the pre-commit hook script content into this file (the full script provided earlier).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 4. Configure CloudFlare R2 Credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Update the configuration section in the pre-commit script with your R2 credentials:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```python
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#75715e"># Configuration - update these values</span>
+</span></span><span style="display:flex;"><span>R2_ACCESS_KEY_ID <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_access_key_id&#34;</span>
+</span></span><span style="display:flex;"><span>R2_SECRET_ACCESS_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_secret_access_key&#34;</span>
+</span></span><span style="display:flex;"><span>R2_ENDPOINT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://c76863eb8201c5ddbec3d3bbfe20e484.r2.cloudflarestorage.com&#34;</span>
+</span></span><span style="display:flex;"><span>R2_BUCKET <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;imagehost&#34;</span>
+</span></span><span style="display:flex;"><span>CUSTOM_DOMAIN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;img.shuang.blog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 5. Update .gitignore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Add the following to your <span style="color:#e6db74">`.gitignore`</span> file to exclude images from your repository:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span># Ignore image files in content directories
+</span></span><span style="display:flex;"><span>content/**/*.png
+</span></span><span style="display:flex;"><span>content/**/*.jpg
+</span></span><span style="display:flex;"><span>content/**/*.jpeg
+</span></span><span style="display:flex;"><span>content/**/*.gif
+</span></span><span style="display:flex;"><span>content/**/*.webp
+</span></span><span style="display:flex;"><span>content/**/*.svg
+</span></span><span style="display:flex;"><span>content/**/*.bmp
+</span></span><span style="display:flex;"><span>content/**/*.tiff
+</span></span><span style="display:flex;"><span>content/**/*.ico
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 6. Install Required Python Packages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>pip install boto3 pillow
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Using the Workflow with Typora
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Basic Usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="font-weight:bold">**Open your repository in Typora**</span>:
+</span></span><span style="display:flex;"><span>   ``<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   cd your-repository-path
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   typora content/posts/your-post.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. **Paste images directly into Typora**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Use `</span>Ctrl+V<span style="color:#e6db74">` (or `</span>Cmd+V<span style="color:#e6db74">` on Mac) to paste images
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Typora will save the image locally in the same directory as your Markdown file
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. **Add watermarks (optional)**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Add the appropriate watermark command to your image reference
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - See [Watermark Commands Reference](#watermark-commands-reference)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. **Save your Markdown file**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Save with `</span>Ctrl+S<span style="color:#e6db74">` (or `</span>Cmd+S<span style="color:#e6db74">` on Mac)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. **Commit your changes**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git add content/posts/your-post.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git commit -m &#34;Added new post with images&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - The pre-commit hook will automatically:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Detect images in your Markdown files
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Apply watermarks as specified
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Upload images to CloudFlare R2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Update image URLs in your Markdown files
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. **Push to GitHub**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git push
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Your existing GitHub Actions will deploy your Hugo site
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Typora Settings
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For optimal usage with Typora, configure these settings:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Open Typora Preferences
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. Go to the Image tab
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Set &#34;When Insert Image&#34; to &#34;Copy image to ./${filename}.assets&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Check &#34;Apply above rules to local images&#34; and &#34;Apply above rules to online images&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This ensures that images are saved in a predictable location relative to your Markdown file.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Watermark Commands Reference
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Markdown Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Command | Description | Position |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|---------|-------------|----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:char<span style="color:#e6db74">` | Character symbol only | Bottom right |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:cr<span style="color:#e6db74">` | Copyright text only | Bottom left |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:both<span style="color:#e6db74">` | Both watermarks together | Character (right) + Copyright (left) |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Examples:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`markdown
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![My image](image.jpg#wm:char)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![Protected image](image.jpg#wm:cr)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![Fully protected](image.jpg#wm:both)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### HTML Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Attribute | Description | Position |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|-----------|-------------|----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;char&#34;<span style="color:#e6db74">` | Character symbol only | Bottom right |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;cr&#34;<span style="color:#e6db74">` | Copyright text only | Bottom left |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;both&#34;<span style="color:#e6db74">` | Both watermarks together | Character (right) + Copyright (left) |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Examples:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`html
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;char&#34; alt=&#34;My image&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;cr&#34; alt=&#34;Protected image&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;both&#34; alt=&#34;Fully protected&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### When to Use Each Watermark Type
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Content Type | Recommended Watermark | Rationale |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|--------------|----------------------|-----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Personal photos | `</span>#wm:char<span style="color:#e6db74">` | Subtle branding without legal text |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Professional work | `</span>#wm:cr<span style="color:#e6db74">` | Clear copyright protection |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Important images | `</span>#wm:both<span style="color:#e6db74">` | Maximum protection with branding |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Screenshots | None | Usually don&#39;t need watermarking |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Integration with Existing Workflows
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This solution integrates seamlessly with your existing GitHub Actions workflows:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### 1. `</span>telegram-processor.yml<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- This workflow processes Telegram messages and updates your blog
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- No changes needed - works independently of the image processing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### 2. `</span>cloudflare-pages.yml<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- This workflow deploys your Hugo site to Cloudflare Pages
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Automatically runs after you push changes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Includes the updated Markdown files with correct image URLs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Workflow Sequence:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Pre-commit hook processes images locally
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. You push changes to GitHub
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Your existing GitHub Actions deploy the blog
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Images are served from CloudFlare R2 with your custom domain
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Troubleshooting
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Common Issues
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Images not uploading to R2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check your R2 credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify you have the required Python packages installed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the pre-commit hook is executable
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Watermarks not appearing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify the watermark image path is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check that the watermark command syntax is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the Pillow package is installed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Pre-commit hook not running
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the hook is executable: `</span>chmod +x .git/hooks/pre-commit<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify the hook path is correct: `</span>.git/hooks/pre-commit<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### URLs not updating correctly
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check that the custom domain setting is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify that the R2 bucket is properly configured
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Testing the Pre-commit Hook
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You can test the pre-commit hook manually:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># From your repository root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">.git/hooks/pre-commit
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This will process any staged Markdown files with images.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Debugging Tips
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Add debugging statements to the pre-commit hook:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`python
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Processing file: {markdown_file}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Found images: {images}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Image data: {image_data[:100]}...&#34;)  # Print first 100 bytes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>``
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This helps identify where issues might be occurring.
+</span></span></code></pre></div>
+                  
+                  
+                  
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            
+            <li id="%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8E%BB%E5%B0%BC%E6%B3%8A%E5%B0%94" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="http://localhost:1313/posts/2023/10/%E7%AC%AC%E4%B8%80%E6%AC%A1%E5%8E%BB%E5%B0%BC%E6%B3%8A%E5%B0%94/">第一次去尼泊尔</a>
+                </h1>
+                
+                <div class="blog-entry-date">2023-10-09</div>
+                
+                
+                <div class="blog-entry-summary">
+                  
+                  
+                  
+                  
+                  
+                  
+                    
+                    
+                  
+                  
+                  <p>这次国庆长假，我去了趟尼泊尔，是跟着一个徒步团去的。尽管交通时间远远超过实际徒步时间，我们依然觉得非常值。尼泊尔的风景太美了，人文也很值得体验。</p>
+<h2 id="探险家的失落">探险家的失落</h2>
+<p>我们是从成都飞加德满都进入尼泊尔的。1 这趟航班最酷的地方在于：它贴着喜马拉雅山脉飞了一段，产生了一个看珠峰的绝佳位置。</p>
+<p>眼下从国内直飞加德满都的城市好像只有成都和广州。如果从广州飞，会从很南的地方飞临加德满都，离珠峰相当远。但从广州的航班上观看珠峰，即使能看到，也远没有成都航班的位置好。
+<img src="https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/chengdu2LKTMOverEverest.png" alt="成都到加德满都，看珠峰很近">
+<img src="https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/guangzhou2KTMFarFromEverest.png" alt="广州到加德满都，珠峰有点远"></p>
+<p>珠峰出现在飞机右侧的那一刻，我想到了星野道夫。</p>
+<p>去尼泊尔之前，我正在看知名生态摄影师星野道夫的书：《旅行之木》。其中一小篇写到他第一次去南美的时候，一觉醒来，脚下就已经是南美的大地。他突然感到很失落。对探险家来讲，世界好像是个无限的宝藏。飞机旅行的速度太快，毁掉了这种小心翼翼、充满等待和未知的探索的感觉。睡一觉就到了南美，多睡几觉就走遍了全世界。就像攒了很久的零花钱一下子就花掉了，本应该“宽广深邃”的世界突然变得很“有限”，于是他怅然若失。</p>
+<p>我对珠峰也有点那种捂着舍不得拿出来看的期待。十几年前在支教的时候，我们哪些支教老师都是些刚毕业的少年。多数人对未来的想象都是找一
+                  ...
+                  <div class="summary-fade"></div>
+                </div>
+                
+                
+                <div class="blog-entry-content hidden">
+                  
+                    <p>这次国庆长假，我去了趟尼泊尔，是跟着一个徒步团去的。尽管交通时间远远超过实际徒步时间，我们依然觉得非常值。尼泊尔的风景太美了，人文也很值得体验。</p>
 <h2 id="探险家的失落">探险家的失落</h2>
 <p>我们是从成都飞加德满都进入尼泊尔的。1 这趟航班最酷的地方在于：它贴着喜马拉雅山脉飞了一段，产生了一个看珠峰的绝佳位置。</p>
 <p>眼下从国内直飞加德满都的城市好像只有成都和广州。如果从广州飞，会从很南的地方飞临加德满都，离珠峰相当远。但从广州的航班上观看珠峰，即使能看到，也远没有成都航班的位置好。
@@ -231,18 +808,256 @@
 <p>Kumari 是女神在凡间的化身。她们是经过严格的标准，从释迦族的幼女中挑选出来的。</p>
 <p>在更早的时候，尼泊尔有很多大大小小的王国，每个王国都会挑选自己的 Kumari。后来中央王室一统全国后，就只有加德满都有一位 Kumari 了。而现在尼泊尔已经不再是君主制国家，除了加德满都的 Kumari 外，各大城市也会有自己的 Kumari。</p>
 <p>加德满都的 Kumari 人们讨论得最多。她们还是幼女时被选中后，就会送到神庙之中生活，直到进入青春期时退休，多年都不能离开神庙。除了照顾自己的人以外，Kumari 很少见到外人。只在特殊节日从神庙的窗户中露面，供民众参拜。Kumari 见民众时不能有任何表情，因为据说不管是笑容还是其他表情，甚至小动作，都表示灾祸将降临到参拜的民众身上。</p>
-            
-          </div>
-        </article>
-      </li>
-      
-    </ul>
+<p>曾有人批评尼泊尔的活女神制度，认为它有侵害女童权利的问题。我听到 Kumari 的故事的第一反应也是，小女孩好辛苦，从小被送进神庙，与社会脱轨好多年，退休后回到社会要如何生活？而且还有“退休后的活女神娶了会招致灾祸”的传言，退休后的 Kumari 在一个相对还很传统的国家，恐怕生活不会容易。</p>
+<p>同行的朋友告诉我，其实近些年也有好消息。本来 Kumari 的老师是只教授传统文化的内容，后来也请了更“现代”的老师，让 Kumari 可以接受不差于学校的教育，包括数学之类的。（数学！yes！）此外，退休后的 Kumari 的待遇也得到了改善。也有（至少）一位退休后的 Kumari 结了婚，甚至还出了本书讲她的故事。</p>
+<p>且不说现代化是否一定是绝对正确的发展方向。即使它是，不同族群也都有其发展的节奏，背后往往都有复杂的历史原因。旁人大可不必着急批判，保持乐观，送上祝福就好。</p>
+<h2 id="去看山">去看山</h2>
+<p>我小时候是在山里长大的，所以一直喜欢在山里走。老家的名字也非常乡土，叫“清溪沟”。我偏爱那些有水，最好有瀑布的山，可能也是因为这点乡愁。</p>
+<p>对徒步这件事，我虽然喜欢，但我有两个障碍：扁平足和高反。</p>
+<p>扁平足是从小形成的。上学之前都在乡下，山路很软，不影响。6岁搬到镇上去，往往穿薄底的鞋子，回力之类的。长期在很硬的水泥地上走，对足弓很不友好，很快脚底就平了。我的小腿长得很粗，全都是腱子肉。我以前还很得意，以为自己的小腿很有力量。后来才知道，那其实就是扁平足的后果。足弓常年不作为，于是走路的时候小腿肌肉就去代偿，久而久之就变粗了。</p>
+<p>我很羡慕那些去走乌孙古道的，图片上看风景太美了。我不敢去，怕日均超过15公里后，我的脚底就会废掉。几年前参加过一个公益走路活动。香山和八大处绕一圈，总路程有40公里。走完后我完全无法站立，脚底痛得像刀割。我一个黑胖子，到了终点后，跟同伴描述小美人鱼一样的痛感，央求她们陪我吃完饭去按脚。</p>
+<p>另一件担心的事情是高反。我本来以为我没可能有高反，结果有此在香格里拉中招了。头痛得想拿斧头劈开。那时候什么都不懂，买了些感冒药吃，没有用的。朋友们在牦牛肉火锅热火朝天，我只能蹲在门外台阶上吸氧。很久后回想起来，应该是因为没睡好，然后被风吹感冒了，才症状那么严重。毕竟香格里拉的海拔才三千多一点，算不得高。</p>
+<p>庆幸的是，7月去了趟四姑娘山，把这两个障碍都破除了。我发现只要我穿对足弓支撑良好的鞋，就可以走很远也没问题。如果不是很有挑战的地形，其实穿跑步鞋可能更好。我不跑步，但我长年穿亚瑟士的某款鞋，逛博物馆都不会脚痛。而且在野外徒步，土路上走着，对脚底的压力小很多。平时我也会刻意练习，走路时主动把足弓弯起来，避免把整个脚底摊开在鞋子上。长期下来效果显著，我已经很久没有出现脚底痛的情况了。</p>
+<p>高反也不再是个问题。去四姑娘山之前，特地搜索了下相关的知识。这篇文章帮助很大。简单总结就是：</p>
+<ul>
+<li>
+<p>海拔上升不快的，或海拔并不高（比如4000以下），一般问题不大。只需要多关注血氧（便携血氧仪或者Apple Watch），试试正压呼吸法，头痛吃布洛芬，睡不着吃安眠药（别吃太猛的）。即使有点轻微的高反症状，适应三天左右也就没事了。</p>
+</li>
+<li>
+<p>预计会海拔上升太快，或者太高的，有药可以吃。不是红景天，那东西没用的。要吃乙酰唑胺。海拔爬升前24小时开始吃，每天吃2粒，到最高海拔后再吃两天，就可以停药。可惜这个药在国内是处方药，普通药房买不到。有些人去香港买一款叫“海拔适”的药，成分就是乙酰唑胺。国内其实也可以买到，淘宝或京东买，请医师在线开处方。</p>
+</li>
+</ul>
+<p>这两个障碍去掉了，我就可以放心去徒步了。从四姑娘山回来我很开心，因为解锁了徒步这么好玩的事情。</p>
+<p>然后去尼泊尔这趟就过足了看山的瘾。这次的路线比较休闲，只去了波恩山 Poon Hill。回来路上有个小卖部的大叔问我们去哪 trekking 了，告诉他 Poon Hill。他笑笑，Poon Hill 那叫 hiking，算什么 trekking。</p>
+<p>虽然难度不大，但雪山真的超级美，我难以用语言描述。凌晨爬上波恩山观景台，小卖部弄一杯热巧，捧着喝，看着周围的雪山，不想回去了。</p>
+<p><img src="https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/Poon_hill.jpg" alt="天亮前登上波恩山，周围的雪山美不胜收"></p>
+<h2 id="不确定的未来">不确定的未来</h2>
+<p>后来在民宿遇到一个俄国来的小哥，团里的伙伴喊我一起去聊天，因为觉得我英语好可以帮忙翻译。然而我们发现俄国小哥根本不会英语，我们只能拿着手机翻译。</p>
+<p>如果我们看懂了的话，他好像是个做创作的，似乎是用镭射在一些金属之类的材质上画画。他来尼泊尔，是因为他信仰佛教，而尼泊尔有一个他一定要去一次的圣地。他出来并不容易，因为俄国正在入侵乌克兰，他费尽力气，等了好久才拿到护照之类的东西。</p>
+<p>他让我想起另一个俄罗斯小哥的故事。那是之前帮我练雅思的老师讲的。我们是在网上连线上课。他说有个俄罗斯的小伙子，也是跟他练雅思，因为准备申请去留学来离开俄国，避免遇到征兵被送去乌克兰战场。后来那个小哥雅思考了8.5，但是有一天突然就失去了消息，老师再也没有收到过他的邮件。</p>
+<p>跟俄国小哥聊天那个晚上，同事好友告诉我，有传言公司准备裁员了。我们都在市场部，而她听说整个市场部全都会裁掉。未来会怎样呢？真是说不准。</p>
 
-    
-    
-  
-  
+                  
+                  
+                  
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            
+            <li id="%E8%BA%B2%E4%B8%8D%E5%BC%80%E7%9A%84%E9%9A%90%E5%96%BB" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="http://localhost:1313/posts/2022/08/%E8%BA%B2%E4%B8%8D%E5%BC%80%E7%9A%84%E9%9A%90%E5%96%BB/">躲不开的隐喻</a>
+                </h1>
+                
+                <div class="blog-entry-date">2022-08-09</div>
+                
+                
+                <div class="blog-entry-summary">
+                  
+                  
+                  
+                  
+                  
+                  
+                    
+                    
+                  
+                  
+                  <p><img src="https://neodb.social/m/book/2021/09/159c2f82a1-0b5b-4b4c-9e4a-1184de24157e.jpg" alt="我们赖以生存的隐喻"></p>
+<p>今天刷到一本书叫《那些我们赖以生存的隐喻》。我一直有个怪癖，总想尽可能避开隐喻，以及其他任何修辞。因为我觉得修辞让真相更模糊。</p>
+<p>这个怪癖的表现之一：我很长时间不愿意看小说，因为觉得小说里的情节设置会激起并操控读者的情绪，而情绪越大，真理就越远（我当时真的是这么想的）。以至于有一段时间我只读佛经，因为我以为佛经只谈玄，不饰词藻。后来发现是我想当然了，佛家也用修辞，也讲故事，比如譬喻经。</p>
+<p>这个怪癖的另一个表现：我特别反感在生活或工作中的一些表达中用战争的比喻。比如工作上说“打硬仗”，要”立下军令状“，要敢于“亮剑”，在我听来都非常刺耳。我嫌弃他们，因为觉得喊这些口号又土又弱智。</p>
+<p>这个怪癖还有一个表现：我特别喜欢看星际迷航。除了喜欢里面关于探索的主题以外，我特别喜欢瓦肯星人这个设定，甚至总试图变得像Spock那样，绝对理性，没有任何情绪。当然每次尝试都失败了，不然我现在大概率住在精神病院里。</p>
+<p>但这本书开头就讲，其实修辞手法不只是一个文本里的艺术性点缀，他本来就是语义的组成部分。隐喻远比我们想象中的不可或缺。即使一个人可以尝试不文绉绉地说话，也其实会经常用到隐喻。他举了一个例子，尝试谈论”争论“这个词却不用到与军事有关的隐喻。</p>
+<p>我发现我很难做到。与”争论“这个概念相关的大多数词都与军事有关。</p>
+<p>我妥协了：的确，没有必要躲开修辞，不仅因为躲不开，也因为它本身就不只是点缀，而是意义的一部分，就好像情感和理性都是灵魂的一部分一样。</p>
+
+                  ...
+                  <div class="summary-fade"></div>
+                </div>
+                
+                
+                <div class="blog-entry-content hidden">
+                  
+                    <p><img src="https://neodb.social/m/book/2021/09/159c2f82a1-0b5b-4b4c-9e4a-1184de24157e.jpg" alt="我们赖以生存的隐喻"></p>
+<p>今天刷到一本书叫《那些我们赖以生存的隐喻》。我一直有个怪癖，总想尽可能避开隐喻，以及其他任何修辞。因为我觉得修辞让真相更模糊。</p>
+<p>这个怪癖的表现之一：我很长时间不愿意看小说，因为觉得小说里的情节设置会激起并操控读者的情绪，而情绪越大，真理就越远（我当时真的是这么想的）。以至于有一段时间我只读佛经，因为我以为佛经只谈玄，不饰词藻。后来发现是我想当然了，佛家也用修辞，也讲故事，比如譬喻经。</p>
+<p>这个怪癖的另一个表现：我特别反感在生活或工作中的一些表达中用战争的比喻。比如工作上说“打硬仗”，要”立下军令状“，要敢于“亮剑”，在我听来都非常刺耳。我嫌弃他们，因为觉得喊这些口号又土又弱智。</p>
+<p>这个怪癖还有一个表现：我特别喜欢看星际迷航。除了喜欢里面关于探索的主题以外，我特别喜欢瓦肯星人这个设定，甚至总试图变得像Spock那样，绝对理性，没有任何情绪。当然每次尝试都失败了，不然我现在大概率住在精神病院里。</p>
+<p>但这本书开头就讲，其实修辞手法不只是一个文本里的艺术性点缀，他本来就是语义的组成部分。隐喻远比我们想象中的不可或缺。即使一个人可以尝试不文绉绉地说话，也其实会经常用到隐喻。他举了一个例子，尝试谈论”争论“这个词却不用到与军事有关的隐喻。</p>
+<p>我发现我很难做到。与”争论“这个概念相关的大多数词都与军事有关。</p>
+<p>我妥协了：的确，没有必要躲开修辞，不仅因为躲不开，也因为它本身就不只是点缀，而是意义的一部分，就好像情感和理性都是灵魂的一部分一样。</p>
+
+                  
+                  
+                  
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            
+            <li id="%E4%B8%89%E4%BD%93%E7%A5%9B%E9%AD%85" class="blog-entry">
+              <article class="collapsible-article">
+                <h1 class="blog-entry-title">
+                  <a href="http://localhost:1313/posts/2020/10/%E4%B8%89%E4%BD%93%E7%A5%9B%E9%AD%85/">《三体》祛魅</a>
+                </h1>
+                
+                <div class="blog-entry-date">2020-10-16</div>
+                
+                
+                <div class="blog-entry-summary">
+                  
+                  
+                  
+                  
+                  
+                  
+                    
+                    
+                  
+                  
+                  <p><img src="https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/qumei.webp" alt="下头了"></p>
+<p>时隔多年再看《三体》，觉得不好看了，甚至看不下去。</p>
+<p>韦伯对现代性的解读让我理解了为什么《三体》如此受到中国读者的欢迎：颂扬能够带来力量和效率的绝对理性（章北海）、摒弃甚至鄙视“软弱”的人性（“圣母”程心）。</p>
+<p>韦伯指出：现代性的特征是可计算性和合理化。在现代资本主义社会中，一切以提高生产效率（追求更高利润）为决策的参考依据。可计算性是调节生产的过程（以提高生产效率）的前提，因此如果一个东西不可计算，那么它的存在及价值是不被承认的。举个例子：当你在工作中提出一个无法做出预期收益评估（也就是不可计算）的行动倡议的时候，大概率是不会被采纳的。当这样的趋势发展到极致，人性中的非理性部分就彻底被抛弃，比如爱、善、美等等，因为它们不可测量，不可测量就不可计算，不可计算就没有意义。</p>
+<p>回过来看《三体》。为什么大家对程心恨得咬牙切齿（同时大家把章北海推到了至高无上的地位，这是对生产效率追求的一体两面）？因为程心集中代表了人性中的非理性部分：恻隐之心、爱、犹豫、回避艰难的抉择、“软弱”。知乎上最早用“圣母婊”来谩骂她，这也是为什么我厌恶知乎这个平台的氛围而几乎停止使用知乎。（后来我发现各种xx婊的词汇越来越多，而且不只是知乎，曾经包容的豆瓣，曾经充满生命力的B站都是如此，我就放弃从社交网站获取有价值的内容了。）</p>
+<p>对比看另外两部科幻作品：《星际迷航 Star Trek》和《星际穿越 Interstellar》。 在星际迷航里，抛弃人性，仅追求绝对理性的瓦肯星人是很有趣的设定。早期系列里Spock这个角色存在的意义是带来幽默的效果。绝对理性的Spock和依然
+                  ...
+                  <div class="summary-fade"></div>
+                </div>
+                
+                
+                <div class="blog-entry-content hidden">
+                  
+                    <p><img src="https://pub-90369df13e7a45b2aab23edfb993401e.r2.dev/qumei.webp" alt="下头了"></p>
+<p>时隔多年再看《三体》，觉得不好看了，甚至看不下去。</p>
+<p>韦伯对现代性的解读让我理解了为什么《三体》如此受到中国读者的欢迎：颂扬能够带来力量和效率的绝对理性（章北海）、摒弃甚至鄙视“软弱”的人性（“圣母”程心）。</p>
+<p>韦伯指出：现代性的特征是可计算性和合理化。在现代资本主义社会中，一切以提高生产效率（追求更高利润）为决策的参考依据。可计算性是调节生产的过程（以提高生产效率）的前提，因此如果一个东西不可计算，那么它的存在及价值是不被承认的。举个例子：当你在工作中提出一个无法做出预期收益评估（也就是不可计算）的行动倡议的时候，大概率是不会被采纳的。当这样的趋势发展到极致，人性中的非理性部分就彻底被抛弃，比如爱、善、美等等，因为它们不可测量，不可测量就不可计算，不可计算就没有意义。</p>
+<p>回过来看《三体》。为什么大家对程心恨得咬牙切齿（同时大家把章北海推到了至高无上的地位，这是对生产效率追求的一体两面）？因为程心集中代表了人性中的非理性部分：恻隐之心、爱、犹豫、回避艰难的抉择、“软弱”。知乎上最早用“圣母婊”来谩骂她，这也是为什么我厌恶知乎这个平台的氛围而几乎停止使用知乎。（后来我发现各种xx婊的词汇越来越多，而且不只是知乎，曾经包容的豆瓣，曾经充满生命力的B站都是如此，我就放弃从社交网站获取有价值的内容了。）</p>
+<p>对比看另外两部科幻作品：《星际迷航 Star Trek》和《星际穿越 Interstellar》。 在星际迷航里，抛弃人性，仅追求绝对理性的瓦肯星人是很有趣的设定。早期系列里Spock这个角色存在的意义是带来幽默的效果。绝对理性的Spock和依然保有人性的地球人舰长之间的观点碰撞，就像现在Siri给出一个愚蠢的回答一样好玩，人们一边骂着Siri真蠢一边玩得乐此不疲。我猜测作品设定里让人类做舰长而Spock只能是大副，倒不是因为创作者觉得人性应该高于绝对理性，很可能仅仅是因为那样的话就不好玩了。没有人想看一部人类对于“机器”唯命是从的科幻剧。</p>
+<p>然而到了后期的星际迷航，经过了多次经济危机和经济复苏的美国人，开始小心翼翼地在科幻作品中回归人性。之所以说小心翼翼，是因为并没有正面批判瓦肯人的“绝情灭性”的生存方式，而只是开始暗示Spock的童年是悲惨和痛苦的。在前两年的《星际迷航·发现者号》电视剧里这一点更加明显，以绝对理性著称的Spock竟然精神失常迷失自我甚至变成罪犯了。（当然，那部剧实在槽点太多）</p>
+<p>在星际穿越里对人性的颂扬更加明显。男主Cooper虽然是个典型的工程师的形象，但最终说服他离开女儿前往太空的还是老Brand教授劝他的那句：&ldquo;Get out there and save them。&ldquo;人类之间的这种unconditional love是全片最大的闪光点。只为了那句&quot;Because my dad promised me.&ldquo;我也心甘情愿掏钱去电影院二刷甚至三刷这部电影。小Brand博士和Cooper争论的那几句台词尤其可见对绝对理性的质疑：</p>
+<blockquote>
+<ul>
+<li>Cooper: You’re a scientist, Brand.</li>
+<li>Brand: So listen to me when I say love isn’t something that we invented. It’s observable. Powerful. It has to mean something.</li>
+<li>Cooper: Love has meaning, yes. Social utility, social bonding, child rearing…</li>
+<li>Brand: We love people who have died. Where’s the social utility in that?</li>
+<li>Cooper: None.</li>
+<li>Brand: Maybe it means something more, something we can’t yet understand. Maybe it’s some evidence, some artifact of a higher dimension that we can’t consciously perceive. I’m drawn across the universe to someone I haven’t seen in a decade who I know is probably dead. Love is the one thing that we’re capable of perceiving that transcends dimensions of time and space. Maybe we should trust that, even if we can’t understand it.</li>
+</ul></blockquote>
+
+                  
+                  
+                  
+                  <div class="back-to-top">
+                    <a href="#top">↑ 返回顶部</a>
+                  </div>
+                </div>
+                
+                
+                <div class="read-more-container">
+                  <button class="read-more-btn" onclick="toggleArticle(this)">阅读全文</button>
+                </div>
+              </article>
+            </li>
+            
+          </ul>
+
+          
+          
+        
+        
+      </div>
+    </main>
+  </div>
 </div>
+
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    
+    const container = document.querySelector('.blog-container');
+    if (container) {
+      container.style.width = '680px';
+      
+      
+      const elements = container.querySelectorAll('.blog-content, .blog-entries, .blog-list, .blog-entry, .collapsible-article, .blog-entry-summary, .blog-entry-content');
+      elements.forEach(el => {
+        el.style.width = '100%';
+        el.style.maxWidth = '100%';
+        el.style.boxSizing = 'border-box';
+      });
+    }
+  });
+
+  function toggleArticle(button) {
+    const article = button.closest(".collapsible-article");
+    const summary = article.querySelector(".blog-entry-summary");
+    const content = article.querySelector(".blog-entry-content");
+    
+    if (content.classList.contains("hidden")) {
+      
+      summary.style.display = "none";
+      content.classList.remove("hidden");
+      button.textContent = "收起文章";
+    } else {
+      
+      summary.style.display = "block";
+      content.classList.add("hidden");
+      button.textContent = "阅读全文";
+      
+      
+      const articleTop = article.getBoundingClientRect().top + window.pageYOffset;
+      window.scrollTo({top: articleTop - 20, behavior: "smooth"});
+    }
+  }
+
+  
+  document.addEventListener("DOMContentLoaded", function() {
+    const observer = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        const id = entry.target.getAttribute("id");
+        const tocLink = document.querySelector(`.article-toc a[href="#${id}"]`);
+        
+        if (entry.isIntersecting) {
+          document.querySelectorAll(".article-toc a").forEach(link => {
+            link.classList.remove("active");
+          });
+          if (tocLink) {
+            tocLink.classList.add("active");
+          }
+        }
+      });
+    }, { threshold: 0.1, rootMargin: "-10% 0px -80% 0px" });
+    
+    
+    document.querySelectorAll(".blog-entry").forEach(entry => {
+      observer.observe(entry);
+    });
+  });
+  
+  
+  function toggleToc() {
+    document.querySelector('.toc-toggle').classList.toggle('active');
+  }
+</script>
 </main><footer
   class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
 >

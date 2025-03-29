@@ -1,0 +1,491 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>为博客添加 CloudFlare 图床并在 Typora 中自动替换链接-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="博客搭好后，我都是在 GitHub Desktop 里编辑 markdown 文件。但我不喜欢 GitHub Desktop，于是今天想来试试用 Typora 写博客。
+其实我一直有 Ulysses 的订阅，但每次用它的体验并不好，盛名之下其实难副。最不喜欢的是它的 markdown 渲染乱七八糟的，纯文字的写作可能还能忍受，但代码的显示就太丑了。当然人家的目标用户本就是纯文字工作者，也不是为咱们程序员设计的，也不用太吐槽它。
+第一版方案
+一开始的想法是跟着 Typora 的设置走，Typora 提供了设置图片上传的地方，可以通过 PicGo 这类的应用，实现当图片被粘贴到 Typora 里，自动上传到图床并获取公开链接，并自动替换掉 markdown 文件里的链接。
+
+看了眼这些支持的用来上传图片的应用，PicGo 比较眼熟，以前在别的地方用过，而且那时候还弄好了 CloudFlare 的 R2 bucket 做图床，那就用它了。
+但弄了好久，不管怎么设置都不对。我打开 Claude，跟它把场景和需求都描述清楚，正要请它帮忙 debug 的时候，我看到 PicGo 的隐私协议，瞬间就不想弄它了，收集上传我的数据，还向第三方披露，“包括但不限于”，真敢说啊。我赶紧卸载掉。
+
+第二版方案
+然后我就问 Claude，我不愿意弄 PicGo 了，咱们试试别的法子吧。它给了我4个想法，我看最后一个：
+### Alternative 4: GitHub-based solution
+
+1. Create a Git repository for your markdown files and images
+2. Set up GitHub Actions to automatically process images and upload to R2
+3. Use GitHub Pages with your custom domain
+就它了，反正我的博客就在一个 GitHub Repo 里，而且我已经在用 Actions 来发布了，正好就着现在基础改。" />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    ><article>
+  <header class="mb-14">
+    <h1 class="!my-0 pb-2.5">为博客添加 CloudFlare 图床并在 Typora 中自动替换链接</h1><div class="text-xs antialiased opacity-60"><time>Mar 13, 2025</time></div></header>
+
+  <section><p>博客搭好后，我都是在 GitHub Desktop 里编辑 markdown 文件。但我不喜欢 GitHub Desktop，于是今天想来试试用 Typora 写博客。</p>
+<p>其实我一直有 Ulysses 的订阅，但每次用它的体验并不好，盛名之下其实难副。最不喜欢的是它的 markdown 渲染乱七八糟的，纯文字的写作可能还能忍受，但代码的显示就太丑了。当然人家的目标用户本就是纯文字工作者，也不是为咱们程序员设计的，也不用太吐槽它。</p>
+<h2 id="第一版方案">第一版方案</h2>
+<p>一开始的想法是跟着 Typora 的设置走，Typora 提供了设置图片上传的地方，可以通过 PicGo 这类的应用，实现当图片被粘贴到 Typora 里，自动上传到图床并获取公开链接，并自动替换掉 markdown 文件里的链接。
+<img src="https://img.shuang.blog/2025/03/ae9861ac2f4fe9980fa3eba02d8eb0ef.png" alt="WechatIMG3124"></p>
+<p>看了眼这些支持的用来上传图片的应用，PicGo 比较眼熟，以前在别的地方用过，而且那时候还弄好了 CloudFlare 的 R2 bucket 做图床，那就用它了。</p>
+<p>但弄了好久，不管怎么设置都不对。我打开 Claude，跟它把场景和需求都描述清楚，正要请它帮忙 debug 的时候，我看到 PicGo 的隐私协议，瞬间就不想弄它了，收集上传我的数据，还向第三方披露，“包括但不限于”，真敢说啊。我赶紧卸载掉。
+<img src="https://img.shuang.blog/2025/03/8a33350cd2bb5ea505276169d08e699c.png" alt="IMG_8142"></p>
+<h2 id="第二版方案">第二版方案</h2>
+<p>然后我就问 Claude，我不愿意弄 PicGo 了，咱们试试别的法子吧。它给了我4个想法，我看最后一个：</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span><span style="color:#75715e">### Alternative 4: GitHub-based solution
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> Create a Git repository for your markdown files and images
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> Set up GitHub Actions to automatically process images and upload to R2
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> Use GitHub Pages with your custom domain
+</span></span></code></pre></div><p>就它了，反正我的博客就在一个 GitHub Repo 里，而且我已经在用 Actions 来发布了，正好就着现在基础改。</p>
+<p>但想了想，我跟它说，要改一下，我不想把图片发到 Repo 里，我想让这个博客保持轻量。然后 Claude 跟我讲了一个我从没接触到的领域：可以写脚本让 Git 在 每次 commit 之前执行一些任务。</p>
+<p>这样流程就变成了：</p>
+<ul>
+<li>文章里的图片直接粘贴到 markdown 文件里。</li>
+<li>Typora 对该文章创建一个 asset 子目录，图片暂存在那个子目录里。</li>
+<li>Git Commit 的时候，一个叫 pre-commit 的脚本先执行，给图片打上水印，上传给 CloudFlare，拿到公开 url，自动替换掉 markdown 里的链接。本地的图片是加到了 .gitignore 里的，不会 push 到 GitHub。</li>
+<li>Git push，触发 Github Actions，文章发布成功。</li>
+</ul>
+<h2 id="几张测试图片">几张测试图片</h2>
+<p><strong>带着猫刚登陆温哥华的那天：</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/cb244034fb7886a880f7dc7311e5f55c_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 8"></p>
+<p>pre-commit 脚本顺便加了水印，左下角是版权声明，右下角是个透明背景的字。加这俩水印的时候自动加了个白色的边框，还挺好看，算是意外之喜。</p>
+<p><strong>拉开猫包拉链，胸背带都还没解开，就要往前冲，搜遍每个房间。</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/f40a6e3b1f85fd8528e4ac241b8ca894_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 9"></p>
+<p><strong>刚到新生活的第一个小时，猫和我都还觉得很新鲜</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/9c96bc55d21295e8b87cc7f8718eb1fb_watermarked_combined.png#wm:both" alt="FullSizeRender_VSCO 7"></p>
+<p><strong>很快温哥华就进入了漫长的雨季，每天都看不到什么阳光，很容易抑郁。但偶尔会看到超美的彩虹啊。</strong></p>
+<p><img src="https://img.shuang.blog/2025/03/6a8569f87c8c188e1b493c21b2fb98af_watermarked_combined.png#wm:both" alt="IMG_8142"></p>
+<hr>
+<h2 id="claude-总结的流程">Claude 总结的流程</h2>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span># Complete Typora-CloudFlare Image Workflow Guide
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This document provides comprehensive instructions for setting up and using your new image workflow, which automatically processes images pasted in Typora, uploads them to CloudFlare R2, and updates your Markdown files with the correct URLs.
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Table of Contents
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span><span style="color:#66d9ef">1.</span> [<span style="color:#f92672">System Overview</span>](<span style="color:#a6e22e">#system-overview</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> [<span style="color:#f92672">Initial Setup</span>](<span style="color:#a6e22e">#initial-setup</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> [<span style="color:#f92672">Using the Workflow with Typora</span>](<span style="color:#a6e22e">#using-the-workflow-with-typora</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> [<span style="color:#f92672">Watermark Commands Reference</span>](<span style="color:#a6e22e">#watermark-commands-reference</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> [<span style="color:#f92672">Integration with Existing Workflows</span>](<span style="color:#a6e22e">#integration-with-existing-workflows</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">6.</span> [<span style="color:#f92672">Troubleshooting</span>](<span style="color:#a6e22e">#troubleshooting</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## System Overview
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>This workflow solves several problems in one unified process:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="font-weight:bold">**Images are processed locally**</span> before commit - no images stored in your Git repository
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">2.</span> <span style="font-weight:bold">**Automatic uploading**</span> to CloudFlare R2 with proper file organization
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">3.</span> <span style="font-weight:bold">**Flexible watermarking**</span> with character image and/or copyright text
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">4.</span> <span style="font-weight:bold">**URL replacement**</span> in Markdown files with your custom domain
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">5.</span> <span style="font-weight:bold">**Seamless integration**</span> with your existing Hugo blog workflows
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Workflow Diagram
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>┌─────────────┐     ┌─────────────┐     ┌────────────────┐
+</span></span><span style="display:flex;"><span>│ Paste image │ ──► │ Edit in     │ ──► │ Commit changes │
+</span></span><span style="display:flex;"><span>│ in Typora   │     │ Markdown    │     │ (pre-commit    │
+</span></span><span style="display:flex;"><span>└─────────────┘     └─────────────┘     │ hook activates)│
+</span></span><span style="display:flex;"><span>                                         └────────┬───────┘
+</span></span><span style="display:flex;"><span>                                                  │
+</span></span><span style="display:flex;"><span>┌─────────────┐     ┌─────────────┐     ┌────────▼───────┐
+</span></span><span style="display:flex;"><span>│ GitHub      │ ◄── │ Push to     │ ◄── │ Images uploaded│
+</span></span><span style="display:flex;"><span>│ publishes   │     │ GitHub      │     │ URLs updated   │
+</span></span><span style="display:flex;"><span>│ your blog   │     │             │     └────────────────┘
+</span></span><span style="display:flex;"><span>└─────────────┘     └─────────────┘
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Initial Setup
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 1. Set Up Directory Structure
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>First, create the necessary directories:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>cd your-repository-path
+</span></span><span style="display:flex;"><span>mkdir -p .git/hooks
+</span></span><span style="display:flex;"><span>mkdir -p .watermarks
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 2. Add the Character Watermark
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Place your character watermark image in the <span style="color:#e6db74">`.watermarks`</span> directory:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#75715e"># Copy your watermark image to the .watermarks directory</span>
+</span></span><span style="display:flex;"><span>cp path/to/shuangZhuanCharacter.png .watermarks/
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 3. Create the Pre-commit Hook
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Create a new file at <span style="color:#e6db74">`.git/hooks/pre-commit`</span>:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>touch .git/hooks/pre-commit
+</span></span><span style="display:flex;"><span>chmod +x .git/hooks/pre-commit
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>Copy the pre-commit hook script content into this file (the full script provided earlier).
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 4. Configure CloudFlare R2 Credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Update the configuration section in the pre-commit script with your R2 credentials:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```python
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span><span style="color:#75715e"># Configuration - update these values</span>
+</span></span><span style="display:flex;"><span>R2_ACCESS_KEY_ID <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_access_key_id&#34;</span>
+</span></span><span style="display:flex;"><span>R2_SECRET_ACCESS_KEY <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;your_secret_access_key&#34;</span>
+</span></span><span style="display:flex;"><span>R2_ENDPOINT <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;https://c76863eb8201c5ddbec3d3bbfe20e484.r2.cloudflarestorage.com&#34;</span>
+</span></span><span style="display:flex;"><span>R2_BUCKET <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;imagehost&#34;</span>
+</span></span><span style="display:flex;"><span>CUSTOM_DOMAIN <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;img.shuang.blog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 5. Update .gitignore
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span>Add the following to your <span style="color:#e6db74">`.gitignore`</span> file to exclude images from your repository:
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span># Ignore image files in content directories
+</span></span><span style="display:flex;"><span>content/**/*.png
+</span></span><span style="display:flex;"><span>content/**/*.jpg
+</span></span><span style="display:flex;"><span>content/**/*.jpeg
+</span></span><span style="display:flex;"><span>content/**/*.gif
+</span></span><span style="display:flex;"><span>content/**/*.webp
+</span></span><span style="display:flex;"><span>content/**/*.svg
+</span></span><span style="display:flex;"><span>content/**/*.bmp
+</span></span><span style="display:flex;"><span>content/**/*.tiff
+</span></span><span style="display:flex;"><span>content/**/*.ico
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### 6. Install Required Python Packages
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"></span>pip install boto3 pillow
+</span></span><span style="display:flex;"><span><span style="color:#e6db74">```</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## Using the Workflow with Typora
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">### Basic Usage
+</span></span></span><span style="display:flex;"><span><span style="color:#75715e"></span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">1.</span> <span style="font-weight:bold">**Open your repository in Typora**</span>:
+</span></span><span style="display:flex;"><span>   ``<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   cd your-repository-path
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   typora content/posts/your-post.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. **Paste images directly into Typora**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Use `</span>Ctrl+V<span style="color:#e6db74">` (or `</span>Cmd+V<span style="color:#e6db74">` on Mac) to paste images
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Typora will save the image locally in the same directory as your Markdown file
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. **Add watermarks (optional)**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Add the appropriate watermark command to your image reference
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - See [Watermark Commands Reference](#watermark-commands-reference)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. **Save your Markdown file**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Save with `</span>Ctrl+S<span style="color:#e6db74">` (or `</span>Cmd+S<span style="color:#e6db74">` on Mac)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">5. **Commit your changes**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git add content/posts/your-post.md
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git commit -m &#34;Added new post with images&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - The pre-commit hook will automatically:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Detect images in your Markdown files
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Apply watermarks as specified
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Upload images to CloudFlare R2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">     - Update image URLs in your Markdown files
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">6. **Push to GitHub**:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   git push
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   `</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">   - Your existing GitHub Actions will deploy your Hugo site
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Typora Settings
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">For optimal usage with Typora, configure these settings:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Open Typora Preferences
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. Go to the Image tab
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Set &#34;When Insert Image&#34; to &#34;Copy image to ./${filename}.assets&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Check &#34;Apply above rules to local images&#34; and &#34;Apply above rules to online images&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This ensures that images are saved in a predictable location relative to your Markdown file.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Watermark Commands Reference
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Markdown Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Command | Description | Position |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|---------|-------------|----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:char<span style="color:#e6db74">` | Character symbol only | Bottom right |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:cr<span style="color:#e6db74">` | Copyright text only | Bottom left |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>#wm:both<span style="color:#e6db74">` | Both watermarks together | Character (right) + Copyright (left) |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Examples:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`markdown
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![My image](image.jpg#wm:char)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![Protected image](image.jpg#wm:cr)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">![Fully protected](image.jpg#wm:both)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### HTML Syntax
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Attribute | Description | Position |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|-----------|-------------|----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;char&#34;<span style="color:#e6db74">` | Character symbol only | Bottom right |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;cr&#34;<span style="color:#e6db74">` | Copyright text only | Bottom left |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| `</span>data-wm=&#34;both&#34;<span style="color:#e6db74">` | Both watermarks together | Character (right) + Copyright (left) |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Examples:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`html
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;char&#34; alt=&#34;My image&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;cr&#34; alt=&#34;Protected image&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">&lt;img src=&#34;image.jpg&#34; data-wm=&#34;both&#34; alt=&#34;Fully protected&#34;&gt;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### When to Use Each Watermark Type
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Content Type | Recommended Watermark | Rationale |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">|--------------|----------------------|-----------|
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Personal photos | `</span>#wm:char<span style="color:#e6db74">` | Subtle branding without legal text |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Professional work | `</span>#wm:cr<span style="color:#e6db74">` | Clear copyright protection |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Important images | `</span>#wm:both<span style="color:#e6db74">` | Maximum protection with branding |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">| Screenshots | None | Usually don&#39;t need watermarking |
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Integration with Existing Workflows
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This solution integrates seamlessly with your existing GitHub Actions workflows:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### 1. `</span>telegram-processor.yml<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- This workflow processes Telegram messages and updates your blog
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- No changes needed - works independently of the image processing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### 2. `</span>cloudflare-pages.yml<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- This workflow deploys your Hugo site to Cloudflare Pages
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Automatically runs after you push changes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Includes the updated Markdown files with correct image URLs
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Workflow Sequence:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">1. Pre-commit hook processes images locally
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">2. You push changes to GitHub
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">3. Your existing GitHub Actions deploy the blog
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">4. Images are served from CloudFlare R2 with your custom domain
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">## Troubleshooting
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Common Issues
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Images not uploading to R2
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check your R2 credentials
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify you have the required Python packages installed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the pre-commit hook is executable
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Watermarks not appearing
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify the watermark image path is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check that the watermark command syntax is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the Pillow package is installed
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### Pre-commit hook not running
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Ensure the hook is executable: `</span>chmod +x .git/hooks/pre-commit<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify the hook path is correct: `</span>.git/hooks/pre-commit<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">#### URLs not updating correctly
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Check that the custom domain setting is correct
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">- Verify that the R2 bucket is properly configured
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Testing the Pre-commit Hook
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">You can test the pre-commit hook manually:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`bash
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74"># From your repository root
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">.git/hooks/pre-commit
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">This will process any staged Markdown files with images.
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">### Debugging Tips
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">Add debugging statements to the pre-commit hook:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>`<span style="color:#e6db74">`python
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Processing file: {markdown_file}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Found images: {images}&#34;)
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">print(f&#34;Image data: {image_data[:100]}...&#34;)  # Print first 100 bytes
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">`</span>``
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>This helps identify where issues might be occurring.
+</span></span></code></pre></div></section>
+
+  <nav
+    class="mt-24 flex overflow-hidden rounded-xl bg-black/[3%] text-lg !leading-[1.2] *:flex *:w-1/2 *:items-center *:p-5 *:font-medium *:no-underline dark:bg-white/[8%] [&>*:hover]:bg-black/[2%] dark:[&>*:hover]:bg-white/[3%]"
+  ><a class="ltr:pr-3 rtl:pl-3" href="http://localhost:1313/daily/2025/03/14/"
+      ><span class="ltr:mr-1.5 rtl:ml-1.5">←</span><span>2025-03-14 第11周 星期五</span></a
+    ><a
+      class="justify-end pl-3 ltr:ml-auto rtl:mr-auto"
+      href="http://localhost:1313/daily/2025/03/13/"
+      ><span>2025-03-13 第11周 星期四</span><span class="ltr:ml-1.5 rtl:mr-1.5">→</span></a
+    ></nav></article></main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,288 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>日常-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  
+  <meta
+    name="description"
+    content="A personal blog"
+  />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    >
+<header class="page-header">
+  <h1>日更</h1>
+</header>
+
+
+
+
+
+
+
+<div class="daily-entries">
+  
+    <ul class="daily-list">
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/07/">2025-03-07 第10周 星期五</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="0830">08:30</h2>
+<p>心里有事果然醒得早。今天要带大福去拆线。他之前尿闭后做了膀胱结石手术，出院10天后该拆线了。有点担心是不是创口有感染，因为他这几天发出一股好臭的味道。等下去兽医那看了就知道了，希望一切顺利。</p>
+<h2 id="1222">12:22</h2>
+<p>果然，大福的创口没有按预期愈合。估计有一天我把伊丽莎白圈拿下来一会儿，好让他自己吃饭而不用我喂。可能那一会儿他还是舔到创口了。虽然只有那一次（后来换了碗他戴着圈圈也能吃到饭了），但还是影响到了愈合。 sorry buddy。</p>
+<p>所以今天没拆线。兽医给开了同样的抗生素和止疼药，也开了外涂的药（看起来像碘伏）。接下来7天每天两次抗生素和止疼药，每6小时涂一次碘伏到创口。下周再去拆线。</p>
+<p>因为担心是伊丽莎白圈的边缘把创口刮到，兽医给换了一个软质的伊丽莎白圈。</p>
+<p>希望大福快些痊愈。fingers crossed 🤞</p>
+<h2 id="2232">22:32</h2>
+<p>这周是 Spring break，但放假结束还有作业 due。然而我这几天都在玩这个小博客，作业完全没开始写。平时坚持的习惯也都断了。</p>
+<p>折腾到此为止，接下来有任何想改动的地方，都给自己提交一个 issue，抽空再改。</p>
+<p>从明天起，恢复日常习惯：早睡早起，每天骑台子，写代码，上网课，做作业，刷力扣，以及看书。ADHD人一旦断开习惯几天，恢复起来太困难了。明早起来先骑个60分钟给自己打气。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/06/">2025-03-06 第10周 星期四</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="1057">10:57</h2>
+<p>上周坚持了几天的早睡早起，这周全崩了。连带着早上骑车的习惯也断掉了。根本原因还是熬夜，从今天起要恢复11点前不带手机进卧室。</p>
+<h2 id="1113">11:13</h2>
+<p>几年前玩过的胶片相机，闲置了很多年，也没怎么拍，也没舍得卖。来加拿大的时候，有一个邮政的包裹等了5个月才送到，里面就有那个胶片相机。在漫长的等待中我一度怀疑那个包裹已经掉海里了。我觉得太可惜，那么好的相机，我都没有好好拿它拍照。包裹到了之后，我就把相机拿出来摆在了书桌上，每天都能看见，希望经常拿出来拍一拍。</p>
+<h2 id="1821">18:21</h2>
+<p>又说昨天提到那种蝉。它们中的一部分会感染一种叫蝉团孢霉的真菌。</p>
+<p>真菌发起来后，蝉的屁股就掉了，原本在屁股的位置变成了一团这种真菌。白色的孢子团，很像盐块。因此被感染的蝉也被称为“飞翔的死亡盐罐”，flying salt shakers of death。</p>
+<p>通过性传播的寄生并不稀奇。这种真菌的独特之处在于，它会分泌兴奋剂，让宿主性冲动拉满，不停尝试交配，直到死亡。</p>
+<p>更奇特的是，雄蝉和雌蝉都可能被感染，且感染后具备同时吸引同性和异性的能力。比如，被感染的雄蝉，会模仿雌蝉的扑翅动作，吸引健康的雄蝉前来交配。</p>
+<p>感觉这种真菌有点用力过猛。一般寄生生物占领性传播的渠道就足够，宿主会在自身纵欲的驱动下交配。然而这种真菌不仅占据了传播渠道，还要把宿主变成丧尸，而且还额外补充了宿主吸引同性的能力，拉满传播的成功概率，简直丧心病狂。</p>
+<p>统计显示，多达5%的周期蝉成虫会被感染。也就是每二十只蝉就有一只会掉屁股。</p>
+<p>但其实也可以理解这种真菌的狂热，因为它们面对的宿主不一般。周期蝉的特点即在于其周期。幼虫孵化后即钻入土中，蛰伏23年才破土而出，在约一个月内完成羽化、交配、产卵，死亡，留给蝉团孢霉的时间窗口太小了。</p>
+<p>自然界真是血雨腥风啊。</p>
+<p>#BLOG::today</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+      <li class="daily-entry">
+        <article>
+          <h2 class="daily-entry-title">
+            <a href="http://localhost:1313/daily/2025/03/05/">2025-03-05 第10周 星期三</a>
+          </h2>
+          
+          
+          <div class="daily-entry-content">
+            
+              
+              <h2 id="1645">16:45</h2>
+<h3 id="这个博客">这个博客</h3>
+<p>用 Telegram Bot 搭配 GitHub Actions 搭了一个 Hugo 博客。</p>
+<p>一开始的动机是想写日更站，每天都写点。想了想又决定顺便把 Capture System 做了。Capture System 用来随手记下临时的想法，以免干扰正在专注的事情（对于我这样的 ADHDer 来说，临时的想法是随时都可能出现的）。</p>
+<p>本以为两个小时定能完成，结果从中午弄到现在，断断续续六个小时过去了，才只打通了博客站点，还缺社交平台发文的部分（哦对了，临时的想法里包括突然想发个po到毛象之类的）。</p>
+<h2 id="2031">20:31</h2>
+<h3 id="二十三年蝉">二十三年蝉</h3>
+<p>老婆这几天开始玩刺绣，她刚才给我看，要绣一个蝉给我，因为我的生日在夏天。然后我想起之前看到过一种很神奇的生物：二十三年蝉。这种蝉的幼虫出生后即钻入地底，在黑暗中等待二十三年，期间以吸食树根汁液维生。时候到了若虫钻出地表，在一个月左右的时间里迅速完成羽化、交配和产卵，然后就死去。产下的幼虫又进入下一个周期。</p>
+<p>神奇的是，这种周期蝉选择了23和17这样的质数作为周期，从而尽量降低与捕食者或竞争者在同一年出现的概率，简直太厉害。</p>
+
+            
+          </div>
+        </article>
+      </li>
+      
+    </ul>
+
+    
+    
+    <div class="pagination">
+      
+      <a href="/daily/page/2/" class="prev">
+        Previous
+      </a>
+      
+      
+      <span class="page-number">
+        
+        Page 3 of 3
+        
+      </span>
+      
+      
+    </div>
+    
+  
+  
+</div>
+</main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>

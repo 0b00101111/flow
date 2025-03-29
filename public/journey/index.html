@@ -1,0 +1,323 @@
+<!doctype html>
+
+
+
+
+
+
+
+<html
+  class="not-ready lg:text-base"
+  style="--bg:#faf8f1"
+  lang="zh-cn"
+  dir="ltr"
+><head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1, shrink-to-fit=no"
+  />
+
+  
+  <title>Journey-小径分岔的兔子洞</title>
+
+  
+  <meta name="theme-color" />
+
+  <meta name="description" content="" />
+  <meta name="author" content="47Fork" />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <link rel="preload stylesheet" as="style" href="http://localhost:1313/main.min.css" />
+  <link rel="preload" as="image" href="http://localhost:1313/theme.svg" />
+
+  <link rel="preload" as="image" href="https://daily.shuang.blog/images/avatar.jpg" />
+
+  <link rel="preload" as="image" href="http://localhost:1313/mastodon.svg" /><link rel="preload" as="image" href="http://localhost:1313/threads.svg" />
+
+  
+
+  
+  <link
+    rel="icon"
+    href="http://localhost:1313/favicon.ico"
+  />
+  <link
+    rel="apple-touch-icon"
+    href="http://localhost:1313/apple-touch-icon.png"
+  />
+
+  <meta name="generator" content="Hugo 0.145.0">
+
+</head>
+<body class="text-black duration-200 ease-out dark:text-white"><header
+  class="mx-auto flex h-[4.5rem] max-w-(--w) px-8 whitespace-nowrap lg:justify-center"
+>
+  <div class="relative z-50 flex items-center ltr:mr-auto rtl:ml-auto">
+    <a
+      class="-translate-y-[1px] text-2xl font-medium"
+      href="/"
+      >小径分岔的兔子洞</a
+    >
+    <div
+      class="btn-dark text-[0px] ltr:ml-4 rtl:mr-4 h-6 w-6 shrink-0 cursor-pointer [background:url(./theme.svg)_left_center/cover_no-repeat] dark:invert dark:[background-position:right]"
+      role="button"
+      aria-label="Dark"
+    ></div>
+  </div>
+  <div
+    class="btn-menu relative z-50 flex h-[4.5rem] w-[5rem] shrink-0 cursor-pointer flex-col items-center justify-center gap-2.5 lg:hidden ltr:-mr-8 rtl:-ml-8"
+    role="button"
+    aria-label="Menu"
+  ></div>
+  <script>
+    
+    const htmlClass = document.documentElement.classList;
+    setTimeout(() => {
+      htmlClass.remove('not-ready');
+    }, 10);
+    
+    const btnMenu = document.querySelector('.btn-menu');
+    btnMenu.addEventListener('click', () => {
+      htmlClass.toggle('open');
+    });
+    
+    const metaTheme = document.querySelector('meta[name="theme-color"]');
+    const lightBg = '#faf8f1'.replace(/"/g, '');
+    const setDark = (isDark) => {
+      metaTheme.setAttribute('content', isDark ? '#000' : lightBg);
+      htmlClass[isDark ? 'add' : 'remove']('dark');
+      localStorage.setItem('dark', isDark);
+    };
+    
+    const darkScheme = window.matchMedia('(prefers-color-scheme: dark)');
+    if (htmlClass.contains('dark')) {
+      setDark(true);
+    } else {
+      const darkVal = localStorage.getItem('dark');
+      setDark(darkVal ? darkVal === 'true' : darkScheme.matches);
+    }
+    
+    darkScheme.addEventListener('change', (event) => {
+      setDark(event.matches);
+    });
+    
+    const btnDark = document.querySelector('.btn-dark');
+    btnDark.addEventListener('click', () => {
+      setDark(localStorage.getItem('dark') !== 'true');
+    });
+  </script>
+  <div
+    class="nav-wrapper fixed inset-x-0 top-full z-40 flex h-full flex-col justify-center pb-16 duration-200 select-none lg:static lg:h-auto lg:flex-row lg:!bg-transparent lg:pb-0 lg:transition-none dark:bg-black"
+  ><nav
+      class="lg:ml-12 lg:flex lg:flex-row lg:items-center lg:space-x-10 rtl:space-x-reverse"
+    ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/posts/"
+          >博客</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/daily/"
+          >日更</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/xikang/"
+          >细糠</a
+        ><a
+          class="block text-center text-xl leading-[5rem] lg:text-base lg:font-normal"
+          href="/journey/"
+          >Journey</a
+        ></nav><nav
+      class="mt-12 flex justify-center space-x-10 lg:mt-0 lg:items-center ltr:lg:ml-14 rtl:space-x-reverse rtl:lg:mr-14 dark:invert"
+    >
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./mastodon.svg)"
+        href="https://yangyang.how/@shuang"
+        target="_blank"
+        rel="me"
+      >mastodon</a>
+      <a
+        class="h-7 w-7 text-[0px] [background:var(--url)_center_center/cover_no-repeat] lg:h-6 lg:w-6"
+        style="--url: url(./threads.svg)"
+        href="https://threads.net/@0b00101111"
+        target="_blank"
+        rel="me"
+      >threads</a>
+    </nav>
+  </div>
+</header>
+<main
+      class="prose prose-neutral dark:prose-invert relative mx-auto min-h-[calc(100vh-9rem)] max-w-(--w) px-8 pt-14 pb-16"
+    >
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">Journey</h1>
+    
+  </header>
+  
+  <div class="post-content">
+    
+    
+    <div class="cards-container">
+      
+        <div class="timeline-card">
+          <div class="timeline-period">2011.06 - 2015.05</div>
+          <div class="timeline-map">
+            <img src="https://img.shuang.blog/dali.png" alt="Map of 大理" loading="lazy">
+          </div>
+          <div class="timeline-location">大理</div>
+          <div class="timeline-activity">支教</div>
+        </div>
+      
+        <div class="timeline-card">
+          <div class="timeline-period">2015.05 - 2020.06</div>
+          <div class="timeline-map">
+            <img src="https://img.shuang.blog/beijing.png" alt="Map of 北京" loading="lazy">
+          </div>
+          <div class="timeline-location">北京</div>
+          <div class="timeline-activity">上班</div>
+        </div>
+      
+        <div class="timeline-card">
+          <div class="timeline-period">2020.06 - 2023.12</div>
+          <div class="timeline-map">
+            <img src="https://img.shuang.blog/shenzhen.png" alt="Map of 深圳" loading="lazy">
+          </div>
+          <div class="timeline-location">深圳</div>
+          <div class="timeline-activity">上班</div>
+        </div>
+      
+        <div class="timeline-card">
+          <div class="timeline-period">2024.01 - 2024.09</div>
+          <div class="timeline-map">
+            <img src="https://img.shuang.blog/dali.png" alt="Map of 大理" loading="lazy">
+          </div>
+          <div class="timeline-location">大理</div>
+          <div class="timeline-activity">生活</div>
+        </div>
+      
+        <div class="timeline-card">
+          <div class="timeline-period">2024.09 - 至今</div>
+          <div class="timeline-map">
+            <img src="https://img.shuang.blog/vancouver.png" alt="Map of 温哥华" loading="lazy">
+          </div>
+          <div class="timeline-location">温哥华</div>
+          <div class="timeline-activity">念书</div>
+        </div>
+      
+    </div>
+  </div>
+</article>
+
+<style>
+.timeline-heading {
+  text-align: center;
+  font-size: 1.5rem;
+  font-weight: 500;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  gap: 1rem;
+  margin: 40px auto;
+  max-width: 1200px;
+  padding: 0 1rem;
+}
+
+.timeline-card {
+  flex: 0 0 auto;
+  width: 22%;
+  min-width: 200px;
+  max-width: 220px;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+}
+
+.timeline-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.08);
+}
+
+.timeline-map {
+  width: 100%;
+  height: 140px;
+  overflow: hidden;
+  padding: 0.3rem 1.2rem 0.5rem;
+}
+
+.timeline-map img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 2px;
+}
+
+.timeline-period {
+  padding: 0.8rem 0.8rem 0rem;
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+.timeline-location {
+  padding: 0.8rem 0.8rem 0.4rem;
+  font-size: 1.3rem;
+  font-weight: 500;
+  color: #333;
+}
+
+.timeline-activity {
+  padding: 0 0.8rem 1.2rem;
+  color: #777;
+  font-size: 0.9rem;
+}
+
+@media (max-width: 991px) {
+  .cards-container {
+    flex-wrap: wrap;
+  }
+  
+  .timeline-card {
+    width: 45%;
+    max-width: none;
+  }
+}
+
+@media (max-width: 767px) {
+  .cards-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .timeline-card {
+    width: 100%;
+    max-width: 320px;
+  }
+}
+</style>
+</main><footer
+  class="mx-auto flex flex-col h-auto py-6 max-w-(--w) items-center px-8 text-xs tracking-wider uppercase opacity-60"
+>
+  <div class="w-full text-center mb-4">&copy;2025 by 47Fork</div>
+  <div class="w-full text-center mb-4">All rights reserved; reproduction prohibited. Credit must be given to the creator.</div>
+  <div class="flex items-center">
+    <a class="link mx-6" href="https://gohugo.io/" rel="noopener" target="_blank">Powered by Hugo</a>
+    <a class="link" href="https://github.com/nanxiaobei/hugo-paper" rel="noopener" target="_blank">Hugo-Paper</a>
+  </div>
+</footer>
+</body>
+</html>
