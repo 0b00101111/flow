@@ -74,7 +74,7 @@ def post_to_threads(text, username=None, password=None):
     # In a real implementation, you'd replace this with actual API calls
     return True, "Posted successfully (simulated)"
 
-def process_sns_queues(config_path='data/config.json', queues_path='data/queues.json'):
+def process_sns_queues(config_path='bot_data/config.json', queues_path='bot_data/queues.json'):
     """Process social media queues based on current time windows."""
     # Load queues
     try:

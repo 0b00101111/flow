@@ -2,7 +2,9 @@ baseURL = "https://daily.shuang.blog/"
 languageCode = "zh-cn"
 title = "小径分岔的兔子洞"
 # Pagination setting
-paginate = 10  # Shows 10 items per page
+# paginate = 10  # Shows 10 items per page (deprecated)
+[pagination]
+  pagerSize = 10  # Shows 10 items per page
 
 # 主题配置
 theme = "paper"
@@ -55,6 +57,11 @@ theme = "paper"
     weight = 30
   [[menu.main]]
     identifier = "timeline"
-    name = "时间线"
-    url = "/timeline/"
+    name = "这些年"
+    url = "/这些年/"
     weight = 40
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true  # Allow raw HTML in markdown content

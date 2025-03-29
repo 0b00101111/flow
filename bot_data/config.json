@@ -1,0 +1,1 @@
+{"sns_channels":{"threads":{"enabled":true,"post_windows":["07:03","12:15","19:47"],"credentials":{}},"telegram":{"enabled":true,"post_windows":["08:00","13:00","20:00"],"credentials":{}},"mastodon":{"enabled":true,"post_windows":["09:00","15:00","21:00"],"credentials":{}}},"blog":{"daily_digest_time":"21:45","reminder_time":"21:45"}}

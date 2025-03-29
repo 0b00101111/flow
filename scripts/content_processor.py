@@ -108,7 +108,7 @@ def add_to_platform_queue(content, platform, message_id):
     """Add content to a specific platform queue."""
     # Load the current queues
     try:
-        with open('data/queues.json', 'r', encoding='utf-8') as f:
+        with open('bot_data/queues.json', 'r', encoding='utf-8') as f:
             queues = json.load(f)
     except (FileNotFoundError, json.JSONDecodeError):
         queues = {"threads": [], "mastodon": [], "telegram": []}
@@ -131,7 +131,7 @@ def add_to_platform_queue(content, platform, message_id):
     queues[platform].append(post_data)
     
     # Save the updated queues
-    with open('data/queues.json', 'w', encoding='utf-8') as f:
+    with open('bot_data/queues.json', 'w', encoding='utf-8') as f:
         json.dump(queues, f, indent=2)
     
     return f"{platform}:queued"

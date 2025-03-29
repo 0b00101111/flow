@@ -46,7 +46,7 @@ def list_queues():
     """List all queues and their content."""
     try:
         logger.info("Listing queues")
-        with open('data/queues.json', 'r', encoding='utf-8') as f:
+        with open('bot_data/queues.json', 'r', encoding='utf-8') as f:
             queues = json.load(f)
         
         queue_contents = []
@@ -125,7 +125,7 @@ def process_telegram_messages():
                         if platform in ["threads", "mastodon", "telegram"]:
                             # Load queues
                             try:
-                                with open('data/queues.json', 'r', encoding='utf-8') as f:
+                                with open('bot_data/queues.json', 'r', encoding='utf-8') as f:
                                     queues = json.load(f)
                                 
                                 # Format items in the queue
@@ -149,13 +149,13 @@ def process_telegram_messages():
                         if platform in ["threads", "mastodon", "telegram"]:
                             # Load queues
                             try:
-                                with open('data/queues.json', 'r', encoding='utf-8') as f:
+                                with open('bot_data/queues.json', 'r', encoding='utf-8') as f:
                                     queues = json.load(f)
                                 
                                 # Remove first item if queue isn't empty
                                 if platform in queues and queues[platform]:
                                     removed = queues[platform].pop(0)
-                                    with open('data/queues.json', 'w', encoding='utf-8') as f:
+                                    with open('bot_data/queues.json', 'w', encoding='utf-8') as f:
                                         json.dump(queues, f, indent=2)
                                     send_telegram_message(chat_id, f"Removed first item from {platform} queue:\n{removed['text'][:100]}...")
                                 else:

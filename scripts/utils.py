@@ -43,15 +43,15 @@ def send_telegram_message(chat_id, text):
 def get_last_update_id():
     """Get the last processed Telegram update ID"""
     try:
-        with open('data/last_update_id.txt', 'r') as f:
+        with open('bot_data/last_update_id.txt', 'r') as f:
             return int(f.read().strip() or "0")
     except (FileNotFoundError, ValueError):
         return 0
 
 def save_last_update_id(update_id):
     """Save the last processed Telegram update ID"""
-    os.makedirs('data', exist_ok=True)
-    with open('data/last_update_id.txt', 'w') as f:
+    os.makedirs('bot_data', exist_ok=True)
+    with open('bot_data/last_update_id.txt', 'w') as f:
         f.write(str(update_id))
 
 def detect_language(text):
