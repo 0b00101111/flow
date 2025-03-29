@@ -1,0 +1,101 @@
+{{ define "main" }}
+<article class="post-single">
+  <header class="post-header">
+    <h1 class="post-title">{{ .Title }}</h1>
+  </header>
+  
+  <div class="post-content">
+    {{ .Content }}
+    
+    <div class="timeline">
+      {{ range $.Site.Data.timeline }}
+        <div class="timeline-item">
+          <div class="timeline-item-content">
+            <div class="timeline-period">{{ .period }}</div>
+            <div class="timeline-location">{{ .location }}</div>
+            <div class="timeline-activity">{{ .activity }}</div>
+          </div>
+        </div>
+      {{ end }}
+    </div>
+  </div>
+</article>
+
+<style>
+.timeline {
+  position: relative;
+  max-width: 800px;
+  margin: 40px auto 0;
+}
+
+.timeline::after {
+  content: '';
+  position: absolute;
+  width: 2px;
+  background-color: #e1e1e1;
+  top: 0;
+  bottom: 0;
+  left: 20px;
+  margin-left: -1px;
+}
+
+.timeline-item {
+  position: relative;
+  margin-bottom: 40px;
+  padding-left: 50px;
+}
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  left: 14px;
+  background-color: #ccc;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  z-index: 1;
+}
+
+.timeline-item-content {
+  padding: 15px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+.timeline-period {
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
+}
+
+.timeline-location {
+  font-style: italic;
+  margin-bottom: 5px;
+  color: #555;
+}
+
+.timeline-activity {
+  color: #777;
+}
+
+/* Alternate color for every other item */
+.timeline-item:nth-child(odd) .timeline-item-content {
+  background-color: #f0f0f0;
+}
+
+.timeline-item:nth-child(even) .timeline-item-content {
+  background-color: #f8f8f8;
+}
+
+/* Hover effect */
+.timeline-item:hover::before {
+  background-color: #007bff;
+}
+
+.timeline-item:hover .timeline-item-content {
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+</style>
+{{ end }} 

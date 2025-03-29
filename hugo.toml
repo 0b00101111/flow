@@ -53,3 +53,8 @@ theme = "paper"
     name = "细糠"
     url = "/xikang/"
     weight = 30
+  [[menu.main]]
+    identifier = "timeline"
+    name = "时间线"
+    url = "/timeline/"
+    weight = 40
